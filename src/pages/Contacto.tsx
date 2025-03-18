@@ -279,9 +279,31 @@ const Contacto: React.FC = () => {
           zIndex: 2,
           px: { xs: 2, md: 4 },
           pb: { xs: 8, md: 12 },
+          bgcolor: '#0A0A0A',
+          width: '100vw',
+          left: '50%',
+          right: '50%',
+          marginLeft: '-50vw',
+          marginRight: '-50vw',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background:
+              'radial-gradient(circle at center, rgba(124, 58, 237, 0.15) 0%, rgba(0, 0, 0, 0) 70%)',
+            zIndex: 1,
+          },
         }}
       >
-        <Grid container spacing={6} justifyContent="center">
+        <Grid
+          container
+          spacing={6}
+          justifyContent="center"
+          sx={{ position: 'relative', zIndex: 2 }}
+        >
           {/* Contact Form */}
           <Grid item xs={12} md={7}>
             <Box
@@ -289,8 +311,8 @@ const Contacto: React.FC = () => {
               component={Paper}
               elevation={24}
               sx={{
-                p: { xs: 4, md: 6 },
-                borderRadius: 3,
+                p: { xs: 3, md: 5 },
+                borderRadius: { xs: 2, md: 3 },
                 background: 'rgba(255,255,255,0.02)',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255,255,255,0.05)',
@@ -316,14 +338,14 @@ const Contacto: React.FC = () => {
                   gutterBottom
                   sx={{
                     fontWeight: 700,
-                    mb: 5,
+                    mb: { xs: 3, md: 5 },
                     background:
                       'linear-gradient(135deg, #7C3AED 0%, #EC4899 100%)',
                     backgroundClip: 'text',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     textAlign: 'center',
-                    fontSize: { xs: '1.75rem', md: '2rem' },
+                    fontSize: { xs: '1.5rem', md: '2rem' },
                     letterSpacing: '-0.02em',
                   }}
                 >
@@ -331,7 +353,7 @@ const Contacto: React.FC = () => {
                 </Typography>
 
                 <form onSubmit={handleSubmit}>
-                  <Grid container spacing={4}>
+                  <Grid container spacing={{ xs: 2.5, md: 4 }}>
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
@@ -345,11 +367,15 @@ const Contacto: React.FC = () => {
                         required
                         sx={{
                           '& .MuiOutlinedInput-root': {
-                            height: '56px',
-                            borderRadius: 2,
+                            height: { xs: '48px', md: '56px' },
+                            borderRadius: 1.5,
                             color: 'white',
-                            backgroundColor: 'rgba(255,255,255,0.03)',
+                            backgroundColor: {
+                              xs: 'rgba(10,10,10,0.9)',
+                              md: 'rgba(10,10,10,0.6)',
+                            },
                             backdropFilter: 'blur(20px)',
+                            WebkitBackdropFilter: 'blur(20px)',
                             '& fieldset': {
                               borderColor: 'rgba(255,255,255,0.1)',
                               borderWidth: '1px',
@@ -363,20 +389,40 @@ const Contacto: React.FC = () => {
                               borderWidth: '2px',
                             },
                             '& input': {
-                              height: '56px',
-                              padding: '0 16px',
-                              fontSize: '1rem',
+                              height: { xs: '48px', md: '56px' },
+                              padding: '0 14px',
+                              fontSize: { xs: '0.9rem', md: '1rem' },
                               '&::placeholder': {
                                 color: 'rgba(255,255,255,0.5)',
+                              },
+                              '-webkit-autofill': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill:hover': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill:focus': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
                               },
                             },
                           },
                           '& .MuiInputLabel-root': {
                             color: 'rgba(255,255,255,0.7)',
-                            fontSize: '1rem',
-                            transform: 'translate(16px, 16px) scale(1)',
+                            fontSize: { xs: '0.9rem', md: '1rem' },
+                            transform: 'translate(14px, 14px) scale(1)',
                             '&.Mui-focused, &.MuiFormLabel-filled': {
-                              transform: 'translate(16px, -9px) scale(0.75)',
+                              transform: 'translate(14px, -9px) scale(0.75)',
                               color: '#7C3AED',
                             },
                             '&.Mui-error': {
@@ -386,7 +432,8 @@ const Contacto: React.FC = () => {
                           '& .MuiFormHelperText-root': {
                             color: '#FF6B6B',
                             marginLeft: 0,
-                            marginTop: 1,
+                            marginTop: 0.5,
+                            fontSize: { xs: '0.75rem', md: '0.8rem' },
                           },
                         }}
                       />
@@ -405,11 +452,15 @@ const Contacto: React.FC = () => {
                         required
                         sx={{
                           '& .MuiOutlinedInput-root': {
-                            height: '56px',
-                            borderRadius: 2,
+                            height: { xs: '48px', md: '56px' },
+                            borderRadius: 1.5,
                             color: 'white',
-                            backgroundColor: 'rgba(255,255,255,0.03)',
+                            backgroundColor: {
+                              xs: 'rgba(10,10,10,0.9)',
+                              md: 'rgba(10,10,10,0.6)',
+                            },
                             backdropFilter: 'blur(20px)',
+                            WebkitBackdropFilter: 'blur(20px)',
                             '& fieldset': {
                               borderColor: 'rgba(255,255,255,0.1)',
                               borderWidth: '1px',
@@ -423,20 +474,40 @@ const Contacto: React.FC = () => {
                               borderWidth: '2px',
                             },
                             '& input': {
-                              height: '56px',
-                              padding: '0 16px',
-                              fontSize: '1rem',
+                              height: { xs: '48px', md: '56px' },
+                              padding: '0 14px',
+                              fontSize: { xs: '0.9rem', md: '1rem' },
                               '&::placeholder': {
                                 color: 'rgba(255,255,255,0.5)',
+                              },
+                              '-webkit-autofill': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill:hover': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill:focus': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
                               },
                             },
                           },
                           '& .MuiInputLabel-root': {
                             color: 'rgba(255,255,255,0.7)',
-                            fontSize: '1rem',
-                            transform: 'translate(16px, 16px) scale(1)',
+                            fontSize: { xs: '0.9rem', md: '1rem' },
+                            transform: 'translate(14px, 14px) scale(1)',
                             '&.Mui-focused, &.MuiFormLabel-filled': {
-                              transform: 'translate(16px, -9px) scale(0.75)',
+                              transform: 'translate(14px, -9px) scale(0.75)',
                               color: '#7C3AED',
                             },
                             '&.Mui-error': {
@@ -446,7 +517,8 @@ const Contacto: React.FC = () => {
                           '& .MuiFormHelperText-root': {
                             color: '#FF6B6B',
                             marginLeft: 0,
-                            marginTop: 1,
+                            marginTop: 0.5,
+                            fontSize: { xs: '0.75rem', md: '0.8rem' },
                           },
                         }}
                       />
@@ -461,11 +533,15 @@ const Contacto: React.FC = () => {
                         onChange={handleChange}
                         sx={{
                           '& .MuiOutlinedInput-root': {
-                            height: '56px',
-                            borderRadius: 2,
+                            height: { xs: '48px', md: '56px' },
+                            borderRadius: 1.5,
                             color: 'white',
-                            backgroundColor: 'rgba(255,255,255,0.03)',
+                            backgroundColor: {
+                              xs: 'rgba(10,10,10,0.9)',
+                              md: 'rgba(10,10,10,0.6)',
+                            },
                             backdropFilter: 'blur(20px)',
+                            WebkitBackdropFilter: 'blur(20px)',
                             '& fieldset': {
                               borderColor: 'rgba(255,255,255,0.1)',
                               borderWidth: '1px',
@@ -479,20 +555,40 @@ const Contacto: React.FC = () => {
                               borderWidth: '2px',
                             },
                             '& input': {
-                              height: '56px',
-                              padding: '0 16px',
-                              fontSize: '1rem',
+                              height: { xs: '48px', md: '56px' },
+                              padding: '0 14px',
+                              fontSize: { xs: '0.9rem', md: '1rem' },
                               '&::placeholder': {
                                 color: 'rgba(255,255,255,0.5)',
+                              },
+                              '-webkit-autofill': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill:hover': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill:focus': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
                               },
                             },
                           },
                           '& .MuiInputLabel-root': {
                             color: 'rgba(255,255,255,0.7)',
-                            fontSize: '1rem',
-                            transform: 'translate(16px, 16px) scale(1)',
+                            fontSize: { xs: '0.9rem', md: '1rem' },
+                            transform: 'translate(14px, 14px) scale(1)',
                             '&.Mui-focused, &.MuiFormLabel-filled': {
-                              transform: 'translate(16px, -9px) scale(0.75)',
+                              transform: 'translate(14px, -9px) scale(0.75)',
                               color: '#7C3AED',
                             },
                           },
@@ -509,11 +605,15 @@ const Contacto: React.FC = () => {
                         onChange={handleChange}
                         sx={{
                           '& .MuiOutlinedInput-root': {
-                            height: '56px',
-                            borderRadius: 2,
+                            height: { xs: '48px', md: '56px' },
+                            borderRadius: 1.5,
                             color: 'white',
-                            backgroundColor: 'rgba(255,255,255,0.03)',
+                            backgroundColor: {
+                              xs: 'rgba(10,10,10,0.9)',
+                              md: 'rgba(10,10,10,0.6)',
+                            },
                             backdropFilter: 'blur(20px)',
+                            WebkitBackdropFilter: 'blur(20px)',
                             '& fieldset': {
                               borderColor: 'rgba(255,255,255,0.1)',
                               borderWidth: '1px',
@@ -527,20 +627,40 @@ const Contacto: React.FC = () => {
                               borderWidth: '2px',
                             },
                             '& input': {
-                              height: '56px',
-                              padding: '0 16px',
-                              fontSize: '1rem',
+                              height: { xs: '48px', md: '56px' },
+                              padding: '0 14px',
+                              fontSize: { xs: '0.9rem', md: '1rem' },
                               '&::placeholder': {
                                 color: 'rgba(255,255,255,0.5)',
+                              },
+                              '-webkit-autofill': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill:hover': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill:focus': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
                               },
                             },
                           },
                           '& .MuiInputLabel-root': {
                             color: 'rgba(255,255,255,0.7)',
-                            fontSize: '1rem',
-                            transform: 'translate(16px, 16px) scale(1)',
+                            fontSize: { xs: '0.9rem', md: '1rem' },
+                            transform: 'translate(14px, 14px) scale(1)',
                             '&.Mui-focused, &.MuiFormLabel-filled': {
-                              transform: 'translate(16px, -9px) scale(0.75)',
+                              transform: 'translate(14px, -9px) scale(0.75)',
                               color: '#7C3AED',
                             },
                           },
@@ -553,7 +673,7 @@ const Contacto: React.FC = () => {
                         label="Mensaje"
                         name="message"
                         multiline
-                        rows={6}
+                        rows={4}
                         variant="outlined"
                         value={formData.message}
                         onChange={handleChange}
@@ -562,10 +682,14 @@ const Contacto: React.FC = () => {
                         required
                         sx={{
                           '& .MuiOutlinedInput-root': {
-                            borderRadius: 2,
+                            borderRadius: 1.5,
                             color: 'white',
-                            backgroundColor: 'rgba(255,255,255,0.03)',
+                            backgroundColor: {
+                              xs: 'rgba(10,10,10,0.9)',
+                              md: 'rgba(10,10,10,0.6)',
+                            },
                             backdropFilter: 'blur(20px)',
+                            WebkitBackdropFilter: 'blur(20px)',
                             '& fieldset': {
                               borderColor: 'rgba(255,255,255,0.1)',
                               borderWidth: '1px',
@@ -579,20 +703,40 @@ const Contacto: React.FC = () => {
                               borderWidth: '2px',
                             },
                             '& textarea': {
-                              padding: '16px',
-                              fontSize: '1rem',
+                              padding: '14px',
+                              fontSize: { xs: '0.9rem', md: '1rem' },
                               lineHeight: '1.5',
                               '&::placeholder': {
                                 color: 'rgba(255,255,255,0.5)',
+                              },
+                              '-webkit-autofill': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill:hover': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
+                              },
+                              '&:-webkit-autofill:focus': {
+                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
+                                WebkitTextFillColor: 'white',
+                                caretColor: 'white',
                               },
                             },
                           },
                           '& .MuiInputLabel-root': {
                             color: 'rgba(255,255,255,0.7)',
-                            fontSize: '1rem',
-                            transform: 'translate(16px, 16px) scale(1)',
+                            fontSize: { xs: '0.9rem', md: '1rem' },
+                            transform: 'translate(14px, 14px) scale(1)',
                             '&.Mui-focused, &.MuiFormLabel-filled': {
-                              transform: 'translate(16px, -9px) scale(0.75)',
+                              transform: 'translate(14px, -9px) scale(0.75)',
                               color: '#7C3AED',
                             },
                             '&.Mui-error': {
@@ -602,7 +746,8 @@ const Contacto: React.FC = () => {
                           '& .MuiFormHelperText-root': {
                             color: '#FF6B6B',
                             marginLeft: 0,
-                            marginTop: 1,
+                            marginTop: 0.5,
+                            fontSize: { xs: '0.75rem', md: '0.8rem' },
                           },
                         }}
                       />
@@ -616,15 +761,15 @@ const Contacto: React.FC = () => {
                         disabled={isSubmitting}
                         animationVariant="glow"
                         sx={{
-                          height: '56px',
-                          borderRadius: 2,
-                          fontSize: '1.1rem',
+                          height: { xs: '48px', md: '56px' },
+                          borderRadius: 1.5,
+                          fontSize: { xs: '1rem', md: '1.1rem' },
                           fontWeight: 600,
                           background:
                             'linear-gradient(135deg, #7C3AED 0%, #EC4899 100%)',
                           boxShadow: '0 4px 15px rgba(124, 58, 237, 0.3)',
                           transition: 'all 0.2s ease',
-                          mt: 2,
+                          mt: { xs: 1, md: 2 },
                           '&:hover': {
                             transform: 'translateY(-2px)',
                             boxShadow: '0 8px 25px rgba(124, 58, 237, 0.4)',
@@ -661,8 +806,8 @@ const Contacto: React.FC = () => {
                   gutterBottom
                   sx={{
                     fontWeight: 700,
-                    mb: 4,
-                    fontSize: { xs: '1.75rem', md: '2rem' },
+                    mb: { xs: 3, md: 4 },
+                    fontSize: { xs: '1.5rem', md: '2rem' },
                     background:
                       'linear-gradient(135deg, #7C3AED 0%, #EC4899 100%)',
                     backgroundClip: 'text',
@@ -675,28 +820,40 @@ const Contacto: React.FC = () => {
                   Información de contacto
                 </Typography>
 
-                <Grid container spacing={3}>
+                <Grid container spacing={{ xs: 2, md: 3 }}>
                   {[
                     {
                       icon: (
-                        <LocationOnIcon sx={{ fontSize: 30, color: 'white' }} />
+                        <LocationOnIcon
+                          sx={{ fontSize: { xs: 24, md: 30 }, color: 'white' }}
+                        />
                       ),
                       title: 'Dirección',
                       content: 'Calle Principal 123, Piso 4, Madrid, España',
                     },
                     {
-                      icon: <EmailIcon sx={{ fontSize: 30, color: 'white' }} />,
+                      icon: (
+                        <EmailIcon
+                          sx={{ fontSize: { xs: 24, md: 30 }, color: 'white' }}
+                        />
+                      ),
                       title: 'Email',
                       content: 'info@brandify.com',
                     },
                     {
-                      icon: <PhoneIcon sx={{ fontSize: 30, color: 'white' }} />,
+                      icon: (
+                        <PhoneIcon
+                          sx={{ fontSize: { xs: 24, md: 30 }, color: 'white' }}
+                        />
+                      ),
                       title: 'Teléfono',
                       content: '+34 91 123 4567',
                     },
                     {
                       icon: (
-                        <AccessTimeIcon sx={{ fontSize: 30, color: 'white' }} />
+                        <AccessTimeIcon
+                          sx={{ fontSize: { xs: 24, md: 30 }, color: 'white' }}
+                        />
                       ),
                       title: 'Horario',
                       content: 'Lunes - Viernes: 9:00 - 18:00',
@@ -707,7 +864,7 @@ const Contacto: React.FC = () => {
                         <Card
                           elevation={4}
                           sx={{
-                            borderRadius: 2,
+                            borderRadius: 1.5,
                             background: 'rgba(255,255,255,0.02)',
                             backdropFilter: 'blur(20px)',
                             border: '1px solid rgba(255,255,255,0.05)',
@@ -729,15 +886,15 @@ const Contacto: React.FC = () => {
                             sx={{
                               display: 'flex',
                               alignItems: 'center',
-                              p: { xs: 2.5, md: 3 },
+                              p: { xs: 2, md: 3 },
                             }}
                           >
                             <Box
                               className="icon-box"
                               sx={{
-                                mr: 3,
-                                p: 2,
-                                borderRadius: 2,
+                                mr: 2.5,
+                                p: { xs: 1.5, md: 2 },
+                                borderRadius: 1.5,
                                 background:
                                   'linear-gradient(135deg, rgba(124, 58, 237, 0.8) 0%, rgba(236, 72, 153, 0.8) 100%)',
                                 transition: 'all 0.2s ease',
@@ -752,7 +909,7 @@ const Contacto: React.FC = () => {
                                 sx={{
                                   fontWeight: 600,
                                   color: 'white',
-                                  fontSize: { xs: '1rem', md: '1.25rem' },
+                                  fontSize: { xs: '0.9rem', md: '1.25rem' },
                                   mb: 0.5,
                                 }}
                               >
@@ -762,7 +919,7 @@ const Contacto: React.FC = () => {
                                 variant="body2"
                                 sx={{
                                   color: 'rgba(255,255,255,0.7)',
-                                  fontSize: { xs: '0.875rem', md: '1rem' },
+                                  fontSize: { xs: '0.8rem', md: '1rem' },
                                   lineHeight: 1.6,
                                 }}
                               >
