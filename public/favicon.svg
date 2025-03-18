@@ -1,0 +1,10 @@
+<svg width="76" height="48" viewBox="0 0 76 48" xmlns="http://www.w3.org/2000/svg">
+  <!-- W shape with cutouts -->
+  <rect width="64" height="48" rx="4" fill="#C39B6A"/>
+  <!-- Left cutout -->
+  <rect x="18.92" y="14.4" width="7.68" height="24" rx="4" ry="4" fill="white"/>
+  <!-- Right cutout -->
+  <rect x="37.84" y="14.4" width="7.68" height="24" rx="4" ry="4" fill="white"/>
+  <!-- Circle dot -->
+  <circle cx="68.6" cy="24" r="10.8" fill="#C39B6A"/>
+</svg> 
