@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/brandify-web/static/css/main.e6c13ad2.css",
+    "main.js": "/brandify-web/static/js/main.e4978fa7.js",
+    "static/js/453.891dfdcb.chunk.js": "/brandify-web/static/js/453.891dfdcb.chunk.js",
+    "static/media/brandify1-removebg-preview.png": "/brandify-web/static/media/brandify1-removebg-preview.ff48d4137a70d6a92ddb.png",
+    "index.html": "/brandify-web/index.html",
+    "main.e6c13ad2.css.map": "/brandify-web/static/css/main.e6c13ad2.css.map",
+    "main.e4978fa7.js.map": "/brandify-web/static/js/main.e4978fa7.js.map",
+    "453.891dfdcb.chunk.js.map": "/brandify-web/static/js/453.891dfdcb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.e4978fa7.js"
+  ]
+}
