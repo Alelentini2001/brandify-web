@@ -81,37 +81,37 @@ interface ServiceCalculator {
 
 const products: ProductFeature[] = [
   {
-    title: 'Marketing Digital',
+    title: 'Edición de videos',
     description:
-      'Estrategias de marketing digital personalizadas para aumentar tu visibilidad online y atraer más clientes.',
-    icon: <TrendingUpIcon sx={{ fontSize: 40 }} />,
-    benefits: [
-      'SEO/SEM',
-      'Publicidad en redes sociales',
-      'Email marketing',
-      'Análisis de datos',
-    ],
-  },
-  {
-    title: 'Edición de Videos',
-    description:
-      'Transforma tu contenido visual con edición profesional de videos para captar la atención de tu audiencia.',
+      'Creamos contenido visual impactante que refleja la esencia de tu marca y conecta emocionalmente con tu audiencia.',
     icon: <VideoLibraryIcon sx={{ fontSize: 40 }} />,
     benefits: [
-      'Edición de videos para redes sociales',
-      'Motion graphics',
-      'Producción de videos promocionales',
+      'Piezas creativas auténticas',
+      'Storytelling estratégico',
+      'Conexión emocional con la audiencia',
     ],
   },
   {
-    title: 'Desarrollo Web',
+    title: 'Branding e identidad visual',
     description:
-      'Sitios web a medida, optimizados para SEO y dispositivos móviles, que representan tu marca.',
-    icon: <CodeIcon sx={{ fontSize: 40 }} />,
+      'Desarrollamos una identidad visual integral que refleja la esencia y los valores de tu marca en todos los puntos de contacto.',
+    icon: <DesignServicesIcon sx={{ fontSize: 40 }} />,
     benefits: [
-      'Diseño UX/UI',
-      'Desarrollo frontend y backend',
-      'Integración con CMS',
+      'Logotipo y variantes',
+      'Paleta de colores estratégica',
+      'Tipografías y elementos gráficos',
+      'Guías de estilo detalladas',
+    ],
+  },
+  {
+    title: 'Gestión de redes sociales',
+    description:
+      'Nos encargamos de tu presencia digital para mantener una comunicación coherente y constante con estrategias específicas por plataforma.',
+    icon: <DevicesIcon sx={{ fontSize: 40 }} />,
+    benefits: [
+      'Comunicación coherente',
+      'Mayor alcance e interacción',
+      'Contenido adaptado por plataforma',
     ],
   },
 ];
@@ -887,30 +887,31 @@ const Home: React.FC = memo(() => {
 
   const services = [
     {
-      icon: <CodeIcon sx={{ fontSize: 40 }} />,
-      title: 'Desarrollo Web',
+      icon: <VideoLibraryIcon sx={{ fontSize: 40 }} />,
+      title: 'Edición de videos',
       description:
-        'Creamos experiencias digitales únicas con las últimas tecnologías.',
+        'Contenido visual impactante que refleja la esencia de tu marca.',
       color: '#7C3AED', // Purple
     },
     {
-      icon: <BrushIcon sx={{ fontSize: 40 }} />,
-      title: 'Diseño UI/UX',
+      icon: <DesignServicesIcon sx={{ fontSize: 40 }} />,
+      title: 'Branding e identidad visual',
       description:
-        'Interfaces intuitivas y atractivas que cautivan a los usuarios.',
+        'Identidad visual integral que refleja la esencia y valores de tu marca.',
       color: '#EC4899', // Pink
     },
     {
-      icon: <TrendingUpIcon sx={{ fontSize: 40 }} />,
-      title: 'Marketing Digital',
+      icon: <DevicesIcon sx={{ fontSize: 40 }} />,
+      title: 'Gestión de redes sociales',
       description:
-        'Estrategias data-driven para maximizar tu presencia online.',
+        'Comunicación coherente y constante para aumentar tu alcance.',
       color: '#10B981', // Emerald
     },
     {
-      icon: <DevicesIcon sx={{ fontSize: 40 }} />,
-      title: 'Apps Móviles',
-      description: 'Desarrollo multiplataforma con tecnologías de vanguardia.',
+      icon: <TrendingUpIcon sx={{ fontSize: 40 }} />,
+      title: 'Marketing para empresas',
+      description:
+        'Estrategias personalizadas para maximizar tu impacto en el mercado.',
       color: '#F59E0B', // Amber
     },
   ];
@@ -966,7 +967,7 @@ const Home: React.FC = memo(() => {
               <Grid item xs={12} md={7}>
                 <Stack spacing={{ xs: 3, md: 4 }}>
                   <AnimatedText
-                    text="Transformamos Ideas en Realidad Digital"
+                    text="Destaca en el mundo digital"
                     type="words"
                     staggerDelay={0.05}
                     as={Typography}
@@ -993,9 +994,10 @@ const Home: React.FC = memo(() => {
                       fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' },
                     }}
                   >
-                    Somos una agencia digital que combina creatividad y
-                    tecnología para crear experiencias digitales
-                    extraordinarias.
+                    Somos una agencia creativa especializada en impulsar la
+                    presencia digital de empresas y marcas personales mediante
+                    soluciones estratégicas y creativas adaptadas a tus
+                    necesidades.
                   </Typography>
 
                   <Stack

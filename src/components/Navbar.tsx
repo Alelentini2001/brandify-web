@@ -103,7 +103,7 @@ const Navbar: React.FC = memo(() => {
               sx={{
                 mr: 2,
                 display: { xs: 'flex', md: 'none' },
-                color: scrolled ? 'text.primary' : 'white',
+                color: scrolled ? 'white' : 'white',
               }}
             >
               {Boolean(anchorElNav) ? <CloseIcon /> : <MenuIcon />}

@@ -89,31 +89,31 @@ const teamMembers = [
 // Values data
 const values = [
   {
-    title: 'Innovación',
+    title: 'Creatividad',
     description:
-      'Exploramos constantemente nuevas tecnologías y enfoques para ofrecer soluciones creativas.',
+      'Desarrollamos soluciones únicas y auténticas que reflejan la esencia de cada marca.',
     icon: '🚀',
     gradient: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
   },
   {
-    title: 'Calidad',
+    title: 'Compromiso',
     description:
-      'Nos comprometemos con la excelencia en cada proyecto que emprendemos.',
+      'Nos involucramos profundamente en cada proyecto, garantizando resultados alineados con los objetivos del cliente.',
     icon: '✨',
     gradient: 'linear-gradient(45deg, #4ECDC4, #45B7AF)',
   },
   {
     title: 'Colaboración',
     description:
-      'Trabajamos estrechamente con nuestros clientes para entender sus necesidades y superar sus expectativas.',
+      'Trabajamos codo a codo con nuestros clientes para crear estrategias que reflejen su visión y conecten con su audiencia.',
     icon: '🤝',
     gradient: 'linear-gradient(45deg, #45B7AF, #3B9E98)',
   },
   {
-    title: 'Integridad',
+    title: 'Resultados',
     description:
-      'Actuamos con honestidad y transparencia en todas nuestras interacciones profesionales.',
-    icon: '🔍',
+      'Nos enfocamos en generar un impacto tangible y medible, maximizando el retorno de cada acción.',
+    icon: '📈',
     gradient: 'linear-gradient(45deg, #3B9E98, #FF6B6B)',
   },
 ];
@@ -201,8 +201,8 @@ const SobreNosotros: React.FC = () => {
                 lineHeight: 1.6,
               }}
             >
-              Ayudamos a marcas y empresas a destacar en el mundo digital con
-              estrategias personalizadas e innovadoras
+              Ayudamos a empresas y marcas personales a sobresalir en un entorno
+              digital saturado mediante soluciones creativas y personalizadas.
             </Typography>
           </motion.div>
         </Container>
@@ -297,12 +297,11 @@ const SobreNosotros: React.FC = () => {
                       mb: 3,
                     }}
                   >
-                    Brandify nació en 2018 con la misión de ayudar a empresas y
-                    profesionales a destacar en un entorno digital cada vez más
-                    competitivo. Lo que comenzó como un pequeño equipo de
-                    apasionados del marketing digital, se ha convertido en una
-                    agencia integral que ofrece soluciones completas para
-                    potenciar marcas.
+                    Brandify es una agencia creativa especializada en impulsar
+                    la presencia digital de empresas y marcas personales.
+                    Nuestra misión es ayudarte a destacar en un mercado digital
+                    competitivo mediante soluciones estratégicas y creativas
+                    adaptadas a las necesidades específicas de cada cliente.
                   </Typography>
                   <Typography
                     variant="body1"
@@ -313,12 +312,13 @@ const SobreNosotros: React.FC = () => {
                       lineHeight: 1.8,
                     }}
                   >
-                    A lo largo de los años, hemos trabajado con clientes de
-                    todos los tamaños, desde startups hasta grandes
-                    corporaciones, siempre manteniendo nuestro compromiso con la
-                    excelencia y la innovación. Cada proyecto es una oportunidad
-                    para crear algo excepcional que haga brillar a nuestros
-                    clientes.
+                    Nuestro equipo cuenta con una sólida experiencia en el
+                    sector gracias a colaboraciones con otras agencias y
+                    proyectos privados, lo que nos permite ofrecer una visión
+                    estratégica y resultados reales. Nuestra visión es ser la
+                    agencia de referencia para empresas y marcas personales que
+                    buscan destacar y consolidarse en el mercado digital
+                    mediante estrategias efectivas.
                   </Typography>
                 </motion.div>
               </Grid>
@@ -496,6 +496,234 @@ const SobreNosotros: React.FC = () => {
                 ))}
               </Grid>
             </motion.div>
+          </Container>
+        </Box>
+
+        {/* Público Objetivo */}
+        <Box sx={{ py: { xs: 6, md: 8 }, mb: 10 }}>
+          <Container>
+            <motion.div
+              initial="hidden"
+              animate={valuesInView ? 'visible' : 'hidden'}
+              variants={fadeInUp}
+            >
+              <Typography
+                variant="h3"
+                align="center"
+                sx={{
+                  fontWeight: 700,
+                  mb: 3,
+                  fontSize: { xs: '2rem', md: '2.5rem' },
+                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  position: 'relative',
+                  '&:after': {
+                    content: '""',
+                    position: 'absolute',
+                    width: '60px',
+                    height: '4px',
+                    background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+                    bottom: -16,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                  },
+                }}
+              >
+                A Quién Servimos
+              </Typography>
+
+              <Typography
+                variant="body1"
+                color="rgba(255,255,255,0.7)"
+                align="center"
+                sx={{
+                  maxWidth: '700px',
+                  mx: 'auto',
+                  mt: 5,
+                  mb: 6,
+                  fontSize: { xs: '1rem', md: '1.1rem' },
+                  lineHeight: 1.6,
+                }}
+              >
+                Nuestros servicios están diseñados para satisfacer las
+                necesidades específicas de diferentes perfiles.
+              </Typography>
+            </motion.div>
+
+            <Grid container spacing={4} sx={{ mt: 2 }}>
+              <Grid item xs={12} md={4}>
+                <Card
+                  elevation={0}
+                  sx={{
+                    height: '100%',
+                    p: 4,
+                    borderRadius: 4,
+                    transition: 'all 0.3s ease',
+                    background: 'rgba(255,255,255,0.03)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    '&:hover': {
+                      transform: 'translateY(-10px)',
+                      boxShadow: '0 30px 60px rgba(124, 58, 237, 0.2)',
+                      borderColor: 'rgba(124, 58, 237, 0.3)',
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="h1"
+                    sx={{
+                      fontSize: '2rem',
+                      mb: 2,
+                      color: '#FF6B6B',
+                    }}
+                  >
+                    💼
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{
+                      fontWeight: 700,
+                      mb: 2,
+                      color: 'white',
+                      fontSize: { xs: '1.25rem', md: '1.5rem' },
+                    }}
+                  >
+                    Empresas
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="rgba(255,255,255,0.7)"
+                    sx={{
+                      lineHeight: 1.7,
+                      fontSize: '1rem',
+                    }}
+                  >
+                    Empresas de todos los tamaños que buscan aumentar su
+                    presencia digital, mejorar la percepción de su marca y
+                    generar más conversiones.
+                  </Typography>
+                </Card>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Card
+                  elevation={0}
+                  sx={{
+                    height: '100%',
+                    p: 4,
+                    borderRadius: 4,
+                    transition: 'all 0.3s ease',
+                    background: 'rgba(255,255,255,0.03)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    '&:hover': {
+                      transform: 'translateY(-10px)',
+                      boxShadow: '0 30px 60px rgba(124, 58, 237, 0.2)',
+                      borderColor: 'rgba(124, 58, 237, 0.3)',
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="h1"
+                    sx={{
+                      fontSize: '2rem',
+                      mb: 2,
+                      color: '#4ECDC4',
+                    }}
+                  >
+                    👤
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{
+                      fontWeight: 700,
+                      mb: 2,
+                      color: 'white',
+                      fontSize: { xs: '1.25rem', md: '1.5rem' },
+                    }}
+                  >
+                    Emprendedores y Marcas Personales
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="rgba(255,255,255,0.7)"
+                    sx={{
+                      lineHeight: 1.7,
+                      fontSize: '1rem',
+                    }}
+                  >
+                    Emprendedores y marcas personales que quieren construir una
+                    identidad sólida, aumentar su alcance y conectar de manera
+                    auténtica con su audiencia.
+                  </Typography>
+                </Card>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Card
+                  elevation={0}
+                  sx={{
+                    height: '100%',
+                    p: 4,
+                    borderRadius: 4,
+                    transition: 'all 0.3s ease',
+                    background: 'rgba(255,255,255,0.03)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    '&:hover': {
+                      transform: 'translateY(-10px)',
+                      boxShadow: '0 30px 60px rgba(124, 58, 237, 0.2)',
+                      borderColor: 'rgba(124, 58, 237, 0.3)',
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="h1"
+                    sx={{
+                      fontSize: '2rem',
+                      mb: 2,
+                      color: '#7C3AED',
+                    }}
+                  >
+                    🏆
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{
+                      fontWeight: 700,
+                      mb: 2,
+                      color: 'white',
+                      fontSize: { xs: '1.25rem', md: '1.5rem' },
+                    }}
+                  >
+                    Marcas Consolidadas
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="rgba(255,255,255,0.7)"
+                    sx={{
+                      lineHeight: 1.7,
+                      fontSize: '1rem',
+                    }}
+                  >
+                    Marcas consolidadas que buscan revitalizar su presencia
+                    digital y adaptarse a las tendencias del mercado.
+                  </Typography>
+                </Card>
+              </Grid>
+            </Grid>
           </Container>
         </Box>
 
@@ -716,6 +944,223 @@ const SobreNosotros: React.FC = () => {
               ))}
             </Grid>
           </motion.div>
+        </Box>
+
+        {/* Diferenciador Clave */}
+        <Box sx={{ py: { xs: 6, md: 8 }, mb: 0 }}>
+          <Container>
+            <motion.div
+              initial="hidden"
+              animate={valuesInView ? 'visible' : 'hidden'}
+              variants={fadeInUp}
+            >
+              <Typography
+                variant="h3"
+                align="center"
+                sx={{
+                  fontWeight: 700,
+                  mb: 3,
+                  fontSize: { xs: '2rem', md: '2.5rem' },
+                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  position: 'relative',
+                  '&:after': {
+                    content: '""',
+                    position: 'absolute',
+                    width: '60px',
+                    height: '4px',
+                    background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+                    bottom: -16,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                  },
+                }}
+              >
+                Lo Que Nos Hace Diferentes
+              </Typography>
+            </motion.div>
+
+            <Box
+              sx={{
+                mt: 8,
+                p: 5,
+                borderRadius: 4,
+                background: 'rgba(255,255,255,0.03)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+              }}
+            >
+              <Grid container spacing={4} alignItems="center">
+                <Grid item xs={12} md={6}>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontWeight: 700,
+                      mb: 3,
+                      fontSize: { xs: '1.5rem', md: '2rem' },
+                      background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
+                      backgroundClip: 'text',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                    }}
+                  >
+                    Creatividad + Estrategia + Tecnología
+                  </Typography>
+
+                  <Typography
+                    variant="body1"
+                    color="rgba(255,255,255,0.9)"
+                    sx={{
+                      mb: 4,
+                      fontSize: '1.1rem',
+                      lineHeight: 1.8,
+                    }}
+                  >
+                    Brandify combina creatividad, estrategia y tecnología para
+                    ofrecer soluciones personalizadas que no solo se ven bien,
+                    sino que funcionan.
+                  </Typography>
+
+                  <Typography
+                    variant="body1"
+                    color="rgba(255,255,255,0.8)"
+                    sx={{
+                      fontSize: '1.1rem',
+                      lineHeight: 1.8,
+                    }}
+                  >
+                    Nuestra experiencia trabajando con otras agencias y
+                    proyectos privados nos permite adaptarnos a las necesidades
+                    de cada cliente, brindando un servicio profesional,
+                    eficiente y orientado a resultados.
+                  </Typography>
+                </Grid>
+
+                <Grid item xs={12} md={6}>
+                  <Box
+                    sx={{
+                      p: 4,
+                      borderRadius: 4,
+                      background:
+                        'linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(236, 72, 153, 0.1))',
+                      border: '1px solid rgba(124, 58, 237, 0.2)',
+                      boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                    }}
+                  >
+                    <Grid container spacing={3}>
+                      <Grid item xs={6}>
+                        <Box
+                          sx={{
+                            p: 3,
+                            textAlign: 'center',
+                            borderRadius: 3,
+                            background: 'rgba(255,255,255,0.03)',
+                            height: '100%',
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              fontSize: '2rem',
+                              mb: 2,
+                            }}
+                          >
+                            🎨
+                          </Typography>
+                          <Typography
+                            variant="h6"
+                            sx={{ mb: 1, color: 'white' }}
+                          >
+                            Soluciones Creativas
+                          </Typography>
+                        </Box>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Box
+                          sx={{
+                            p: 3,
+                            textAlign: 'center',
+                            borderRadius: 3,
+                            background: 'rgba(255,255,255,0.03)',
+                            height: '100%',
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              fontSize: '2rem',
+                              mb: 2,
+                            }}
+                          >
+                            📱
+                          </Typography>
+                          <Typography
+                            variant="h6"
+                            sx={{ mb: 1, color: 'white' }}
+                          >
+                            Enfoque Digital
+                          </Typography>
+                        </Box>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Box
+                          sx={{
+                            p: 3,
+                            textAlign: 'center',
+                            borderRadius: 3,
+                            background: 'rgba(255,255,255,0.03)',
+                            height: '100%',
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              fontSize: '2rem',
+                              mb: 2,
+                            }}
+                          >
+                            🔍
+                          </Typography>
+                          <Typography
+                            variant="h6"
+                            sx={{ mb: 1, color: 'white' }}
+                          >
+                            Visión Estratégica
+                          </Typography>
+                        </Box>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Box
+                          sx={{
+                            p: 3,
+                            textAlign: 'center',
+                            borderRadius: 3,
+                            background: 'rgba(255,255,255,0.03)',
+                            height: '100%',
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              fontSize: '2rem',
+                              mb: 2,
+                            }}
+                          >
+                            📊
+                          </Typography>
+                          <Typography
+                            variant="h6"
+                            sx={{ mb: 1, color: 'white' }}
+                          >
+                            Resultados Medibles
+                          </Typography>
+                        </Box>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Box>
+          </Container>
         </Box>
       </Container>
     </Box>

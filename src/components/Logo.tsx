@@ -68,17 +68,17 @@ const Logo: React.FC<LogoProps> = ({
   // Determine sizes based on the size prop
   const sizes = {
     small: {
-      logoSize: 32,
+      logoSize: 14,
       fontSize: '0.875rem',
       marginText: 1,
     },
     medium: {
-      logoSize: 60,
+      logoSize: 35,
       fontSize: '1.25rem',
       marginText: 1.5,
     },
     large: {
-      logoSize: 100,
+      logoSize: 60,
       fontSize: '1.75rem',
       marginText: 2,
     },
@@ -109,12 +109,12 @@ const Logo: React.FC<LogoProps> = ({
     >
       <Box
         component="img"
-        src={require('../assets/brandify1-removebg-preview.png')}
+        src={require('../assets/brandifyNew.png')}
         alt="Brandify Logo"
         sx={{
           width: sizeConfig.logoSize,
-          height: 'auto',
-          mb: vertical ? 1 : 0,
+          height: sizeConfig.logoSize,
+          mb: vertical ? 1 : 1,
           filter: color === 'white' ? 'none' : 'none',
         }}
       />
