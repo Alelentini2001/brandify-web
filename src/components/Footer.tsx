@@ -42,17 +42,17 @@ const Footer: React.FC = memo(() => {
   const contactInfo = [
     {
       icon: <EmailIcon sx={{ mr: 1 }} />,
-      text: 'contacto@brandify.com',
-      href: 'mailto:contacto@brandify.com',
+      text: 'brandifyok@gmail.com',
+      href: 'mailto:brandifyok@gmail.com',
     },
     {
       icon: <PhoneIcon sx={{ mr: 1 }} />,
-      text: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      text: '+54 9 221 454 04 30',
+      href: 'https://wa.me/5492214540430',
     },
     {
       icon: <LocationOnIcon sx={{ mr: 1 }} />,
-      text: 'Ciudad de México, México',
+      text: 'Argentina',
       href: 'https://maps.google.com',
     },
   ];

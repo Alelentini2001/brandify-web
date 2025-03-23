@@ -829,7 +829,7 @@ const Contacto: React.FC = () => {
                         />
                       ),
                       title: 'Dirección',
-                      content: 'Calle Principal 123, Piso 4, Madrid, España',
+                      content: 'Argentina',
                     },
                     {
                       icon: (
@@ -838,7 +838,7 @@ const Contacto: React.FC = () => {
                         />
                       ),
                       title: 'Email',
-                      content: 'info@brandify.com',
+                      content: 'brandifyok@gmail.com',
                     },
                     {
                       icon: (
@@ -846,8 +846,8 @@ const Contacto: React.FC = () => {
                           sx={{ fontSize: { xs: 24, md: 30 }, color: 'white' }}
                         />
                       ),
-                      title: 'Teléfono',
-                      content: '+34 91 123 4567',
+                      title: 'WhatsApp',
+                      content: '+54 9 221 454 04 30',
                     },
                     {
                       icon: (
