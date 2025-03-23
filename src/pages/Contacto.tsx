@@ -13,7 +13,6 @@ import {
   CardContent,
   alpha,
   useTheme,
-  Chip,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -45,11 +44,7 @@ interface ContactFormData {
   phone: string;
   subject: string;
   message: string;
-  status?: string;
-  submissionDate?: string;
 }
-
-const GOOGLE_SHEET_URL = process.env.REACT_APP_GOOGLE_SHEET_URL;
 
 const Contacto: React.FC = () => {
   const theme = useTheme();
@@ -118,54 +113,6 @@ const Contacto: React.FC = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const submitToGoogleSheets = async (formData: ContactFormData) => {
-    try {
-      const dataToSubmit = {
-        ...formData,
-        status: 'Pending Evaluation',
-        submissionDate: new Date().toISOString(),
-      };
-
-      // Create URL with parameters
-      const url = new URL(GOOGLE_SHEET_URL!);
-      Object.entries(dataToSubmit).forEach(([key, value]) => {
-        url.searchParams.append(
-          key,
-          encodeURIComponent(value?.toString() || '')
-        );
-      });
-
-      // Use XMLHttpRequest instead of fetch
-      return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', url.toString(), true);
-        xhr.onload = function () {
-          try {
-            const response = JSON.parse(xhr.responseText);
-            if (response.success) {
-              resolve(true);
-            } else {
-              reject(new Error(response.error || 'Failed to submit'));
-            }
-          } catch (error) {
-            if (xhr.responseText.includes('success')) {
-              resolve(true);
-            } else {
-              reject(new Error('Invalid response format'));
-            }
-          }
-        };
-        xhr.onerror = function () {
-          reject(new Error('Network error'));
-        };
-        xhr.send();
-      });
-    } catch (error) {
-      console.error('Error submitting to Google Sheets:', error);
-      return false;
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -173,24 +120,28 @@ const Contacto: React.FC = () => {
       setIsSubmitting(true);
 
       try {
-        // Submit to Google Sheets
-        const success = await submitToGoogleSheets(formData);
+        const form = e.target as HTMLFormElement;
+        const formData = new FormData(form);
 
-        if (success) {
-          setShowSuccessAlert(true);
-          setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            subject: '',
-            message: '',
-          });
-        } else {
-          throw new Error('Failed to submit form');
+        const submitResponse = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+        });
+
+        if (!submitResponse.ok) {
+          throw new Error(`HTTP error! status: ${submitResponse.status}`);
         }
-      } catch (error) {
-        console.error('Form submission error:', error);
-        // Show error message to user
+
+        setShowSuccessAlert(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+        });
+      } catch (error: any) {
+        console.error('Error submitting form:', error);
         setShowErrorAlert(true);
       } finally {
         setIsSubmitting(false);
@@ -200,9 +151,6 @@ const Contacto: React.FC = () => {
 
   const handleCloseAlert = () => {
     setShowSuccessAlert(false);
-  };
-
-  const handleCloseErrorAlert = () => {
     setShowErrorAlert(false);
   };
 
@@ -422,7 +370,11 @@ const Contacto: React.FC = () => {
                   Envíanos un mensaje
                 </Typography>
 
-                <form onSubmit={handleSubmit}>
+                <form
+                  onSubmit={handleSubmit}
+                  action="https://formsubmit.co/alelentini@live.com"
+                  method="POST"
+                >
                   <Grid container spacing={{ xs: 2.5, md: 4 }}>
                     <Grid item xs={12} sm={6}>
                       <TextField
@@ -899,7 +851,7 @@ const Contacto: React.FC = () => {
                         />
                       ),
                       title: 'Dirección',
-                      content: 'Argentina',
+                      content: 'Calle Principal 123, Piso 4, Madrid, España',
                     },
                     {
                       icon: (
@@ -908,7 +860,7 @@ const Contacto: React.FC = () => {
                         />
                       ),
                       title: 'Email',
-                      content: 'brandifyok@gmail.com',
+                      content: 'alelentini@live.com',
                     },
                     {
                       icon: (
@@ -916,8 +868,8 @@ const Contacto: React.FC = () => {
                           sx={{ fontSize: { xs: 24, md: 30 }, color: 'white' }}
                         />
                       ),
-                      title: 'WhatsApp',
-                      content: '+54 9 221 454 04 30',
+                      title: 'Teléfono',
+                      content: '+34 91 123 4567',
                     },
                     {
                       icon: (
@@ -1008,16 +960,15 @@ const Contacto: React.FC = () => {
         </Grid>
       </Container>
 
-      {/* Success Alert */}
       <Snackbar
-        open={showSuccessAlert}
+        open={showSuccessAlert || showErrorAlert}
         autoHideDuration={6000}
         onClose={handleCloseAlert}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
         <Alert
           onClose={handleCloseAlert}
-          severity="success"
+          severity={showSuccessAlert ? 'success' : 'error'}
           variant="filled"
           sx={{
             width: '100%',
@@ -1029,39 +980,9 @@ const Contacto: React.FC = () => {
             },
           }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            ¡Mensaje enviado exitosamente! Te contactaremos pronto.
-            <Chip
-              label="Pending Evaluation"
-              sx={{
-                bgcolor: 'warning.main',
-                color: 'warning.contrastText',
-                fontWeight: 600,
-                fontSize: '0.75rem',
-              }}
-            />
-          </Box>
-        </Alert>
-      </Snackbar>
-
-      {/* Error Alert */}
-      <Snackbar
-        open={showErrorAlert}
-        autoHideDuration={6000}
-        onClose={handleCloseErrorAlert}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      >
-        <Alert
-          onClose={handleCloseErrorAlert}
-          severity="error"
-          variant="filled"
-          sx={{
-            width: '100%',
-            borderRadius: 2,
-            boxShadow: '0 8px 20px rgba(255, 82, 82, 0.2)',
-          }}
-        >
-          Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.
+          {showSuccessAlert
+            ? '¡Mensaje enviado exitosamente! Te contactaremos pronto.'
+            : 'Hubo un error al enviar el mensaje. Por favor, inténtalo más tarde.'}
         </Alert>
       </Snackbar>
     </Box>
