@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/brandify-web/static/css/main.e6c13ad2.css",
-    "main.js": "/brandify-web/static/js/main.9febf08e.js",
+    "main.js": "/brandify-web/static/js/main.ee7a680b.js",
     "static/js/453.891dfdcb.chunk.js": "/brandify-web/static/js/453.891dfdcb.chunk.js",
     "static/media/brandifyNew.png": "/brandify-web/static/media/brandifyNew.9dc8b15e680d82cd73ad.png",
     "index.html": "/brandify-web/index.html",
     "main.e6c13ad2.css.map": "/brandify-web/static/css/main.e6c13ad2.css.map",
-    "main.9febf08e.js.map": "/brandify-web/static/js/main.9febf08e.js.map",
+    "main.ee7a680b.js.map": "/brandify-web/static/js/main.ee7a680b.js.map",
     "453.891dfdcb.chunk.js.map": "/brandify-web/static/js/453.891dfdcb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.9febf08e.js"
+    "static/js/main.ee7a680b.js"
   ]
 }
