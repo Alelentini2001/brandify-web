@@ -80,9 +80,7 @@ const Navbar: React.FC = memo(() => {
             }
           ),
           boxShadow: scrolled ? '0 2px 28px 0 rgba(0,0,0,0.06)' : 'none',
-          borderBottom: scrolled
-            ? `1px solid ${alpha(theme.palette.divider, 0.08)}`
-            : 'none',
+          borderBottom: 'none',
         }}
       >
         <Container maxWidth="lg">
@@ -111,7 +109,15 @@ const Navbar: React.FC = memo(() => {
 
             {/* Logo */}
             <Box
-              sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}
+              sx={{
+                flexGrow: 0,
+                display: 'flex',
+                alignItems: 'center',
+                textDecoration: 'none',
+                '&::after': {
+                  display: 'none',
+                },
+              }}
               component={Link}
               to="/"
             >
@@ -157,16 +163,17 @@ const Navbar: React.FC = memo(() => {
                       transform: 'translateX(-50%)',
                       backgroundColor: 'primary.main',
                       transition: 'width 0.3s ease',
+                      display: 'none',
                     },
                     '&:hover': {
                       backgroundColor: 'transparent',
                       '&::after': {
-                        width: '80%',
+                        width: '0%',
                       },
                     },
                     ...(location.pathname === page.path && {
                       '&::after': {
-                        width: '80%',
+                        width: '0%',
                       },
                     }),
                   }}

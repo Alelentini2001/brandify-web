@@ -13,6 +13,7 @@ import {
   CardContent,
   alpha,
   useTheme,
+  CircularProgress,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -46,6 +47,22 @@ interface ContactFormData {
   message: string;
 }
 
+interface AirtableRecord {
+  fields: {
+    Name: string;
+    Email: string;
+    Phone: string;
+    Subject: string;
+    Message: string;
+    'Submission Date': string;
+  };
+}
+
+const AIRTABLE_BASE_ID = process.env.REACT_APP_AIRTABLE_BASE_ID;
+const AIRTABLE_TABLE_NAME =
+  process.env.REACT_APP_AIRTABLE_TABLE_NAME || 'Leads';
+const AIRTABLE_API_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
+
 const Contacto: React.FC = () => {
   const theme = useTheme();
   const [headerRef, headerInView] = useInView({
@@ -73,22 +90,30 @@ const Contacto: React.FC = () => {
 
   const [formErrors, setFormErrors] = useState<Partial<ContactFormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-  const [showErrorAlert, setShowErrorAlert] = useState(false);
+  const [alertState, setAlertState] = useState<{
+    open: boolean;
+    message: string;
+    severity: 'success' | 'error';
+  }>({
+    open: false,
+    message: '',
+    severity: 'success',
+  });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
+    // Clear error when user starts typing
     if (formErrors[name as keyof ContactFormData]) {
-      setFormErrors({
-        ...formErrors,
+      setFormErrors((prev) => ({
+        ...prev,
         [name]: undefined,
-      });
+      }));
     }
   };
 
@@ -116,42 +141,154 @@ const Contacto: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (validate()) {
-      setIsSubmitting(true);
+    if (!validate()) {
+      setAlertState({
+        open: true,
+        message:
+          'Por favor completa todos los campos requeridos correctamente.',
+        severity: 'error',
+      });
+      return;
+    }
 
-      try {
-        const form = e.target as HTMLFormElement;
-        const formData = new FormData(form);
+    // Check for required environment variables
+    if (!process.env.REACT_APP_AIRTABLE_PAT) {
+      console.error('Missing Airtable Personal Access Token');
+      setAlertState({
+        open: true,
+        message: 'Error: Token de acceso no configurado.',
+        severity: 'error',
+      });
+      return;
+    }
 
-        const submitResponse = await fetch(form.action, {
-          method: form.method,
-          body: formData,
-        });
+    if (!AIRTABLE_BASE_ID) {
+      console.error('Missing Airtable Base ID');
+      setAlertState({
+        open: true,
+        message: 'Error: ID de base de datos no configurado.',
+        severity: 'error',
+      });
+      return;
+    }
 
-        if (!submitResponse.ok) {
-          throw new Error(`HTTP error! status: ${submitResponse.status}`);
+    setIsSubmitting(true);
+
+    try {
+      // Log configuration for debugging
+      console.log('Airtable Configuration:', {
+        baseId: AIRTABLE_BASE_ID,
+        tableName: AIRTABLE_TABLE_NAME,
+        apiUrl: AIRTABLE_API_URL,
+        tokenStart:
+          process.env.REACT_APP_AIRTABLE_PAT?.substring(0, 10) + '...',
+      });
+
+      const record = {
+        records: [
+          {
+            fields: {
+              Name: formData.name.trim(),
+              Email: formData.email.trim(),
+              Phone: formData.phone.trim(),
+              Subject: formData.subject.trim(),
+              Message: formData.message.trim(),
+              'Submission Date': new Date().toISOString().split('T')[0],
+            },
+          },
+        ],
+      };
+
+      // Log the request payload
+      console.log('Request Payload:', JSON.stringify(record, null, 2));
+
+      const response = await fetch(AIRTABLE_API_URL, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_PAT}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(record),
+      });
+
+      const data = await response.json();
+
+      // Log the complete response
+      console.log('Airtable Response:', {
+        status: response.status,
+        statusText: response.statusText,
+        headers: Object.fromEntries(response.headers.entries()),
+        data,
+      });
+
+      if (!response.ok) {
+        let errorMessage = 'Error al enviar el formulario.';
+        let debugInfo = '';
+
+        if (response.status === 401 || response.status === 403) {
+          errorMessage =
+            'Error de autenticación. Por favor contacta al administrador.';
+          debugInfo = 'Token inválido o sin permisos suficientes';
+        } else if (response.status === 404) {
+          errorMessage =
+            'Base de datos o tabla no encontrada. Por favor contacta al administrador.';
+          debugInfo = 'Verifica el Base ID y nombre de la tabla';
+        } else if (
+          response.status === 422 &&
+          data.error?.type === 'INVALID_VALUE_FOR_COLUMN'
+        ) {
+          const fieldMatch = data.error.message.match(/Field "([^"]+)"/);
+          const fieldName = fieldMatch ? fieldMatch[1] : 'Unknown';
+          errorMessage = `Error en el formato del campo "${fieldName}". Por favor contacta al administrador.`;
+          debugInfo = `Formato inválido para el campo: ${fieldName}`;
+        } else if (response.status === 422) {
+          errorMessage =
+            'Error en el formato de los datos. Por favor contacta al administrador.';
+          debugInfo = 'Verifica el formato de los campos';
         }
 
-        setShowSuccessAlert(true);
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: '',
+        console.error('Airtable Error:', {
+          status: response.status,
+          statusText: response.statusText,
+          error: data.error,
+          debugInfo,
         });
-      } catch (error: any) {
-        console.error('Error submitting form:', error);
-        setShowErrorAlert(true);
-      } finally {
-        setIsSubmitting(false);
+
+        throw new Error(errorMessage);
       }
+
+      console.log('Airtable submission successful:', data);
+
+      setAlertState({
+        open: true,
+        message: '¡Gracias por contactarnos! Te responderemos pronto.',
+        severity: 'success',
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
+    } catch (error: any) {
+      console.error('Error submitting to Airtable:', error);
+      setAlertState({
+        open: true,
+        message:
+          error.message ||
+          'Hubo un error al enviar el formulario. Por favor intenta nuevamente.',
+        severity: 'error',
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const handleCloseAlert = () => {
-    setShowSuccessAlert(false);
-    setShowErrorAlert(false);
+    setAlertState((prev) => ({ ...prev, open: false }));
   };
 
   return (
@@ -370,11 +507,7 @@ const Contacto: React.FC = () => {
                   Envíanos un mensaje
                 </Typography>
 
-                <form
-                  onSubmit={handleSubmit}
-                  action="https://formsubmit.co/alelentini@live.com"
-                  method="POST"
-                >
+                <form onSubmit={handleSubmit}>
                   <Grid container spacing={{ xs: 2.5, md: 4 }}>
                     <Grid item xs={12} sm={6}>
                       <TextField
@@ -410,52 +543,18 @@ const Contacto: React.FC = () => {
                               borderColor: '#7C3AED',
                               borderWidth: '2px',
                             },
-                            '& input': {
-                              height: { xs: '48px', md: '56px' },
-                              padding: '0 14px',
-                              fontSize: { xs: '0.9rem', md: '1rem' },
-                              '&::placeholder': {
-                                color: 'rgba(255,255,255,0.5)',
-                              },
-                              '-webkit-autofill': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill:hover': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill:focus': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                            },
                           },
                           '& .MuiInputLabel-root': {
                             color: 'rgba(255,255,255,0.7)',
                             fontSize: { xs: '0.9rem', md: '1rem' },
-                            transform: 'translate(14px, 14px) scale(1)',
-                            '&.Mui-focused, &.MuiFormLabel-filled': {
-                              transform: 'translate(14px, -9px) scale(0.75)',
+                            '&.Mui-focused': {
                               color: '#7C3AED',
-                            },
-                            '&.Mui-error': {
-                              color: '#FF6B6B',
                             },
                           },
                           '& .MuiFormHelperText-root': {
                             color: '#FF6B6B',
                             marginLeft: 0,
                             marginTop: 0.5,
-                            fontSize: { xs: '0.75rem', md: '0.8rem' },
                           },
                         }}
                       />
@@ -495,52 +594,18 @@ const Contacto: React.FC = () => {
                               borderColor: '#7C3AED',
                               borderWidth: '2px',
                             },
-                            '& input': {
-                              height: { xs: '48px', md: '56px' },
-                              padding: '0 14px',
-                              fontSize: { xs: '0.9rem', md: '1rem' },
-                              '&::placeholder': {
-                                color: 'rgba(255,255,255,0.5)',
-                              },
-                              '-webkit-autofill': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill:hover': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill:focus': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                            },
                           },
                           '& .MuiInputLabel-root': {
                             color: 'rgba(255,255,255,0.7)',
                             fontSize: { xs: '0.9rem', md: '1rem' },
-                            transform: 'translate(14px, 14px) scale(1)',
-                            '&.Mui-focused, &.MuiFormLabel-filled': {
-                              transform: 'translate(14px, -9px) scale(0.75)',
+                            '&.Mui-focused': {
                               color: '#7C3AED',
-                            },
-                            '&.Mui-error': {
-                              color: '#FF6B6B',
                             },
                           },
                           '& .MuiFormHelperText-root': {
                             color: '#FF6B6B',
                             marginLeft: 0,
                             marginTop: 0.5,
-                            fontSize: { xs: '0.75rem', md: '0.8rem' },
                           },
                         }}
                       />
@@ -576,41 +641,11 @@ const Contacto: React.FC = () => {
                               borderColor: '#7C3AED',
                               borderWidth: '2px',
                             },
-                            '& input': {
-                              height: { xs: '48px', md: '56px' },
-                              padding: '0 14px',
-                              fontSize: { xs: '0.9rem', md: '1rem' },
-                              '&::placeholder': {
-                                color: 'rgba(255,255,255,0.5)',
-                              },
-                              '-webkit-autofill': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill:hover': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill:focus': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                            },
                           },
                           '& .MuiInputLabel-root': {
                             color: 'rgba(255,255,255,0.7)',
                             fontSize: { xs: '0.9rem', md: '1rem' },
-                            transform: 'translate(14px, 14px) scale(1)',
-                            '&.Mui-focused, &.MuiFormLabel-filled': {
-                              transform: 'translate(14px, -9px) scale(0.75)',
+                            '&.Mui-focused': {
                               color: '#7C3AED',
                             },
                           },
@@ -648,41 +683,11 @@ const Contacto: React.FC = () => {
                               borderColor: '#7C3AED',
                               borderWidth: '2px',
                             },
-                            '& input': {
-                              height: { xs: '48px', md: '56px' },
-                              padding: '0 14px',
-                              fontSize: { xs: '0.9rem', md: '1rem' },
-                              '&::placeholder': {
-                                color: 'rgba(255,255,255,0.5)',
-                              },
-                              '-webkit-autofill': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill:hover': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill:focus': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                            },
                           },
                           '& .MuiInputLabel-root': {
                             color: 'rgba(255,255,255,0.7)',
                             fontSize: { xs: '0.9rem', md: '1rem' },
-                            transform: 'translate(14px, 14px) scale(1)',
-                            '&.Mui-focused, &.MuiFormLabel-filled': {
-                              transform: 'translate(14px, -9px) scale(0.75)',
+                            '&.Mui-focused': {
                               color: '#7C3AED',
                             },
                           },
@@ -724,64 +729,29 @@ const Contacto: React.FC = () => {
                               borderColor: '#7C3AED',
                               borderWidth: '2px',
                             },
-                            '& textarea': {
-                              padding: '14px',
-                              fontSize: { xs: '0.9rem', md: '1rem' },
-                              lineHeight: '1.5',
-                              '&::placeholder': {
-                                color: 'rgba(255,255,255,0.5)',
-                              },
-                              '-webkit-autofill': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill:hover': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                              '&:-webkit-autofill:focus': {
-                                WebkitBoxShadow: '0 0 0 1000px #0A0A0A inset',
-                                WebkitTextFillColor: 'white',
-                                caretColor: 'white',
-                              },
-                            },
                           },
                           '& .MuiInputLabel-root': {
                             color: 'rgba(255,255,255,0.7)',
                             fontSize: { xs: '0.9rem', md: '1rem' },
-                            transform: 'translate(14px, 14px) scale(1)',
-                            '&.Mui-focused, &.MuiFormLabel-filled': {
-                              transform: 'translate(14px, -9px) scale(0.75)',
+                            '&.Mui-focused': {
                               color: '#7C3AED',
-                            },
-                            '&.Mui-error': {
-                              color: '#FF6B6B',
                             },
                           },
                           '& .MuiFormHelperText-root': {
                             color: '#FF6B6B',
                             marginLeft: 0,
                             marginTop: 0.5,
-                            fontSize: { xs: '0.75rem', md: '0.8rem' },
                           },
                         }}
                       />
                     </Grid>
                     <Grid item xs={12}>
-                      <AnimatedButton
+                      <Button
                         type="submit"
                         variant="contained"
                         size="large"
                         fullWidth
                         disabled={isSubmitting}
-                        animationVariant="glow"
                         sx={{
                           height: { xs: '48px', md: '56px' },
                           borderRadius: 1.5,
@@ -806,8 +776,12 @@ const Contacto: React.FC = () => {
                           },
                         }}
                       >
-                        {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
-                      </AnimatedButton>
+                        {isSubmitting ? (
+                          <CircularProgress size={24} color="inherit" />
+                        ) : (
+                          'Enviar Mensaje'
+                        )}
+                      </Button>
                     </Grid>
                   </Grid>
                 </form>
@@ -860,7 +834,7 @@ const Contacto: React.FC = () => {
                         />
                       ),
                       title: 'Email',
-                      content: 'alelentini@live.com',
+                      content: 'info@brandify.com',
                     },
                     {
                       icon: (
@@ -869,7 +843,7 @@ const Contacto: React.FC = () => {
                         />
                       ),
                       title: 'Teléfono',
-                      content: '+34 91 123 4567',
+                      content: '+34 123 456 789',
                     },
                     {
                       icon: (
@@ -960,15 +934,16 @@ const Contacto: React.FC = () => {
         </Grid>
       </Container>
 
+      {/* Alert Snackbar */}
       <Snackbar
-        open={showSuccessAlert || showErrorAlert}
+        open={alertState.open}
         autoHideDuration={6000}
         onClose={handleCloseAlert}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
         <Alert
           onClose={handleCloseAlert}
-          severity={showSuccessAlert ? 'success' : 'error'}
+          severity={alertState.severity}
           variant="filled"
           sx={{
             width: '100%',
@@ -980,9 +955,7 @@ const Contacto: React.FC = () => {
             },
           }}
         >
-          {showSuccessAlert
-            ? '¡Mensaje enviado exitosamente! Te contactaremos pronto.'
-            : 'Hubo un error al enviar el mensaje. Por favor, inténtalo más tarde.'}
+          {alertState.message}
         </Alert>
       </Snackbar>
     </Box>

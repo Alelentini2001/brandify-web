@@ -114,7 +114,12 @@ const Footer: React.FC = memo(() => {
           {/* Brand Section */}
           <Grid item xs={12} md={4}>
             <Stack spacing={3}>
-              <Logo />
+              <Stack direction="row" spacing={1} alignItems="center">
+                <Logo />
+                <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                  Brandify.
+                </Typography>
+              </Stack>
               <Typography
                 variant="body1"
                 sx={{

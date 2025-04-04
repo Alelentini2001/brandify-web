@@ -44,10 +44,10 @@ const staggerContainer = {
 // Team members data
 const teamMembers = [
   {
-    name: 'Alejandro Méndez',
-    role: 'CEO & Fundador',
-    bio: 'Experto en marketing digital con más de 10 años de experiencia trabajando con marcas internacionales.',
-    image: mockImages.team1,
+    name: 'Lautaro Nicolas Petringa',
+    role: 'CEO',
+    bio: 'Visionario estratégico con experiencia en dirección de proyectos digitales y marketing. Lidera la visión de Brandify combinando innovación con enfoque en resultados.',
+    image: require('../assets/image.png'),
     social: {
       linkedin: '#',
       twitter: '#',
@@ -55,10 +55,10 @@ const teamMembers = [
     },
   },
   {
-    name: 'Carmen Rodríguez',
-    role: 'Directora de Diseño',
-    bio: 'Diseñadora gráfica con pasión por crear identidades visuales que conectan con las audiencias.',
-    image: mockImages.team2,
+    name: 'Nayla Lihuén Petringa',
+    role: 'CMO',
+    bio: 'Especialista en estrategias de marketing y branding con un ojo creativo excepcional. Responsable de transformar conceptos en identidades visuales impactantes.',
+    image: require('../assets/Nayla_Lihuén_Petringa_CMO.jpeg.jpg'),
     social: {
       linkedin: '#',
       twitter: '#',
@@ -66,10 +66,10 @@ const teamMembers = [
     },
   },
   {
-    name: 'Manuel Torres',
-    role: 'Director de Tecnología',
-    bio: 'Desarrollador full-stack con experiencia en crear soluciones digitales innovadoras y escalables.',
-    image: mockImages.team3,
+    name: 'Alessandro Lentini',
+    role: 'CTO',
+    bio: 'Arquitecto tecnológico y desarrollador full-stack. Implementa soluciones innovadoras optimizando rendimiento y experiencia de usuario en cada proyecto.',
+    image: require('../assets/1646657139411-7.jpeg'),
     social: {
       linkedin: '#',
       twitter: '#',
@@ -77,10 +77,32 @@ const teamMembers = [
     },
   },
   {
-    name: 'Lucía Fernández',
-    role: 'Especialista en Social Media',
-    bio: 'Estratega de contenidos digitales enfocada en aumentar el engagement en redes sociales.',
-    image: mockImages.team4,
+    name: 'Jesús',
+    role: 'Video Editor',
+    bio: 'Especialista en producción y edición de video con un talento único para contar historias visuales. Transforma ideas en contenido audiovisual impactante y memorable.',
+    image: require('../assets/Jesus Jesús Alejandro Guerrero Flores.jpeg'),
+    social: {
+      linkedin: '#',
+      twitter: '#',
+      instagram: '#',
+    },
+  },
+  {
+    name: 'Smith',
+    role: 'Brand Designer',
+    bio: 'Diseñador creativo especializado en sistemas de identidad visual y experiencia de marca. Crea diseños elegantes que conectan con el público objetivo y refuerzan los valores de marca.',
+    image: require('../assets/Christian Smith Camperos Pérez diseñador.png'),
+    social: {
+      linkedin: '#',
+      twitter: '#',
+      instagram: '#',
+    },
+  },
+  {
+    name: 'Erick',
+    role: 'Content Writer',
+    bio: 'Redactor con amplia experiencia en marketing de contenidos y narrativa de marca. Crea textos persuasivos que destacan los valores y diferenciales de cada proyecto.',
+    image: require('../assets/Erick Antonio López Córdova.jpeg'),
     social: {
       linkedin: '#',
       twitter: '#',
@@ -89,31 +111,35 @@ const teamMembers = [
   },
 ];
 
-// Values data - Simplified to make them more impactful
+// Values data - Updated to match new branding
 const values = [
   {
     title: 'Creatividad',
-    description: 'Soluciones únicas que reflejan la esencia de cada marca.',
-    icon: '🚀',
-    gradient: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+    description:
+      'Desarrollamos soluciones únicas y auténticas que reflejan la esencia de cada marca.',
+    icon: '🎨',
+    gradient: 'linear-gradient(45deg, #7C3AED, #EC4899)',
   },
   {
     title: 'Compromiso',
-    description: 'Resultados alineados con los objetivos de cada cliente.',
-    icon: '✨',
-    gradient: 'linear-gradient(45deg, #4ECDC4, #45B7AF)',
+    description:
+      'Nos involucramos profundamente en cada proyecto, garantizando resultados alineados con los objetivos del cliente.',
+    icon: '🤝',
+    gradient: 'linear-gradient(45deg, #EC4899, #7C3AED)',
   },
   {
     title: 'Colaboración',
-    description: 'Trabajamos juntos para crear estrategias que conecten.',
-    icon: '🤝',
-    gradient: 'linear-gradient(45deg, #45B7AF, #3B9E98)',
+    description:
+      'Trabajamos codo a codo con nuestros clientes para crear estrategias que reflejen su visión y conecten con su audiencia.',
+    icon: '👥',
+    gradient: 'linear-gradient(45deg, #7C3AED, #EC4899)',
   },
   {
     title: 'Resultados',
-    description: 'Impacto tangible y medible para cada acción.',
+    description:
+      'Nos enfocamos en generar un impacto tangible y medible, maximizando el retorno de cada acción.',
     icon: '📈',
-    gradient: 'linear-gradient(45deg, #3B9E98, #FF6B6B)',
+    gradient: 'linear-gradient(45deg, #EC4899, #7C3AED)',
   },
 ];
 
@@ -122,21 +148,31 @@ const SobreNosotros: React.FC = () => {
   const [headerRef, headerInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+    initialInView: true,
   });
 
   const [storyRef, storyInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+    initialInView: true,
   });
 
   const [valuesRef, valuesInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+    initialInView: true,
   });
 
   const [teamRef, teamInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+    initialInView: true,
+  });
+
+  const [clientsRef, clientsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+    initialInView: true,
   });
 
   const { scrollYProgress } = useScroll();
@@ -145,21 +181,18 @@ const SobreNosotros: React.FC = () => {
 
   return (
     <Box>
-      {/* Hero Section - More concise and impactful */}
+      {/* Hero Section - Clean, minimalist design */}
       <Box
         sx={{
           position: 'relative',
-          height: '100vh',
-          minHeight: 600,
+          height: '85vh',
+          minHeight: 500,
+          maxHeight: 700,
           display: 'flex',
           alignItems: 'center',
           overflow: 'hidden',
           bgcolor: 'black',
-          width: '100vw',
-          left: '50%',
-          right: '50%',
-          marginLeft: '-50vw',
-          marginRight: '-50vw',
+          width: '100%',
           '&::after': {
             content: '""',
             position: 'absolute',
@@ -168,94 +201,105 @@ const SobreNosotros: React.FC = () => {
             width: '100%',
             height: '100%',
             background:
-              'radial-gradient(circle at center, rgba(124, 58, 237, 0.15) 0%, rgba(0, 0, 0, 0.95) 70%)',
+              'radial-gradient(circle at center, rgba(124, 58, 237, 0.1) 0%, rgba(0, 0, 0, 0.97) 70%)',
             zIndex: 1,
           },
         }}
       >
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
           <motion.div
-            style={{ opacity, y }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
           >
             <Box
               sx={{
-                maxWidth: '800px',
+                maxWidth: '700px',
                 mx: 'auto',
                 textAlign: 'center',
                 px: { xs: 2, md: 0 },
               }}
             >
-              <Typography
-                component={motion.h1}
-                initial={{ opacity: 0, y: 20 }}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                variant="h1"
-                align="center"
-                sx={{
-                  color: 'white',
-                  fontWeight: 800,
-                  mb: 2,
-                  fontSize: { xs: '3rem', md: '4.5rem', lg: '5.5rem' },
-                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.1,
+                transition={{
+                  duration: 0.8,
+                  ease: [0.215, 0.61, 0.355, 1],
+                  delay: 0.2,
                 }}
               >
-                Sobre Nosotros
-              </Typography>
+                <Typography
+                  variant="h1"
+                  align="center"
+                  sx={{
+                    color: 'white',
+                    fontWeight: 800,
+                    mb: 3,
+                    fontSize: { xs: '3rem', md: '4.5rem', lg: '5.5rem' },
+                    background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.1,
+                  }}
+                >
+                  Sobre Nosotros
+                </Typography>
+              </motion.div>
 
-              <Divider
-                component={motion.div}
-                initial={{ width: 0 }}
-                animate={{ width: '120px' }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                sx={{
-                  mx: 'auto',
-                  height: '4px',
-                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                  borderRadius: '2px',
-                  mb: 5,
-                  mt: 1,
-                }}
-              />
+              <motion.div
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ width: '60px', opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                <Divider
+                  sx={{
+                    width: '60px',
+                    height: '3px',
+                    background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+                    borderRadius: '2px',
+                    mb: 4,
+                    mt: 1,
+                    mx: 'auto',
+                  }}
+                />
+              </motion.div>
 
-              <Typography
-                component={motion.p}
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                variant="h5"
-                align="center"
-                sx={{
-                  color: 'rgba(255,255,255,0.9)',
-                  maxWidth: '700px',
-                  mx: 'auto',
-                  mb: 5,
-                  fontSize: { xs: '1.3rem', md: '1.5rem' },
-                  lineHeight: 1.6,
-                  fontWeight: 300,
-                }}
+                transition={{ duration: 0.7, delay: 0.7 }}
               >
-                Soluciones creativas y personalizadas para destacar en el
-                entorno digital.
-              </Typography>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  sx={{
+                    color: 'rgba(255,255,255,0.85)',
+                    maxWidth: '650px',
+                    mx: 'auto',
+                    mb: 6,
+                    fontSize: { xs: '1.2rem', md: '1.5rem' },
+                    lineHeight: 1.5,
+                    fontWeight: 300,
+                    letterSpacing: '0.01em',
+                  }}
+                >
+                  Soluciones creativas y personalizadas para destacar en el
+                  entorno digital.
+                </Typography>
+              </motion.div>
             </Box>
           </motion.div>
         </Container>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Minimalist style */}
         <Box
           component={motion.div}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.3, duration: 0.8 }}
           sx={{
             position: 'absolute',
             bottom: 40,
@@ -266,28 +310,29 @@ const SobreNosotros: React.FC = () => {
         >
           <Box
             sx={{
-              width: 30,
-              height: 50,
-              border: '2px solid rgba(255,255,255,0.3)',
-              borderRadius: 15,
+              width: 24,
+              height: 38,
+              border: '1.5px solid rgba(255,255,255,0.2)',
+              borderRadius: 12,
               display: 'flex',
               justifyContent: 'center',
               padding: '8px 0',
               transition: 'all 0.3s ease',
-              '&:hover': {
-                borderColor: 'rgba(255,255,255,0.6)',
-                transform: 'scale(1.1)',
-              },
             }}
           >
             <Box
               component={motion.div}
-              animate={{ y: [0, 12, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
+              initial={{ y: 0 }}
+              animate={{ y: [0, 8, 0] }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.5,
+                delay: 1.3,
+              }}
               sx={{
-                width: 6,
-                height: 6,
-                backgroundColor: 'white',
+                width: 3,
+                height: 3,
+                backgroundColor: 'rgba(255,255,255,0.5)',
                 borderRadius: '50%',
               }}
             />
@@ -295,12 +340,11 @@ const SobreNosotros: React.FC = () => {
         </Box>
       </Box>
 
-      {/* Our Story - More visual, less text-heavy */}
+      {/* Our Story - Professional UI design */}
       <Container
         maxWidth="xl"
         sx={{
           background: 'linear-gradient(180deg, #1a1a1a 0%, #000000 100%)',
-          px: { xs: 2, md: 4 },
           position: 'relative',
           overflow: 'hidden',
           '&::before': {
@@ -311,338 +355,879 @@ const SobreNosotros: React.FC = () => {
             width: '100%',
             height: '100%',
             backgroundImage:
-              'radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.1) 0%, transparent 25%), radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 25%)',
+              'radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.05) 0%, transparent 30%)',
             opacity: 0.7,
-            zIndex: 0,
-          },
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='1'/%3E%3C/g%3E%3C/svg%3E\")",
             zIndex: 0,
           },
         }}
       >
-        <Box ref={storyRef} sx={{ py: { xs: 8, md: 12 } }}>
+        <Box ref={storyRef} sx={{ py: { xs: 6, md: 10 } }}>
           <motion.div
             initial="hidden"
-            animate={storyInView ? 'visible' : 'hidden'}
+            animate="visible"
             variants={staggerContainer}
           >
-            <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
-              <Grid item xs={12} md={6}>
-                <motion.div
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Box
-                    sx={{
-                      position: 'relative',
-                      p: { xs: 3, md: 4 },
-                      borderRadius: 4,
-                      background: 'rgba(255,255,255,0.03)',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255,255,255,0.05)',
-                      boxShadow: '0 15px 35px rgba(0,0,0,0.2)',
-                      overflow: 'hidden',
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        background:
-                          'linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(236, 72, 153, 0))',
-                        zIndex: -1,
-                      },
-                    }}
+            <Grid container spacing={0} alignItems="center" sx={{ mb: 5 }}>
+              <Grid item xs={12}>
+                <Box sx={{ mb: 1, textAlign: 'center' }}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.2 }}
                   >
                     <Typography
-                      variant="h3"
+                      variant="overline"
                       sx={{
-                        fontWeight: 800,
-                        position: 'relative',
-                        mb: 4,
-                        fontSize: { xs: '2rem', md: '2.5rem' },
-                        background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                        backgroundClip: 'text',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        letterSpacing: '-0.02em',
-                        transform: 'translateZ(0)', // Fix for webkit rendering
+                        fontWeight: 500,
+                        fontSize: '0.85rem',
+                        letterSpacing: '0.15em',
+                        color: '#FF6B6B',
+                        mb: 1,
+                        display: 'block',
                       }}
                     >
                       NUESTRA HISTORIA
                     </Typography>
 
-                    <Divider
+                    <Typography
+                      variant="h3"
                       sx={{
-                        width: '80px',
-                        height: '4px',
+                        fontWeight: 800,
+                        mb: 1,
+                        fontSize: { xs: '1.8rem', md: '2.3rem' },
+                        color: 'white',
+                        maxWidth: '700px',
+                        mx: 'auto',
+                        lineHeight: 1.2,
+                      }}
+                    >
+                      Una agencia creada por la pasión de hacer las cosas bien
+                    </Typography>
+
+                    <Divider
+                      component={motion.div}
+                      initial={{ width: 0 }}
+                      animate={{ width: '60px' }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                      sx={{
+                        width: '60px',
+                        height: '3px',
                         background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
                         borderRadius: '2px',
-                        mb: 4,
+                        mb: 3,
+                        mx: 'auto',
+                        mt: 2,
                       }}
                     />
+                  </motion.div>
+                </Box>
+              </Grid>
+            </Grid>
 
-                    <Typography
-                      variant="h6"
-                      color="white"
-                      paragraph
-                      sx={{
-                        fontSize: { xs: '1.15rem', md: '1.35rem' },
-                        lineHeight: 1.4,
-                        mb: 3.5,
-                        fontWeight: 600,
-                        letterSpacing: '-0.01em',
-                      }}
-                    >
-                      Jóvenes, frescos, y con amplia experiencia.
-                    </Typography>
-
-                    <Typography
-                      variant="body1"
-                      color="rgba(255,255,255,0.8)"
-                      paragraph
-                      sx={{
-                        fontSize: { xs: '1rem', md: '1.1rem' },
-                        lineHeight: 1.8,
-                        mb: 3,
-                      }}
-                    >
-                      Brandify nació en 2024 con un equipo internacional que une
-                      talento desde Italia, España y Argentina. Nuestra
-                      experiencia previa con otras agencias y proyectos privados
-                      nos permite ofrecer soluciones de primer nivel.
-                    </Typography>
-
-                    {/* Highlight box */}
+            <Box sx={{ px: { xs: 1, md: 4 } }}>
+              <Grid container spacing={{ xs: 2, md: 3 }} alignItems="stretch">
+                <Grid item xs={12} md={4} order={{ xs: 2, md: 1 }}>
+                  <motion.div
+                    variants={fadeInUp}
+                    whileHover={{ scale: 1.005 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <Box
                       sx={{
-                        p: 3,
-                        mb: 4,
+                        position: 'relative',
+                        p: { xs: 3, md: 4 },
                         borderRadius: 2,
-                        background:
-                          'linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(236, 72, 153, 0.08))',
-                        border: '1px solid rgba(124, 58, 237, 0.1)',
+                        background: 'rgba(255,255,255,0.02)',
+                        backdropFilter: 'blur(8px)',
+                        border: '1px solid rgba(255,255,255,0.04)',
+                        boxShadow: '0 10px 40px -10px rgba(0,0,0,0.1)',
+                        overflow: 'hidden',
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
                       }}
                     >
-                      <Typography
-                        variant="body1"
-                        color="white"
+                      <Box
+                        sx={{ mb: 3, display: 'flex', alignItems: 'center' }}
+                      >
+                        <Box
+                          sx={{
+                            width: 36,
+                            height: 36,
+                            borderRadius: '50%',
+                            background:
+                              'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            mr: 2,
+                            boxShadow: '0 2px 8px rgba(255, 107, 107, 0.3)',
+                          }}
+                        >
+                          <Typography sx={{ fontSize: '1.2rem' }}>
+                            💼
+                          </Typography>
+                        </Box>
+                        <Typography
+                          variant="h6"
+                          color="white"
+                          sx={{
+                            fontSize: '1rem',
+                            fontWeight: 600,
+                            letterSpacing: '0.5px',
+                          }}
+                        >
+                          Nuestros Servicios
+                        </Typography>
+                      </Box>
+
+                      <Box sx={{ pl: 1, flex: 1 }}>
+                        {[
+                          'Creación de contenido que conecta con tu audiencia',
+                          'Marketing estratégico para posicionar tu negocio',
+                          'Desarrollo web que combina diseño y funcionalidad',
+                          'Aplicaciones que mejoran la interacción con tus clientes',
+                        ].map((item, index) => (
+                          <Typography
+                            key={index}
+                            component={motion.p}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{
+                              duration: 0.3,
+                              delay: 0.8 + index * 0.1,
+                            }}
+                            variant="body2"
+                            color="rgba(255,255,255,0.75)"
+                            sx={{
+                              fontSize: '0.9rem',
+                              lineHeight: 1.5,
+                              mb: 1.5,
+                              display: 'flex',
+                              alignItems: 'flex-start',
+                              fontWeight: 300,
+                              letterSpacing: '0.2px',
+                            }}
+                          >
+                            <Box
+                              component="span"
+                              sx={{
+                                minWidth: 22,
+                                height: 22,
+                                borderRadius: '50%',
+                                background: 'rgba(255,107,107,0.1)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                mr: 1.5,
+                                color: '#FF6B6B',
+                                fontSize: '0.7rem',
+                                fontWeight: 'bold',
+                              }}
+                            >
+                              ✓
+                            </Box>
+                            {item}
+                          </Typography>
+                        ))}
+                      </Box>
+
+                      <Box sx={{ mt: 'auto', pt: 3 }}>
+                        <Box
+                          sx={{
+                            p: 2,
+                            borderRadius: 1.5,
+                            background: 'rgba(255,255,255,0.03)',
+                            border: '1px solid rgba(255,255,255,0.05)',
+                          }}
+                        >
+                          <Typography
+                            variant="body2"
+                            color="rgba(255,255,255,0.9)"
+                            sx={{
+                              fontSize: '0.9rem',
+                              lineHeight: 1.6,
+                              fontWeight: 500,
+                              fontStyle: 'italic',
+                              textAlign: 'center',
+                            }}
+                          >
+                            "Brandify no sigue tendencias: las crea."
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Box>
+                  </motion.div>
+                </Grid>
+
+                <Grid item xs={12} md={4} order={{ xs: 1, md: 2 }}>
+                  <motion.div
+                    variants={fadeInUp}
+                    whileHover={{ scale: 1.005 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                  >
+                    <Box
+                      sx={{
+                        position: 'relative',
+                        p: { xs: 3, md: 4 },
+                        borderRadius: 2,
+                        backdropFilter: 'blur(8px)',
+                        border: '1px solid rgba(255,255,255,0.04)',
+                        boxShadow: '0 10px 40px -10px rgba(0,0,0,0.1)',
+                        overflow: 'hidden',
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        background:
+                          'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                      }}
+                    >
+                      <Box
+                        component="img"
+                        src={mockImages.aboutUs}
+                        alt="Nuestra historia"
                         sx={{
-                          fontSize: '1.2rem',
+                          width: '100%',
+                          height: 160,
+                          objectFit: 'cover',
+                          borderRadius: 1.5,
+                          mb: 3,
+                          filter: 'brightness(0.95)',
+                        }}
+                      />
+
+                      <Typography
+                        variant="h5"
+                        component={motion.h5}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.7, delay: 0.5 }}
+                        paragraph
+                        sx={{
+                          fontSize: { xs: '1.1rem', md: '1.2rem' },
+                          lineHeight: 1.4,
+                          mb: 2.5,
                           fontWeight: 600,
-                          textAlign: 'center',
+                          letterSpacing: '-0.01em',
+                          color: 'white',
                         }}
                       >
-                        No somos una agencia convencional:
-                        <br />
-                        creamos estrategias que generan resultados reales.
+                        Así nació Brandify en 2024
                       </Typography>
-                    </Box>
 
-                    {/* Services cards */}
-                    <Grid container spacing={2} sx={{ mt: 4 }}>
-                      {[
-                        'Creación de contenido',
-                        'Marketing estratégico',
-                        'Redes sociales',
-                        'Desarrollo web',
-                      ].map((service, index) => (
-                        <Grid item xs={6} key={index}>
+                      <Box sx={{ flex: 1 }}>
+                        <Typography
+                          variant="body2"
+                          color="rgba(255,255,255,0.85)"
+                          paragraph
+                          sx={{
+                            fontSize: '0.95rem',
+                            lineHeight: 1.6,
+                            mb: 2,
+                            fontWeight: 300,
+                            letterSpacing: '0.2px',
+                          }}
+                        >
+                          Una agencia joven y fresca, pero con amplia
+                          experiencia en el sector gracias a trabajos previos
+                          con otras agencias y proyectos privados. Hemos
+                          trabajado con clientes de todo tipo, desde marcas
+                          personales y startups hasta empresas consolidadas.
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
+                          color="rgba(255,255,255,0.85)"
+                          paragraph
+                          sx={{
+                            fontSize: '0.95rem',
+                            lineHeight: 1.6,
+                            mb: 0,
+                            fontWeight: 300,
+                            letterSpacing: '0.2px',
+                          }}
+                        >
+                          Con parte del equipo en Italia, España y Argentina,
+                          pero con una visión global. No somos una agencia
+                          convencional: creamos estrategias que generan
+                          resultados reales.
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </motion.div>
+                </Grid>
+
+                <Grid item xs={12} md={4} order={{ xs: 3, md: 3 }}>
+                  <motion.div
+                    variants={fadeInUp}
+                    whileHover={{ scale: 1.005 }}
+                    transition={{ duration: 0.3, delay: 0.2 }}
+                  >
+                    <Box
+                      sx={{
+                        position: 'relative',
+                        p: { xs: 3, md: 4 },
+                        borderRadius: 2,
+                        background: 'rgba(255,255,255,0.02)',
+                        backdropFilter: 'blur(8px)',
+                        border: '1px solid rgba(255,255,255,0.04)',
+                        boxShadow: '0 10px 40px -10px rgba(0,0,0,0.1)',
+                        overflow: 'hidden',
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                      }}
+                    >
+                      <Box
+                        sx={{ mb: 3, display: 'flex', alignItems: 'center' }}
+                      >
+                        <Box
+                          sx={{
+                            width: 36,
+                            height: 36,
+                            borderRadius: '50%',
+                            background:
+                              'linear-gradient(45deg, #4ECDC4, #7C3AED)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            mr: 2,
+                            boxShadow: '0 2px 8px rgba(78, 205, 196, 0.3)',
+                          }}
+                        >
+                          <Typography sx={{ fontSize: '1.2rem' }}>
+                            🌍
+                          </Typography>
+                        </Box>
+                        <Typography
+                          variant="h6"
+                          color="white"
+                          sx={{
+                            fontSize: '1rem',
+                            fontWeight: 600,
+                            letterSpacing: '0.5px',
+                          }}
+                        >
+                          Equipo Especializado
+                        </Typography>
+                      </Box>
+
+                      <Grid container spacing={2} sx={{ mb: 3 }}>
+                        {[
+                          { icon: '👨‍💻', text: 'Expertos en informática' },
+                          { icon: '📊', text: 'Licenciados en marketing' },
+                          { icon: '🎨', text: 'Creadores de contenido' },
+                          { icon: '⚙️', text: 'Desarrollo y optimización' },
+                        ].map((item, index) => (
+                          <Grid item xs={6} key={index}>
+                            <motion.div
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{
+                                duration: 0.4,
+                                delay: 0.9 + index * 0.1,
+                              }}
+                            >
+                              <Box
+                                sx={{
+                                  p: 1.5,
+                                  borderRadius: 1.5,
+                                  background: 'rgba(255,255,255,0.03)',
+                                  border: '1px solid rgba(255,255,255,0.05)',
+                                  height: '100%',
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  gap: 0.5,
+                                }}
+                              >
+                                <Typography sx={{ fontSize: '1.2rem' }}>
+                                  {item.icon}
+                                </Typography>
+                                <Typography
+                                  variant="body2"
+                                  color="rgba(255,255,255,0.75)"
+                                  align="center"
+                                  sx={{
+                                    fontSize: '0.8rem',
+                                    fontWeight: 300,
+                                    letterSpacing: '0.3px',
+                                  }}
+                                >
+                                  {item.text}
+                                </Typography>
+                              </Box>
+                            </motion.div>
+                          </Grid>
+                        ))}
+                      </Grid>
+
+                      <Box sx={{ mt: 'auto' }}>
+                        <motion.div
+                          whileHover={{ scale: 1.02 }}
+                          transition={{ duration: 0.3 }}
+                        >
                           <Box
                             sx={{
                               p: 2,
-                              borderRadius: 2,
-                              height: '100%',
-                              background: 'rgba(255,255,255,0.03)',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
+                              background:
+                                'linear-gradient(145deg, rgba(255,107,107,0.1) 0%, rgba(78,205,196,0.1) 100%)',
+                              borderRadius: 1.5,
                               border: '1px solid rgba(255,255,255,0.05)',
-                              transition: 'all 0.3s ease',
-                              '&:hover': {
-                                transform: 'translateY(-5px)',
-                                background: 'rgba(255,255,255,0.05)',
-                              },
+                              textAlign: 'center',
                             }}
                           >
                             <Typography
                               variant="body2"
                               color="white"
-                              align="center"
-                              sx={{ fontWeight: 500 }}
+                              sx={{
+                                fontSize: '0.95rem',
+                                fontWeight: 500,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: 1,
+                              }}
                             >
-                              {service}
+                              <span>
+                                ¿Listo para llevar tu marca al siguiente nivel?
+                              </span>
+                              <Box component="span" sx={{ fontSize: '1.2rem' }}>
+                                👊
+                              </Box>
                             </Typography>
                           </Box>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Box>
-                </motion.div>
-              </Grid>
-
-              <Grid item xs={12} md={6}>
-                <motion.div variants={fadeInUp}>
-                  <Box
-                    sx={{
-                      position: 'relative',
-                      '&:before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: -20,
-                        left: -20,
-                        width: '100%',
-                        height: '100%',
-                        border: '3px solid',
-                        borderImage:
-                          'linear-gradient(45deg, #FF6B6B, #4ECDC4) 1',
-                        borderRadius: 3,
-                        zIndex: 0,
-                      },
-                    }}
-                  >
-                    <Box
-                      component="img"
-                      src={mockImages.aboutUs}
-                      alt="Nuestra historia"
-                      sx={{
-                        width: '100%',
-                        height: 'auto',
-                        borderRadius: 3,
-                        boxShadow: '0 25px 50px rgba(0,0,0,0.15)',
-                        position: 'relative',
-                        zIndex: 1,
-                        transition: 'transform 0.3s ease',
-                        '&:hover': {
-                          transform: 'scale(1.02)',
-                        },
-                      }}
-                    />
-                  </Box>
-
-                  {/* Team highlights */}
-                  <Box
-                    sx={{
-                      mt: 6,
-                      p: 4,
-                      borderRadius: 4,
-                      background: 'rgba(255,255,255,0.03)',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255,255,255,0.05)',
-                      boxShadow: '0 15px 35px rgba(0,0,0,0.2)',
-                    }}
-                  >
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        fontWeight: 700,
-                        mb: 3,
-                        color: 'white',
-                        display: 'flex',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <Box
-                        component="span"
-                        sx={{
-                          mr: 1.5,
-                          fontSize: '1.7rem',
-                        }}
-                      >
-                        🌍
+                        </motion.div>
                       </Box>
-                      Nuestro Equipo Internacional
-                    </Typography>
-
-                    <Grid container spacing={2}>
-                      {[
-                        { icon: '👨‍💻', text: 'Expertos en informática' },
-                        { icon: '📊', text: 'Licenciados en marketing' },
-                        { icon: '🎨', text: 'Creadores de contenido' },
-                        { icon: '⚙️', text: 'Especialistas en desarrollo' },
-                      ].map((item, index) => (
-                        <Grid item xs={6} key={index}>
-                          <Box
-                            sx={{
-                              p: 2,
-                              borderRadius: 2,
-                              background: 'rgba(255,255,255,0.04)',
-                              height: '100%',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              gap: 1,
-                              transition: 'all 0.3s ease',
-                              '&:hover': {
-                                transform: 'translateY(-5px)',
-                                background: 'rgba(255,255,255,0.07)',
-                              },
-                            }}
-                          >
-                            <Typography variant="h4">{item.icon}</Typography>
-                            <Typography
-                              variant="body2"
-                              color="rgba(255,255,255,0.9)"
-                              align="center"
-                            >
-                              {item.text}
-                            </Typography>
-                          </Box>
-                        </Grid>
-                      ))}
-                    </Grid>
-
-                    <Box
-                      sx={{
-                        mt: 4,
-                        p: 3,
-                        borderRadius: 2,
-                        background:
-                          'linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1))',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        align="center"
-                        color="white"
-                        sx={{ fontWeight: 600, fontSize: '1.1rem' }}
-                      >
-                        Creamos tendencias, no las seguimos
-                      </Typography>
                     </Box>
-                  </Box>
-                </motion.div>
+                  </motion.div>
+                </Grid>
               </Grid>
-            </Grid>
+            </Box>
           </motion.div>
         </Box>
 
-        {/* Our Values - More visual, less text */}
+        {/* Mission & Vision Section - Professional design */}
+        <Box
+          sx={{
+            py: { xs: 10, md: 12 },
+            position: 'relative',
+            background:
+              'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(124,58,237,0.03) 100%)',
+          }}
+        >
+          <Container maxWidth="xl">
+            {/* Background elements */}
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '10%',
+                right: '5%',
+                width: '280px',
+                height: '280px',
+                background:
+                  'radial-gradient(circle, rgba(255,107,107,0.03) 0%, transparent 70%)',
+                borderRadius: '50%',
+                filter: 'blur(60px)',
+                zIndex: 0,
+                opacity: 0.8,
+              }}
+            />
+
+            <Box
+              sx={{
+                position: 'absolute',
+                bottom: '15%',
+                left: '8%',
+                width: '220px',
+                height: '220px',
+                background:
+                  'radial-gradient(circle, rgba(78,205,196,0.03) 0%, transparent 70%)',
+                borderRadius: '50%',
+                filter: 'blur(50px)',
+                zIndex: 0,
+                opacity: 0.8,
+              }}
+            />
+
+            {/* Section header */}
+            <Box
+              sx={{
+                position: 'relative',
+                zIndex: 1,
+                mb: 8,
+                textAlign: 'center',
+              }}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Typography
+                  variant="overline"
+                  sx={{
+                    fontWeight: 500,
+                    fontSize: '0.85rem',
+                    letterSpacing: '0.2em',
+                    color: '#7C3AED',
+                    mb: 1.5,
+                    display: 'block',
+                  }}
+                >
+                  NUESTRA ESENCIA
+                </Typography>
+
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 800,
+                    mb: 2,
+                    fontSize: { xs: '1.8rem', md: '2.2rem' },
+                    color: 'white',
+                    maxWidth: '700px',
+                    mx: 'auto',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  Impulsamos marcas con propósito y estrategia
+                </Typography>
+
+                <Divider
+                  sx={{
+                    width: '40px',
+                    height: '3px',
+                    background: 'linear-gradient(45deg, #7C3AED, #EC4899)',
+                    borderRadius: '2px',
+                    mb: 3,
+                    mx: 'auto',
+                  }}
+                />
+              </motion.div>
+            </Box>
+
+            <Box sx={{ position: 'relative', zIndex: 1 }}>
+              <Grid container spacing={4}>
+                {/* Mission Column */}
+                <Grid item xs={12} md={6}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                  >
+                    <Box
+                      sx={{
+                        p: { xs: 3.5, md: 5 },
+                        borderRadius: 3,
+                        background: 'rgba(255,255,255,0.02)',
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid rgba(255,255,255,0.03)',
+                        boxShadow: '0 10px 40px -10px rgba(0,0,0,0.1)',
+                        height: '100%',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                        '&:hover': {
+                          transform: 'translateY(-5px)',
+                          boxShadow: '0 15px 50px -12px rgba(124,58,237,0.15)',
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '4px',
+                          background:
+                            'linear-gradient(to right, #7C3AED, transparent)',
+                        }}
+                      />
+
+                      <Box
+                        sx={{
+                          mb: 4,
+                          display: 'flex',
+                          alignItems: 'center',
+                          background: 'rgba(124,58,237,0.05)',
+                          p: 2,
+                          borderRadius: 2,
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            width: 48,
+                            height: 48,
+                            borderRadius: '14px',
+                            background:
+                              'linear-gradient(135deg, #7C3AED, #5B21B6)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            mr: 2.5,
+                            boxShadow: '0 4px 10px rgba(124,58,237,0.25)',
+                          }}
+                        >
+                          <Typography sx={{ fontSize: '1.4rem' }}>
+                            🎯
+                          </Typography>
+                        </Box>
+                        <Box>
+                          <Typography
+                            variant="overline"
+                            sx={{
+                              fontSize: '0.7rem',
+                              fontWeight: 500,
+                              color: '#7C3AED',
+                              letterSpacing: '0.1em',
+                              display: 'block',
+                              mb: 0.2,
+                            }}
+                          >
+                            NUESTRA MISIÓN
+                          </Typography>
+                          <Typography
+                            variant="h5"
+                            sx={{
+                              fontSize: { xs: '1.3rem', md: '1.5rem' },
+                              fontWeight: 700,
+                              color: 'white',
+                              letterSpacing: '-0.01em',
+                            }}
+                          >
+                            Impulsar marcas que destacan
+                          </Typography>
+                        </Box>
+                      </Box>
+
+                      <Typography
+                        variant="body1"
+                        color="rgba(255,255,255,0.9)"
+                        sx={{
+                          fontSize: '1rem',
+                          lineHeight: 1.7,
+                          fontWeight: 300,
+                          letterSpacing: '0.2px',
+                          position: 'relative',
+                          zIndex: 1,
+                        }}
+                      >
+                        Nuestra misión es ayudar a empresas y marcas personales
+                        a sobresalir en un entorno digital saturado mediante
+                        soluciones creativas y personalizadas que generen
+                        resultados medibles y sostenibles.
+                      </Typography>
+
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          bottom: '-30px',
+                          right: '-30px',
+                          width: '140px',
+                          height: '140px',
+                          background:
+                            'radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%)',
+                          borderRadius: '50%',
+                          zIndex: 0,
+                        }}
+                      />
+                    </Box>
+                  </motion.div>
+                </Grid>
+
+                {/* Vision Column */}
+                <Grid item xs={12} md={6}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                  >
+                    <Box
+                      sx={{
+                        p: { xs: 3.5, md: 5 },
+                        borderRadius: 3,
+                        background: 'rgba(255,255,255,0.02)',
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid rgba(255,255,255,0.03)',
+                        boxShadow: '0 10px 40px -10px rgba(0,0,0,0.1)',
+                        height: '100%',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                        '&:hover': {
+                          transform: 'translateY(-5px)',
+                          boxShadow: '0 15px 50px -12px rgba(236,72,153,0.15)',
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '4px',
+                          background:
+                            'linear-gradient(to right, #EC4899, transparent)',
+                        }}
+                      />
+
+                      <Box
+                        sx={{
+                          mb: 4,
+                          display: 'flex',
+                          alignItems: 'center',
+                          background: 'rgba(236,72,153,0.05)',
+                          p: 2,
+                          borderRadius: 2,
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            width: 48,
+                            height: 48,
+                            borderRadius: '14px',
+                            background:
+                              'linear-gradient(135deg, #EC4899, #BE185D)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            mr: 2.5,
+                            boxShadow: '0 4px 10px rgba(236,72,153,0.25)',
+                          }}
+                        >
+                          <Typography sx={{ fontSize: '1.4rem' }}>
+                            🔭
+                          </Typography>
+                        </Box>
+                        <Box>
+                          <Typography
+                            variant="overline"
+                            sx={{
+                              fontSize: '0.7rem',
+                              fontWeight: 500,
+                              color: '#EC4899',
+                              letterSpacing: '0.1em',
+                              display: 'block',
+                              mb: 0.2,
+                            }}
+                          >
+                            NUESTRA VISIÓN
+                          </Typography>
+                          <Typography
+                            variant="h5"
+                            sx={{
+                              fontSize: { xs: '1.3rem', md: '1.5rem' },
+                              fontWeight: 700,
+                              color: 'white',
+                              letterSpacing: '-0.01em',
+                            }}
+                          >
+                            Ser referentes en el mercado
+                          </Typography>
+                        </Box>
+                      </Box>
+
+                      <Typography
+                        variant="body1"
+                        color="rgba(255,255,255,0.9)"
+                        sx={{
+                          fontSize: '1rem',
+                          lineHeight: 1.7,
+                          fontWeight: 300,
+                          letterSpacing: '0.2px',
+                          position: 'relative',
+                          zIndex: 1,
+                        }}
+                      >
+                        Ser la agencia de referencia para empresas y marcas
+                        personales que buscan destacar, aumentar su alcance y
+                        consolidarse en el mercado digital mediante estrategias
+                        efectivas y diferenciadas.
+                      </Typography>
+
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          bottom: '-30px',
+                          right: '-30px',
+                          width: '140px',
+                          height: '140px',
+                          background:
+                            'radial-gradient(circle, rgba(236,72,153,0.08) 0%, transparent 70%)',
+                          borderRadius: '50%',
+                          zIndex: 0,
+                        }}
+                      />
+                    </Box>
+                  </motion.div>
+                </Grid>
+              </Grid>
+            </Box>
+          </Container>
+        </Box>
+
+        {/* Our Values - Premium professional design */}
         <Box
           ref={valuesRef}
           sx={{
-            py: { xs: 8, md: 10 },
+            py: { xs: 10, md: 14 },
             position: 'relative',
             overflow: 'hidden',
-            mb: 10,
+            mb: 12,
             zIndex: 1,
+            background:
+              'linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%)',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+              opacity: 0.6,
+              zIndex: -1,
+            },
           }}
         >
-          <Container sx={{ position: 'relative', zIndex: 1 }}>
+          {/* Background elements */}
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '15%',
+              right: '10%',
+              width: '300px',
+              height: '300px',
+              background:
+                'radial-gradient(circle, rgba(124,58,237,0.05) 0%, transparent 70%)',
+              borderRadius: '50%',
+              filter: 'blur(60px)',
+              zIndex: 0,
+              opacity: 0.6,
+            }}
+          />
+
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: '10%',
+              left: '5%',
+              width: '250px',
+              height: '250px',
+              background:
+                'radial-gradient(circle, rgba(236,72,153,0.05) 0%, transparent 70%)',
+              borderRadius: '50%',
+              filter: 'blur(50px)',
+              zIndex: 0,
+              opacity: 0.6,
+            }}
+          />
+
+          <Container sx={{ position: 'relative', zIndex: 2, maxWidth: 'lg' }}>
             <motion.div
               initial="hidden"
               animate={valuesInView ? 'visible' : 'hidden'}
@@ -656,34 +1241,62 @@ const SobreNosotros: React.FC = () => {
                 },
               }}
             >
-              <Typography
-                variant="h3"
-                align="center"
-                sx={{
-                  fontWeight: 800,
-                  mb: 2,
-                  fontSize: { xs: '2rem', md: '2.75rem' },
-                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  letterSpacing: '-0.02em',
-                  position: 'relative',
-                }}
-              >
-                Nuestros Valores
-              </Typography>
+              <Box sx={{ mb: 8, textAlign: 'center' }}>
+                <Typography
+                  variant="overline"
+                  sx={{
+                    fontWeight: 500,
+                    fontSize: '0.85rem',
+                    letterSpacing: '0.2em',
+                    color: '#FF6B6B',
+                    mb: 1.5,
+                    display: 'block',
+                  }}
+                >
+                  LO QUE NOS DEFINE
+                </Typography>
 
-              <Divider
-                sx={{
-                  width: '80px',
-                  height: '4px',
-                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                  borderRadius: '2px',
-                  mb: 6,
-                  mx: 'auto',
-                }}
-              />
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 800,
+                    mb: 2,
+                    fontSize: { xs: '2rem', md: '2.5rem' },
+                    color: 'white',
+                    maxWidth: '700px',
+                    mx: 'auto',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  Nuestros Valores
+                </Typography>
+
+                <Divider
+                  sx={{
+                    width: '40px',
+                    height: '3px',
+                    background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+                    borderRadius: '2px',
+                    mb: 3,
+                    mx: 'auto',
+                  }}
+                />
+
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: '1.05rem',
+                    lineHeight: 1.6,
+                    fontWeight: 300,
+                    color: 'rgba(255,255,255,0.8)',
+                    maxWidth: '700px',
+                    mx: 'auto',
+                  }}
+                >
+                  Los principios que guían nuestro trabajo y definen cada
+                  proyecto que emprendemos
+                </Typography>
+              </Box>
             </motion.div>
 
             <motion.div
@@ -692,7 +1305,7 @@ const SobreNosotros: React.FC = () => {
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 0.2,
+                    staggerChildren: 0.15,
                     delayChildren: 0.3,
                   },
                 },
@@ -705,7 +1318,7 @@ const SobreNosotros: React.FC = () => {
                   <Grid item key={value.title} xs={12} sm={6} md={3}>
                     <motion.div
                       variants={{
-                        hidden: { opacity: 0, y: 30 },
+                        hidden: { opacity: 0, y: 20 },
                         visible: {
                           opacity: 1,
                           y: 0,
@@ -718,97 +1331,121 @@ const SobreNosotros: React.FC = () => {
                       }}
                       whileHover={{
                         y: -10,
-                        boxShadow: '0 30px 60px rgba(124, 58, 237, 0.2)',
-                        transition: {
-                          type: 'spring',
-                          stiffness: 300,
-                          damping: 15,
-                        },
+                        transition: { duration: 0.2 },
                       }}
                     >
-                      <Card
-                        elevation={0}
+                      <Box
                         sx={{
                           height: '100%',
                           textAlign: 'center',
-                          p: 4,
+                          py: 5,
+                          px: 3,
                           borderRadius: 4,
                           position: 'relative',
-                          background: 'rgba(255,255,255,0.03)',
+                          background: 'rgba(255,255,255,0.02)',
                           backdropFilter: 'blur(10px)',
-                          border: '1px solid rgba(255,255,255,0.05)',
-                          boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                          border: '1px solid rgba(255,255,255,0.04)',
                           overflow: 'hidden',
-                          '&::before': {
-                            content: '""',
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
-                            background: `linear-gradient(135deg, ${
-                              index % 2 === 0
-                                ? 'rgba(124, 58, 237, 0.05)'
-                                : 'rgba(236, 72, 153, 0.05)'
-                            }, transparent)`,
-                            opacity: 0.7,
-                            zIndex: 0,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          boxShadow: '0 15px 35px rgba(0,0,0,0.1)',
+                          transition: 'all 0.3s ease',
+                          '&:hover': {
+                            boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+                            background: 'rgba(255,255,255,0.03)',
                           },
                         }}
                       >
+                        {/* Top gradient line */}
                         <Box
                           sx={{
                             position: 'absolute',
                             top: 0,
                             left: 0,
-                            width: '5px',
-                            height: '100%',
+                            width: '100%',
+                            height: '3px',
                             background: value.gradient,
                           }}
                         />
-                        <Box sx={{ position: 'relative', zIndex: 1 }}>
+
+                        {/* Icon wrapper */}
+                        <Box
+                          sx={{
+                            width: 80,
+                            height: 80,
+                            borderRadius: '24px',
+                            background: 'rgba(255,255,255,0.03)',
+                            border: '1px solid rgba(255,255,255,0.06)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            mb: 3,
+                            position: 'relative',
+                            overflow: 'hidden',
+                            '&::before': {
+                              content: '""',
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              width: '100%',
+                              height: '100%',
+                              background: `${value.gradient}20`,
+                              opacity: 0.5,
+                            },
+                          }}
+                        >
                           <Typography
-                            variant="h1"
                             sx={{
-                              fontSize: { xs: '3rem', md: '4rem' },
-                              mb: 3,
-                              background: value.gradient,
-                              backgroundClip: 'text',
-                              WebkitBackgroundClip: 'text',
-                              WebkitTextFillColor: 'transparent',
-                              transform: 'translateZ(0)', // Fix for webkit rendering
+                              fontSize: '2.2rem',
+                              position: 'relative',
+                              zIndex: 1,
                             }}
                           >
                             {value.icon}
                           </Typography>
-                          <Typography
-                            variant="h5"
-                            gutterBottom
-                            sx={{
-                              fontWeight: 700,
-                              mb: 2,
-                              fontSize: { xs: '1.25rem', md: '1.5rem' },
-                              background: value.gradient,
-                              backgroundClip: 'text',
-                              WebkitBackgroundClip: 'text',
-                              WebkitTextFillColor: 'transparent',
-                              transform: 'translateZ(0)', // Fix for webkit rendering
-                            }}
-                          >
-                            {value.title}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            color="rgba(255,255,255,0.8)"
-                            sx={{
-                              lineHeight: 1.7,
-                              fontSize: { xs: '0.875rem', md: '1rem' },
-                            }}
-                          >
-                            {value.description}
-                          </Typography>
                         </Box>
-                      </Card>
+
+                        <Typography
+                          variant="h6"
+                          gutterBottom
+                          sx={{
+                            fontWeight: 700,
+                            mb: 2,
+                            fontSize: { xs: '1.2rem', md: '1.3rem' },
+                            color: 'white',
+                            position: 'relative',
+                            '&::after': {
+                              content: '""',
+                              position: 'absolute',
+                              bottom: -8,
+                              left: '50%',
+                              transform: 'translateX(-50%)',
+                              width: '30px',
+                              height: '2px',
+                              background: value.gradient,
+                              borderRadius: '2px',
+                            },
+                          }}
+                        >
+                          {value.title}
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
+                          color="rgba(255,255,255,0.75)"
+                          sx={{
+                            lineHeight: 1.6,
+                            fontSize: '0.95rem',
+                            fontWeight: 300,
+                            letterSpacing: '0.2px',
+                            mt: 2,
+                          }}
+                        >
+                          {value.description}
+                        </Typography>
+                      </Box>
                     </motion.div>
                   </Grid>
                 ))}
@@ -817,21 +1454,57 @@ const SobreNosotros: React.FC = () => {
           </Container>
         </Box>
 
-        {/* A Quién Servimos - More visual, card-based approach */}
+        {/* Our Team - Premium professional design */}
         <Box
+          ref={teamRef}
           sx={{
-            py: { xs: 6, md: 8 },
-            mb: 10,
+            mb: 12,
+            py: { xs: 10, md: 14 },
             position: 'relative',
             zIndex: 1,
+            background:
+              'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%)',
           }}
         >
-          <Container>
+          {/* Background elements */}
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '20%',
+              left: '10%',
+              width: '300px',
+              height: '300px',
+              background:
+                'radial-gradient(circle, rgba(255,107,107,0.04) 0%, transparent 70%)',
+              borderRadius: '50%',
+              filter: 'blur(60px)',
+              zIndex: 0,
+              opacity: 0.7,
+            }}
+          />
+
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: '15%',
+              right: '5%',
+              width: '280px',
+              height: '280px',
+              background:
+                'radial-gradient(circle, rgba(78,205,196,0.04) 0%, transparent 70%)',
+              borderRadius: '50%',
+              filter: 'blur(60px)',
+              zIndex: 0,
+              opacity: 0.7,
+            }}
+          />
+
+          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
             <motion.div
               initial="hidden"
-              animate={valuesInView ? 'visible' : 'hidden'}
+              animate={teamInView ? 'visible' : 'hidden'}
               variants={{
-                hidden: { opacity: 0, y: 30 },
+                hidden: { opacity: 0, y: 20 },
                 visible: {
                   opacity: 1,
                   y: 0,
@@ -841,693 +1514,307 @@ const SobreNosotros: React.FC = () => {
                 },
               }}
             >
-              <Typography
-                variant="h3"
-                align="center"
-                sx={{
-                  fontWeight: 800,
-                  mb: 2,
-                  fontSize: { xs: '2rem', md: '2.75rem' },
-                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  letterSpacing: '-0.02em',
-                  position: 'relative',
-                }}
-              >
-                A Quién Servimos
-              </Typography>
+              <Box sx={{ mb: 8, textAlign: 'center' }}>
+                <Typography
+                  variant="overline"
+                  sx={{
+                    fontWeight: 500,
+                    fontSize: '0.85rem',
+                    letterSpacing: '0.2em',
+                    color: '#4ECDC4',
+                    mb: 1.5,
+                    display: 'block',
+                  }}
+                >
+                  NUESTROS PROFESIONALES
+                </Typography>
 
-              <Divider
-                sx={{
-                  width: '80px',
-                  height: '4px',
-                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                  borderRadius: '2px',
-                  mb: 6,
-                  mx: 'auto',
-                }}
-              />
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 800,
+                    mb: 2,
+                    fontSize: { xs: '2rem', md: '2.5rem' },
+                    background: 'linear-gradient(45deg, #4ECDC4, #7C3AED)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    letterSpacing: '-0.02em',
+                    position: 'relative',
+                    transform: 'translateZ(0)', // Fix for webkit rendering
+                  }}
+                >
+                  Nuestro Equipo
+                </Typography>
+
+                <Divider
+                  sx={{
+                    width: '40px',
+                    height: '3px',
+                    background: 'linear-gradient(45deg, #4ECDC4, #7C3AED)',
+                    borderRadius: '2px',
+                    mb: 3,
+                    mx: 'auto',
+                  }}
+                />
+
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: '1.05rem',
+                    lineHeight: 1.6,
+                    fontWeight: 300,
+                    color: 'rgba(255,255,255,0.8)',
+                    maxWidth: '700px',
+                    mx: 'auto',
+                  }}
+                >
+                  Un equipo multidisciplinar de expertos dedicados a crear
+                  soluciones digitales que marcan la diferencia
+                </Typography>
+              </Box>
             </motion.div>
 
-            <Box>
-              <Grid container spacing={4} sx={{ mt: 2 }}>
-                {[
-                  {
-                    icon: '💼',
-                    color: '#FF6B6B',
-                    title: 'Empresas',
-                    description:
-                      'Aumenta tu presencia digital y genera más conversiones.',
+            <motion.div
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.15,
+                    delayChildren: 0.3,
                   },
-                  {
-                    icon: '👤',
-                    color: '#4ECDC4',
-                    title: 'Emprendedores',
-                    description:
-                      'Construye una identidad sólida y conecta con tu audiencia.',
-                  },
-                  {
-                    icon: '🏆',
-                    color: '#7C3AED',
-                    title: 'Marcas Consolidadas',
-                    description:
-                      'Revitaliza tu presencia y adáptate a las nuevas tendencias.',
-                  },
-                ].map((item, index) => (
-                  <Grid item key={index} xs={12} md={4}>
+                },
+              }}
+              initial="hidden"
+              animate={teamInView ? 'visible' : 'hidden'}
+            >
+              <Grid container spacing={{ xs: 3, md: 4 }}>
+                {teamMembers.map((member, index) => (
+                  <Grid item key={member.name} xs={12} sm={6} md={4}>
                     <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={
-                        valuesInView
-                          ? { opacity: 1, y: 0 }
-                          : { opacity: 0, y: 30 }
-                      }
-                      transition={{
-                        duration: 0.5,
-                        delay: 0.2 + index * 0.1,
-                        type: 'spring',
-                        stiffness: 100,
-                        damping: 15,
-                      }}
-                      whileHover={{
-                        y: -10,
-                        transition: {
-                          type: 'spring',
-                          stiffness: 300,
-                          damping: 15,
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: {
+                            type: 'spring',
+                            stiffness: 70,
+                            damping: 20,
+                            mass: 1,
+                          },
                         },
                       }}
+                      whileHover={{ y: -12 }}
                     >
-                      <Card
-                        elevation={0}
+                      <Box
                         sx={{
                           height: '100%',
-                          p: 4,
                           borderRadius: 4,
-                          background: 'rgba(255,255,255,0.03)',
-                          backdropFilter: 'blur(10px)',
-                          border: '1px solid rgba(255,255,255,0.07)',
-                          boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          position: 'relative',
                           overflow: 'hidden',
-                          transition:
-                            'box-shadow 0.3s ease, border-color 0.3s ease',
+                          background: 'rgba(255,255,255,0.02)',
+                          backdropFilter: 'blur(10px)',
+                          border: '1px solid rgba(255,255,255,0.04)',
+                          position: 'relative',
+                          boxShadow: '0 15px 35px rgba(0,0,0,0.1)',
+                          transition: 'all 0.3s ease',
                           '&:hover': {
-                            boxShadow: '0 30px 60px rgba(124, 58, 237, 0.2)',
-                            borderColor: 'rgba(124, 58, 237, 0.2)',
-                            '& .icon-bg': {
-                              transform: 'scale(1.2)',
-                              opacity: 0.15,
+                            boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
+                            '& .member-image': {
+                              transform: 'scale(1.05)',
+                            },
+                            '& .social-overlay': {
+                              opacity: 1,
+                            },
+                            '& .member-details': {
+                              background: 'rgba(0,0,0,0.7)',
+                              transform: 'translateY(0)',
+                            },
+                            '& .member-role': {
+                              opacity: 1,
+                              transform: 'translateY(0)',
                             },
                           },
                         }}
                       >
                         <Box
-                          className="icon-bg"
                           sx={{
-                            position: 'absolute',
-                            top: '-20px',
-                            right: '-20px',
-                            fontSize: '8rem',
-                            opacity: 0.05,
-                            transition: 'all 0.5s ease',
-                            color: item.color,
-                            zIndex: 0,
+                            position: 'relative',
+                            overflow: 'hidden',
+                            height: { xs: '280px', md: '320px' },
                           }}
                         >
-                          {item.icon}
-                        </Box>
+                          <Box
+                            component="img"
+                            className="member-image"
+                            src={member.image}
+                            alt={member.name}
+                            sx={{
+                              height: '100%',
+                              width: '100%',
+                              objectFit: 'cover',
+                              transition:
+                                'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                              filter: 'brightness(0.9)',
+                            }}
+                          />
 
-                        <Box sx={{ position: 'relative', zIndex: 1 }}>
-                          <Typography
-                            variant="h1"
+                          {/* Subtle gradient overlay for better text readability */}
+                          <Box
                             sx={{
-                              fontSize: '2.5rem',
-                              mb: 2,
-                              color: item.color,
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              background:
+                                'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.7) 100%)',
+                              zIndex: 1,
+                            }}
+                          />
+
+                          {/* Member details - name, role, bio */}
+                          <Box
+                            className="member-details"
+                            sx={{
+                              position: 'absolute',
+                              bottom: 0,
+                              left: 0,
+                              right: 0,
+                              padding: 3,
+                              zIndex: 2,
+                              transition: 'all 0.3s ease',
+                              transform: 'translateY(40px)',
                             }}
                           >
-                            {item.icon}
-                          </Typography>
-                          <Typography
-                            variant="h5"
-                            gutterBottom
-                            sx={{
-                              fontWeight: 700,
-                              mb: 3,
-                              fontSize: { xs: '1.25rem', md: '1.5rem' },
-                              color: 'white',
-                              position: 'relative',
-                              pb: 2,
-                              '&::after': {
-                                content: '""',
-                                position: 'absolute',
-                                bottom: 0,
-                                left: 0,
-                                width: '60px',
-                                height: '3px',
-                                background: item.color,
-                                borderRadius: '2px',
-                              },
-                            }}
-                          >
-                            {item.title}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            color="rgba(255,255,255,0.8)"
-                            sx={{
-                              lineHeight: 1.7,
-                              fontSize: '1.05rem',
-                            }}
-                          >
-                            {item.description}
-                          </Typography>
+                            <Typography
+                              variant="h6"
+                              sx={{
+                                fontWeight: 700,
+                                color: 'white',
+                                fontSize: '1.1rem',
+                                mb: 0.5,
+                                textAlign: 'center',
+                                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                              }}
+                            >
+                              {member.name}
+                            </Typography>
+
+                            <Typography
+                              className="member-role"
+                              variant="subtitle2"
+                              sx={{
+                                fontWeight: 500,
+                                fontSize: '0.85rem',
+                                background:
+                                  'linear-gradient(45deg, #4ECDC4, #7C3AED)',
+                                backgroundClip: 'text',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                textAlign: 'center',
+                                mb: 2,
+                                opacity: 0,
+                                transform: 'translateY(10px)',
+                                transition: 'all 0.3s ease 0.1s',
+                              }}
+                            >
+                              {member.role}
+                            </Typography>
+
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                fontSize: '0.85rem',
+                                lineHeight: 1.5,
+                                color: 'rgba(255,255,255,0.8)',
+                                textAlign: 'center',
+                                display: { xs: 'none', sm: 'block' },
+                                opacity: 0,
+                                transform: 'translateY(10px)',
+                                transition: 'all 0.3s ease 0.2s',
+                                '.member-details:hover &': {
+                                  opacity: 1,
+                                  transform: 'translateY(0)',
+                                },
+                              }}
+                            >
+                              {member.bio}
+                            </Typography>
+
+                            {/* Social icons */}
+                            <Stack
+                              direction="row"
+                              spacing={1}
+                              justifyContent="center"
+                              sx={{
+                                mt: 2,
+                                opacity: 0,
+                                transform: 'translateY(10px)',
+                                transition: 'all 0.3s ease 0.3s',
+                                '.member-details:hover &': {
+                                  opacity: 1,
+                                  transform: 'translateY(0)',
+                                },
+                              }}
+                            >
+                              {Object.entries(member.social).map(
+                                ([platform, url]) => {
+                                  let Icon;
+                                  switch (platform) {
+                                    case 'linkedin':
+                                      Icon = LinkedInIcon;
+                                      break;
+                                    case 'twitter':
+                                      Icon = TwitterIcon;
+                                      break;
+                                    case 'instagram':
+                                      Icon = InstagramIcon;
+                                      break;
+                                    default:
+                                      Icon = LinkedInIcon;
+                                  }
+
+                                  return (
+                                    <IconButton
+                                      key={platform}
+                                      href={url}
+                                      size="small"
+                                      component={motion.a}
+                                      whileHover={{
+                                        y: -3,
+                                        backgroundColor:
+                                          platform === 'linkedin'
+                                            ? '#0077B5'
+                                            : platform === 'twitter'
+                                            ? '#1DA1F2'
+                                            : '#E1306C',
+                                        color: 'white',
+                                      }}
+                                      sx={{
+                                        bgcolor: 'rgba(255,255,255,0.15)',
+                                        backdropFilter: 'blur(5px)',
+                                        color: 'white',
+                                        width: 30,
+                                        height: 30,
+                                        transition: 'all 0.3s ease',
+                                      }}
+                                    >
+                                      <Icon fontSize="small" />
+                                    </IconButton>
+                                  );
+                                }
+                              )}
+                            </Stack>
+                          </Box>
                         </Box>
-                      </Card>
+                      </Box>
                     </motion.div>
                   </Grid>
                 ))}
               </Grid>
-            </Box>
-          </Container>
-        </Box>
-
-        {/* Our Team - More visual focus */}
-        <Box
-          ref={teamRef}
-          sx={{
-            mb: 10,
-            py: { xs: 8, md: 10 },
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
-          <motion.div
-            initial="hidden"
-            animate={teamInView ? 'visible' : 'hidden'}
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 0.6,
-                },
-              },
-            }}
-          >
-            <Typography
-              variant="h3"
-              align="center"
-              sx={{
-                fontWeight: 800,
-                mb: 2,
-                fontSize: { xs: '2rem', md: '2.75rem' },
-                background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                letterSpacing: '-0.02em',
-                position: 'relative',
-                transform: 'translateZ(0)', // Fix for webkit rendering
-              }}
-            >
-              Nuestro Equipo
-            </Typography>
-
-            <Divider
-              sx={{
-                width: '80px',
-                height: '4px',
-                background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                borderRadius: '2px',
-                mb: 6,
-                mx: 'auto',
-              }}
-            />
-          </motion.div>
-
-          <motion.div
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.15,
-                  delayChildren: 0.3,
-                },
-              },
-            }}
-            initial="hidden"
-            animate={teamInView ? 'visible' : 'hidden'}
-          >
-            <Grid container spacing={{ xs: 4, md: 4 }}>
-              {teamMembers.map((member, index) => (
-                <Grid item key={member.name} xs={12} sm={6} md={3}>
-                  <motion.div
-                    variants={{
-                      hidden: { opacity: 0, y: 30 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: {
-                          type: 'spring',
-                          stiffness: 100,
-                          damping: 15,
-                          mass: 1,
-                        },
-                      },
-                    }}
-                    whileHover={{
-                      y: -15,
-                      transition: {
-                        type: 'spring',
-                        stiffness: 300,
-                        damping: 15,
-                      },
-                    }}
-                  >
-                    <Card
-                      sx={{
-                        height: '100%',
-                        textAlign: 'center',
-                        transition: 'all 0.3s ease',
-                        borderRadius: 4,
-                        overflow: 'hidden',
-                        background: 'rgba(255,255,255,0.03)',
-                        backdropFilter: 'blur(10px)',
-                        border: '1px solid rgba(255,255,255,0.05)',
-                        boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                        position: 'relative',
-                        '&:hover': {
-                          boxShadow: '0 30px 60px rgba(124, 58, 237, 0.2)',
-                          borderColor: 'rgba(124, 58, 237, 0.3)',
-                          '& .member-image': {
-                            transform: 'scale(1.1)',
-                          },
-                          '& .social-overlay': {
-                            opacity: 1,
-                          },
-                        },
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          position: 'relative',
-                          overflow: 'hidden',
-                          height: '280px',
-                        }}
-                      >
-                        <CardMedia
-                          className="member-image"
-                          component="img"
-                          image={member.image}
-                          alt={member.name}
-                          sx={{
-                            height: '100%',
-                            width: '100%',
-                            transition:
-                              'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                            objectFit: 'cover',
-                            filter: 'brightness(0.9)',
-                          }}
-                        />
-                        <Box
-                          className="social-overlay"
-                          sx={{
-                            position: 'absolute',
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            height: '100%',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'flex-end',
-                            background:
-                              'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 35%, rgba(0,0,0,0) 100%)',
-                            opacity: 0,
-                            transition: 'opacity 0.3s ease',
-                          }}
-                        >
-                          <Stack
-                            direction="row"
-                            spacing={1.5}
-                            justifyContent="center"
-                            sx={{ p: 3 }}
-                          >
-                            {Object.entries(member.social).map(
-                              ([platform, url]) => {
-                                let Icon;
-                                switch (platform) {
-                                  case 'linkedin':
-                                    Icon = LinkedInIcon;
-                                    break;
-                                  case 'twitter':
-                                    Icon = TwitterIcon;
-                                    break;
-                                  case 'instagram':
-                                    Icon = InstagramIcon;
-                                    break;
-                                  default:
-                                    Icon = LinkedInIcon;
-                                }
-
-                                return (
-                                  <IconButton
-                                    key={platform}
-                                    href={url}
-                                    size="small"
-                                    component={motion.a}
-                                    whileHover={{
-                                      y: -5,
-                                      backgroundColor:
-                                        platform === 'linkedin'
-                                          ? '#0077B5'
-                                          : platform === 'twitter'
-                                          ? '#1DA1F2'
-                                          : '#E1306C',
-                                      color: 'white',
-                                    }}
-                                    sx={{
-                                      bgcolor: 'rgba(255,255,255,0.15)',
-                                      backdropFilter: 'blur(5px)',
-                                      color: 'white',
-                                      width: 40,
-                                      height: 40,
-                                      transition: 'all 0.3s ease',
-                                      '&:hover': {
-                                        bgcolor: 'primary.main',
-                                        color: 'white',
-                                      },
-                                    }}
-                                  >
-                                    <Icon fontSize="small" />
-                                  </IconButton>
-                                );
-                              }
-                            )}
-                          </Stack>
-                        </Box>
-                      </Box>
-                      <CardContent
-                        sx={{
-                          p: 3,
-                          background:
-                            'linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))',
-                          borderTop: '1px solid rgba(255,255,255,0.05)',
-                        }}
-                      >
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            fontWeight: 700,
-                            color: 'white',
-                            mb: 1,
-                            fontSize: '1.1rem',
-                          }}
-                        >
-                          {member.name}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            fontWeight: 600,
-                            fontSize: '0.9rem',
-                            background:
-                              'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                            backgroundClip: 'text',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                          }}
-                        >
-                          {member.role}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </Grid>
-              ))}
-            </Grid>
-          </motion.div>
-        </Box>
-
-        {/* Diferenciador Clave - More visual and focused */}
-        <Box sx={{ py: { xs: 6, md: 8 }, mb: 0 }}>
-          <Container>
-            <motion.div
-              initial="hidden"
-              animate={valuesInView ? 'visible' : 'hidden'}
-              variants={fadeInUp}
-            >
-              <Typography
-                variant="h3"
-                align="center"
-                sx={{
-                  fontWeight: 700,
-                  mb: 2,
-                  fontSize: { xs: '2rem', md: '2.5rem' },
-                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  position: 'relative',
-                }}
-              >
-                Lo Que Nos Hace Diferentes
-              </Typography>
-
-              <Divider
-                sx={{
-                  width: '80px',
-                  height: '4px',
-                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                  borderRadius: '2px',
-                  mb: 6,
-                  mx: 'auto',
-                }}
-              />
             </motion.div>
-
-            <Box
-              component={motion.div}
-              initial={{ opacity: 0, y: 30 }}
-              animate={
-                valuesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-              }
-              transition={{ duration: 0.6, delay: 0.3 }}
-              sx={{
-                mt: 4,
-                p: 0,
-                borderRadius: 4,
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
-              <Grid container spacing={4} alignItems="center">
-                <Grid item xs={12} md={5}>
-                  <Box
-                    sx={{
-                      p: 4,
-                      borderRadius: 4,
-                      background: 'rgba(255,255,255,0.03)',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Typography
-                      variant="h4"
-                      sx={{
-                        fontWeight: 700,
-                        mb: 3,
-                        fontSize: { xs: '1.5rem', md: '2rem' },
-                        background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
-                        backgroundClip: 'text',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                      }}
-                    >
-                      Nuestra Fórmula
-                    </Typography>
-
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        mb: 4,
-                        p: 2,
-                        borderRadius: 2,
-                        background: 'rgba(255,255,255,0.03)',
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        color="white"
-                        sx={{ fontWeight: 600 }}
-                      >
-                        Creatividad
-                      </Typography>
-                      <Typography variant="h5">+</Typography>
-                      <Typography
-                        variant="h6"
-                        color="white"
-                        sx={{ fontWeight: 600 }}
-                      >
-                        Estrategia
-                      </Typography>
-                      <Typography variant="h5">+</Typography>
-                      <Typography
-                        variant="h6"
-                        color="white"
-                        sx={{ fontWeight: 600 }}
-                      >
-                        Tecnología
-                      </Typography>
-                    </Box>
-
-                    <Typography
-                      variant="body1"
-                      color="rgba(255,255,255,0.9)"
-                      sx={{
-                        fontSize: '1.1rem',
-                        lineHeight: 1.8,
-                        textAlign: 'center',
-                        fontWeight: 500,
-                      }}
-                    >
-                      Soluciones personalizadas que no solo se ven bien, sino
-                      que funcionan.
-                    </Typography>
-                  </Box>
-                </Grid>
-
-                <Grid item xs={12} md={7}>
-                  <Grid container spacing={3}>
-                    {[
-                      {
-                        icon: '🎨',
-                        title: 'Soluciones Creativas',
-                        color: '#FF6B6B',
-                      },
-                      {
-                        icon: '📱',
-                        title: 'Enfoque Digital',
-                        color: '#4ECDC4',
-                      },
-                      {
-                        icon: '🔍',
-                        title: 'Visión Estratégica',
-                        color: '#7C3AED',
-                      },
-                      {
-                        icon: '📊',
-                        title: 'Resultados Medibles',
-                        color: '#EC4899',
-                      },
-                      {
-                        icon: '🌐',
-                        title: 'Visión Internacional',
-                        color: '#FF9F43',
-                      },
-                      {
-                        icon: '💡',
-                        title: 'Innovación Constante',
-                        color: '#00CFE8',
-                      },
-                    ].map((item, index) => (
-                      <Grid item xs={6} md={4} key={index}>
-                        <motion.div
-                          whileHover={{
-                            y: -10,
-                            boxShadow: '0 15px 30px rgba(0,0,0,0.2)',
-                          }}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={
-                            valuesInView
-                              ? { opacity: 1, y: 0 }
-                              : { opacity: 0, y: 20 }
-                          }
-                          transition={{
-                            duration: 0.5,
-                            delay: 0.4 + index * 0.1,
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              p: 3,
-                              textAlign: 'center',
-                              borderRadius: 3,
-                              background: 'rgba(255,255,255,0.03)',
-                              height: '100%',
-                              border: '1px solid rgba(255,255,255,0.05)',
-                              transition: 'all 0.3s ease',
-                              '&:hover': {
-                                background: 'rgba(255,255,255,0.05)',
-                                borderColor: item.color,
-                              },
-                            }}
-                          >
-                            <Typography
-                              sx={{
-                                fontSize: '2rem',
-                                mb: 2,
-                              }}
-                            >
-                              {item.icon}
-                            </Typography>
-                            <Typography
-                              variant="body1"
-                              sx={{
-                                fontWeight: 600,
-                                fontSize: '0.9rem',
-                                color: 'white',
-                              }}
-                            >
-                              {item.title}
-                            </Typography>
-                          </Box>
-                        </motion.div>
-                      </Grid>
-                    ))}
-                  </Grid>
-
-                  <Box
-                    component={motion.div}
-                    whileHover={{ y: -5 }}
-                    sx={{
-                      mt: 3,
-                      p: 3,
-                      borderRadius: 3,
-                      background:
-                        'linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(236, 72, 153, 0.1))',
-                      border: '1px solid rgba(124, 58, 237, 0.2)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      align="center"
-                      color="white"
-                      sx={{ fontWeight: 600, fontSize: '1.1rem' }}
-                    >
-                      Adaptados a las necesidades de cada cliente
-                    </Typography>
-                  </Box>
-                </Grid>
-              </Grid>
-            </Box>
           </Container>
         </Box>
       </Container>

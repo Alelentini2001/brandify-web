@@ -48,7 +48,7 @@ interface PricingOption {
   name: string;
   description: string;
   features: string[];
-  basePrice: number;
+  price: number;
   icon: React.ReactNode;
 }
 
@@ -104,14 +104,15 @@ const products: ProductFeature[] = [
     ],
   },
   {
-    title: 'Gestión de redes sociales',
+    title: 'Desarrollo de Web y Apps',
     description:
-      'Nos encargamos de tu presencia digital para mantener una comunicación coherente y constante con estrategias específicas por plataforma.',
-    icon: <DevicesIcon sx={{ fontSize: 40 }} />,
+      'Creamos soluciones digitales a medida con tecnologías modernas que impulsan la presencia online de tu negocio.',
+    icon: <CodeIcon sx={{ fontSize: 40 }} />,
     benefits: [
-      'Comunicación coherente',
-      'Mayor alcance e interacción',
-      'Contenido adaptado por plataforma',
+      'Diseño responsive y moderno',
+      'Experiencia de usuario optimizada',
+      'Aplicaciones nativas y multiplataforma',
+      'Escalabilidad y rendimiento',
     ],
   },
 ];
@@ -119,7 +120,7 @@ const products: ProductFeature[] = [
 const pricingOptions: PricingOption[] = [
   {
     name: 'Desarrollo Web',
-    description: 'Sitios web profesionales y aplicaciones web',
+    description: 'Completalo vos directamente',
     features: [
       'Diseño responsive y moderno',
       'Optimización SEO',
@@ -127,52 +128,25 @@ const pricingOptions: PricingOption[] = [
       'Panel de administración',
       'Soporte técnico',
     ],
-    basePrice: 1499,
+    price: 1000,
     icon: <CodeIcon />,
   },
   {
-    name: 'Diseño UI/UX',
-    description:
-      'Interfaces intuitivas y experiencias de usuario excepcionales',
+    name: 'Desarrollo de Plataforma',
+    description: 'Completalo vos directamente',
     features: [
-      'Diseño de wireframes',
-      'Prototipos interactivos',
-      'Sistema de diseño',
-      'Pruebas de usabilidad',
-      'Documentación de diseño',
+      'Desarrollo a medida',
+      'Base de datos',
+      'API personalizada',
+      'Panel de administración avanzado',
+      'Soporte técnico prioritario',
     ],
-    basePrice: 999,
-    icon: <BrushIcon />,
+    price: 3500,
+    icon: <CodeIcon />,
   },
   {
-    name: 'Marketing Digital',
-    description: 'Estrategias completas de marketing digital',
-    features: [
-      'SEO y SEM',
-      'Gestión de redes sociales',
-      'Email marketing',
-      'Análisis de datos',
-      'Reportes mensuales',
-    ],
-    basePrice: 799,
-    icon: <TrendingUpIcon />,
-  },
-  {
-    name: 'Creación de Video',
-    description: 'Contenido visual profesional para tu marca',
-    features: [
-      'Videos promocionales',
-      'Motion graphics',
-      'Edición de videos',
-      'Animaciones 2D/3D',
-      'Optimización para redes sociales',
-    ],
-    basePrice: 1299,
-    icon: <VideoLibraryIcon />,
-  },
-  {
-    name: 'Apps Móviles',
-    description: 'Aplicaciones móviles nativas y multiplataforma',
+    name: 'Desarrollo de App',
+    description: 'Completalo vos directamente',
     features: [
       'Desarrollo iOS y Android',
       'Diseño de interfaz móvil',
@@ -180,21 +154,170 @@ const pricingOptions: PricingOption[] = [
       'Pruebas de rendimiento',
       'Publicación en stores',
     ],
-    basePrice: 1999,
+    price: 2200,
     icon: <DevicesIcon />,
   },
   {
-    name: 'E-commerce',
-    description: 'Tiendas online completas y funcionales',
+    name: 'Marketing Digital',
+    description:
+      'Creación y Gestión de Campañas Publicitarias en Meta Ads y Google Ads',
     features: [
-      'Catálogo de productos',
-      'Carrito de compras',
-      'Pasarela de pagos',
-      'Panel de administración',
-      'Gestión de inventario',
+      'Creación y gestión de campañas en Meta Ads y Google Ads',
+      'Segmentación avanzada basada en datos demográficos',
+      'Estrategia de Remarketing',
+      'Análisis en tiempo real',
+      '2 reuniones mensuales de seguimiento',
+      'Presupuesto mínimo de 500€ por plataforma',
     ],
-    basePrice: 1799,
-    icon: <ShoppingCartIcon />,
+    price: 750,
+    icon: <TrendingUpIcon />,
+  },
+  {
+    name: 'Diseño de Marca',
+    description: 'Identidad de marca y branding completo',
+    features: [
+      'Diseño de logotipo y variantes',
+      'Paleta de colores estratégica',
+      'Tipografías personalizadas',
+      'Guías de estilo detalladas',
+      'Iconografía y elementos gráficos',
+      'Mockups profesionales',
+      'Estrategia de branding',
+    ],
+    price: 450,
+    icon: <BrushIcon />,
+  },
+  {
+    name: 'Diseño de Logotipo',
+    description: 'Diseño de Logotipo Profesional',
+    features: [
+      'Logotipo principal + variantes',
+      'Paleta de colores estratégica',
+      'Tipografía personalizada',
+      'Versiones en diferentes formatos',
+      'Manual de uso básico',
+    ],
+    price: 100,
+    icon: <BrushIcon />,
+  },
+  {
+    name: 'Diseño de Banner',
+    description: 'Diseño de Banner Profesional',
+    features: [
+      'Diseño 100% personalizado',
+      'Formato optimizado por canal',
+      'Tipografías impactantes',
+      'Colores estratégicos',
+      'CTAs efectivos',
+    ],
+    price: 50,
+    icon: <BrushIcon />,
+  },
+  {
+    name: 'Thumbnails',
+    description:
+      'Miniaturas diseñadas estratégicamente para captar la atención y aumentar el CTR',
+    features: [
+      'Diseño estratégico para marcas personales y empresas',
+      'Estilo visual alineado a tu identidad',
+      'Composición clara y jerárquica',
+      'Colores contrastantes y elementos visuales impactantes',
+      'Formato optimizado para cada plataforma',
+    ],
+    price: 8,
+    icon: <BrushIcon />,
+  },
+  {
+    name: 'Historias Instagram',
+    description:
+      'Historias visualmente impactantes, alineadas con la identidad de tu marca',
+    features: [
+      'Diseño para generar interacción',
+      'Estilo adaptable para promociones y branding',
+      'Tipografías y colores personalizados',
+      'Elementos interactivos y llamados a la acción',
+    ],
+    price: 8,
+    icon: <BrushIcon />,
+  },
+  {
+    name: 'Publicación Instagram',
+    description:
+      'Diseño único y alineado a tu identidad visual para marcas y creadores',
+    features: [
+      'Gráfica para destacar en el feed',
+      'Mensajes claros y tipografías atractivas',
+      'Composición equilibrada y profesional',
+      'Colores estratégicos y estilo coherente',
+      'Formato optimizado para móvil',
+    ],
+    price: 10,
+    icon: <BrushIcon />,
+  },
+  {
+    name: 'Flyers',
+    description: 'Diseño 100% a medida para marcas, emprendimientos o eventos',
+    features: [
+      'Estilo visual alineado con identidad',
+      'Distribución clara de la información',
+      'Tipografías y colores estratégicos',
+      'Versión optimizada para redes o impresión',
+      'Perfecto para eventos y promociones',
+    ],
+    price: 25,
+    icon: <BrushIcon />,
+  },
+  {
+    name: 'Creativos Publicitarios',
+    description: 'Creatividades estratégicas para campañas de alto impacto',
+    features: [
+      'Adaptación visual por plataforma',
+      'Diseño alineado con identidad de marca',
+      'Textos publicitarios directos',
+      'Visuales potentes para conversiones',
+      'Flexibilidad total para diferentes objetivos',
+    ],
+    price: 20,
+    icon: <BrushIcon />,
+  },
+  {
+    name: 'Presentación Comercial',
+    description: 'Diseño visualmente atractivo para comunicar tu propuesta',
+    features: [
+      'Estructura clara y estratégica',
+      'Estilo adaptado a identidad de marca',
+      'Pensado para digital e impreso',
+      'Perfecto para startups y empresas',
+      'Ideal para presentaciones y pitch decks',
+    ],
+    price: 10,
+    icon: <BrushIcon />,
+  },
+  {
+    name: 'Edición de Videos',
+    description: 'Edición dinámica y atractiva para captar la atención',
+    features: [
+      'Adaptado a tu objetivo específico',
+      'Transiciones y efectos personalizados',
+      'Música libre de derechos',
+      'Formato optimizado por plataforma',
+      'Estilo alineado a identidad',
+    ],
+    price: 20,
+    icon: <VideoLibraryIcon />,
+  },
+  {
+    name: 'Intro/Outro',
+    description: 'Soluciones audiovisuales de alto impacto para marcas',
+    features: [
+      'Desarrollo integral personalizado',
+      'Animaciones y diseño gráfico profesional',
+      'Integración de logotipo y música',
+      'Entrega en alta calidad',
+      'Formatos optimizados para todas plataformas',
+    ],
+    price: 50,
+    icon: <VideoLibraryIcon />,
   },
 ];
 
@@ -206,7 +329,7 @@ const serviceCalculators: ServiceCalculator[] = [
         name: 'Landing Page',
         description:
           'Sitio web de una página con diseño moderno y optimizado para conversión',
-        price: 1499,
+        price: 1000,
         features: [
           'Diseño responsive',
           'Optimización SEO',
@@ -218,7 +341,7 @@ const serviceCalculators: ServiceCalculator[] = [
         name: 'Sitio Web Corporativo',
         description:
           'Sitio web completo con múltiples páginas y panel de administración',
-        price: 2499,
+        price: 2200,
         features: [
           'Hasta 5 páginas',
           'Panel de administración',
@@ -230,7 +353,7 @@ const serviceCalculators: ServiceCalculator[] = [
         name: 'Aplicación Web',
         description:
           'Aplicación web personalizada con funcionalidades específicas',
-        price: 3999,
+        price: 3500,
         features: [
           'Desarrollo a medida',
           'Base de datos',
@@ -267,132 +390,143 @@ const serviceCalculators: ServiceCalculator[] = [
     name: 'Marketing Digital',
     options: [
       {
-        name: 'Básico',
-        description: 'Estrategia básica de marketing digital',
-        price: 799,
+        name: 'Meta Ads',
+        description: 'Gestión de campañas publicitarias en Meta Ads',
+        price: 750,
         features: [
-          'SEO básico',
-          'Gestión de redes sociales',
-          'Reportes mensuales',
+          'Creación y gestión de campañas',
+          'Segmentación avanzada',
+          'Estrategia de Remarketing',
+          'Análisis en tiempo real',
+          '2 reuniones mensuales',
+          'Presupuesto mínimo de 500€',
         ],
       },
       {
-        name: 'Profesional',
-        description: 'Estrategia completa de marketing digital',
-        price: 1499,
+        name: 'Google Ads',
+        description: 'Gestión de campañas publicitarias en Google Ads',
+        price: 750,
         features: [
-          'SEO avanzado',
-          'Publicidad en redes sociales',
-          'Email marketing',
-          'Análisis de datos',
-        ],
-      },
-      {
-        name: 'Premium',
-        description: 'Estrategia premium con todas las funcionalidades',
-        price: 2499,
-        features: [
-          'SEO técnico',
-          'Campañas publicitarias',
-          'Marketing de contenidos',
-          'Analytics avanzado',
+          'Creación y gestión de campañas',
+          'Segmentación avanzada',
+          'Estrategia de Remarketing',
+          'Análisis en tiempo real',
+          '2 reuniones mensuales',
+          'Presupuesto mínimo de 500€',
         ],
       },
     ],
     customizations: [
       {
-        name: 'Número de Redes Sociales',
-        description: 'Cantidad de redes sociales a gestionar',
+        name: 'Presupuesto Mínimo',
+        description: 'Presupuesto mínimo por plataforma',
+        price: 500,
+        type: 'switch',
+      },
+      {
+        name: 'Reuniones Adicionales',
+        description: 'Reuniones adicionales de seguimiento',
         price: 100,
+        type: 'slider',
+        min: 1,
+        max: 4,
+        step: 1,
+      },
+    ],
+  },
+  {
+    name: 'Diseño Gráfico',
+    options: [
+      {
+        name: 'Diseño de Marca',
+        description: 'Identidad de marca y branding completo',
+        price: 450,
+        features: [
+          'Diseño de logotipo y variantes',
+          'Paleta de colores estratégica',
+          'Tipografías personalizadas',
+          'Guías de estilo detalladas',
+          'Iconografía y elementos gráficos',
+          'Mockups profesionales',
+          'Estrategia de branding',
+        ],
+      },
+      {
+        name: 'Diseño de Logotipo',
+        description: 'Diseño de Logotipo Profesional',
+        price: 100,
+        features: [
+          'Logotipo principal + variantes',
+          'Paleta de colores estratégica',
+          'Tipografía personalizada',
+          'Versiones en diferentes formatos',
+          'Manual de uso básico',
+        ],
+      },
+      {
+        name: 'Diseño de Banner',
+        description: 'Diseño de Banner Profesional',
+        price: 50,
+        features: [
+          'Diseño 100% personalizado',
+          'Formato optimizado por canal',
+          'Tipografías impactantes',
+          'Colores estratégicos',
+          'CTAs efectivos',
+        ],
+      },
+    ],
+    customizations: [
+      {
+        name: 'Revisiones Adicionales',
+        description: 'Número de revisiones adicionales',
+        price: 50,
         type: 'slider',
         min: 1,
         max: 5,
         step: 1,
       },
       {
-        name: 'Publicidad',
-        description: 'Incluir gestión de publicidad',
-        price: 500,
-        type: 'switch',
-      },
-      {
-        name: 'Contenido Premium',
-        description: 'Creación de contenido profesional',
-        price: 300,
-        type: 'switch',
-      },
-    ],
-  },
-  {
-    name: 'Creación de Video',
-    options: [
-      {
-        name: 'Video Promocional',
-        description: 'Video promocional básico para redes sociales',
-        price: 1299,
-        features: [
-          'Edición básica',
-          'Música de fondo',
-          'Subtítulos',
-          'Optimización para redes',
-        ],
-      },
-      {
-        name: 'Video Corporativo',
-        description: 'Video corporativo profesional con motion graphics',
-        price: 2499,
-        features: [
-          'Motion graphics',
-          'Voz en off',
-          'Animaciones 2D',
-          'Múltiples formatos',
-        ],
-      },
-      {
-        name: 'Serie de Videos',
-        description: 'Serie de videos para campaña o contenido regular',
-        price: 3999,
-        features: [
-          'Planificación de contenido',
-          'Estilo consistente',
-          'Optimización SEO',
-          'Analytics',
-        ],
-      },
-    ],
-    customizations: [
-      {
-        name: 'Duración del Video',
-        description: 'Duración en minutos',
+        name: 'Formato Premium',
+        description: 'Entrega en formato premium',
         price: 100,
-        type: 'slider',
-        min: 1,
-        max: 10,
-        step: 1,
-      },
-      {
-        name: 'Motion Graphics',
-        description: 'Incluir animaciones avanzadas',
-        price: 500,
-        type: 'switch',
-      },
-      {
-        name: 'Voz en Off',
-        description: 'Incluir locución profesional',
-        price: 300,
         type: 'switch',
       },
     ],
   },
 ];
 
-const PricingCalculator: React.FC = () => {
+interface PricingCalculatorProps {
+  initialService?: ServiceCalculator | null;
+  initialOption?: any | null;
+}
+
+const PricingCalculator: React.FC<PricingCalculatorProps> = ({
+  initialService,
+  initialOption,
+}) => {
   const theme = useTheme();
   const [selectedService, setSelectedService] = useState(serviceCalculators[0]);
   const [selectedOption, setSelectedOption] = useState(
     selectedService.options[0]
   );
   const [customizations, setCustomizations] = useState<Record<string, any>>({});
+
+  // Effect to update state when props change
+  useEffect(() => {
+    if (initialService) {
+      setSelectedService(initialService);
+
+      if (initialOption) {
+        setSelectedOption(initialOption);
+      } else {
+        setSelectedOption(initialService.options[0]);
+      }
+
+      // Reset customizations when service changes
+      setCustomizations({});
+    }
+  }, [initialService, initialOption]);
 
   const calculatePrice = () => {
     let price = selectedOption.price;
@@ -428,9 +562,10 @@ const PricingCalculator: React.FC = () => {
 
   return (
     <Paper
+      id="pricing-calculator"
       elevation={3}
       sx={{
-        p: { xs: 2, md: 4 },
+        p: { xs: 3, md: 5 },
         borderRadius: 2,
         background: 'rgba(255,255,255,0.03)',
         backdropFilter: 'blur(10px)',
@@ -438,12 +573,13 @@ const PricingCalculator: React.FC = () => {
         maxWidth: 800,
         mx: 'auto',
         boxShadow: '0 4px 24px rgba(0,0,0,0.1)',
+        mb: { xs: 4, md: 6 },
       }}
     >
       <Typography
         variant="h4"
         sx={{
-          mb: { xs: 3, md: 4 },
+          mb: { xs: 4, md: 5 },
           color: 'white',
           fontWeight: 700,
           textAlign: 'center',
@@ -453,20 +589,22 @@ const PricingCalculator: React.FC = () => {
           WebkitTextFillColor: 'transparent',
           textShadow: '0 2px 10px rgba(124, 58, 237, 0.3)',
           fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' },
+          letterSpacing: '0.5px',
         }}
       >
         Calcula el Precio de tu Proyecto
       </Typography>
 
       {/* Service Selection */}
-      <Box sx={{ mb: { xs: 3, md: 4 } }}>
+      <Box sx={{ mb: { xs: 4, md: 5 } }}>
         <Typography
           variant="h6"
           sx={{
             color: 'white',
-            mb: 2,
+            mb: 3,
             fontWeight: 600,
             fontSize: { xs: '0.875rem', sm: '1rem', md: '1.25rem' },
+            letterSpacing: '0.3px',
           }}
         >
           Selecciona el Servicio
@@ -548,7 +686,7 @@ const PricingCalculator: React.FC = () => {
       </Box>
 
       {/* Service Options */}
-      <Box sx={{ mb: { xs: 3, md: 4 } }}>
+      <Box sx={{ mb: { xs: 4, md: 5 } }}>
         <Typography
           variant="h6"
           sx={{
@@ -566,87 +704,129 @@ const PricingCalculator: React.FC = () => {
               <Card
                 sx={{
                   height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  p: { xs: 2, md: 2.5 },
+                  borderRadius: '12px',
                   background:
-                    selectedOption.name === option.name
-                      ? 'rgba(124, 58, 237, 0.1)'
-                      : 'rgba(255,255,255,0.03)',
-                  border:
-                    selectedOption.name === option.name
-                      ? '2px solid #7C3AED'
-                      : '1px solid rgba(255,255,255,0.1)',
+                    'linear-gradient(to bottom, rgba(30,30,30,0.5), rgba(20,20,20,0.7))',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(124, 58, 237, 0.2)',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+                  transition: 'all 0.3s ease-in-out',
                   cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  boxShadow:
-                    selectedOption.name === option.name
-                      ? '0 4px 20px rgba(124, 58, 237, 0.2)'
-                      : 'none',
                   '&:hover': {
-                    transform: 'translateY(-4px)',
-                    borderColor: '#7C3AED',
-                    boxShadow: '0 8px 30px rgba(124, 58, 237, 0.2)',
+                    transform: 'translateY(-5px)',
+                    boxShadow: '0 10px 25px rgba(124, 58, 237, 0.25)',
+                    borderColor: 'rgba(124, 58, 237, 0.5)',
                   },
-                  '&:active': {
-                    transform: 'scale(0.98)',
-                  },
-                  p: { xs: 2, md: 3 },
                 }}
                 onClick={() => setSelectedOption(option)}
               >
-                <Typography
-                  variant="h6"
+                <CardContent
                   sx={{
-                    color: 'white',
-                    fontWeight: 600,
-                    mb: 1,
-                    fontSize: { xs: '0.875rem', sm: '1rem', md: '1.25rem' },
+                    p: { xs: 1, md: 1.5 },
+                    '&:last-child': { pb: { xs: 1, md: 1.5 } },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
+                    justifyContent: 'space-between',
                   }}
                 >
-                  {option.name}
-                </Typography>
-                <Typography
-                  sx={{
-                    color: 'rgba(255,255,255,0.7)',
-                    mb: 2,
-                    fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' },
-                  }}
-                >
-                  {option.description}
-                </Typography>
-                <Box sx={{ mb: 2 }}>
-                  {option.features.map((feature) => (
-                    <Typography
-                      key={feature}
-                      variant="body2"
+                  <Box>
+                    <Box
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
-                        mb: 1,
-                        color: 'rgba(255,255,255,0.7)',
-                        fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' },
+                        mb: 1.5,
+                        color: '#7C3AED',
                       }}
                     >
-                      <ArrowForwardIcon
+                      <CodeIcon sx={{ fontSize: 20 }} />
+                      <Typography
+                        variant="h6"
                         sx={{
-                          mr: 1,
-                          fontSize: { xs: 14, sm: 16, md: 18 },
-                          color: '#7C3AED',
+                          ml: 1.5,
+                          fontWeight: 'bold',
+                          fontSize: { xs: '1rem', md: '1.2rem' },
+                          color: 'white',
+                          letterSpacing: '0.2px',
                         }}
-                      />
-                      {feature}
+                      >
+                        {option.name}
+                      </Typography>
+                    </Box>
+                    <Typography
+                      color="rgba(255,255,255,0.7)"
+                      paragraph
+                      sx={{
+                        fontSize: { xs: '0.8rem', md: '0.875rem' },
+                        mb: { xs: 1, md: 1.5 },
+                        lineHeight: 1.4,
+                        letterSpacing: '0.1px',
+                      }}
+                    >
+                      {option.description}
                     </Typography>
-                  ))}
-                </Box>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: '#7C3AED',
-                    fontWeight: 700,
-                    textShadow: '0 2px 10px rgba(124, 58, 237, 0.3)',
-                    fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' },
-                  }}
-                >
-                  ${option.price}
-                </Typography>
+                  </Box>
+
+                  <Box>
+                    {option.features.slice(0, 4).map((feature) => (
+                      <Typography
+                        key={feature}
+                        variant="body2"
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          mb: 0.75,
+                          color: 'rgba(255,255,255,0.7)',
+                          fontSize: { xs: '0.7rem', md: '0.75rem' },
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        <ArrowForwardIcon
+                          sx={{
+                            mr: 0.75,
+                            fontSize: { xs: 12, md: 14 },
+                            color: '#7C3AED',
+                            mt: '1px',
+                          }}
+                        />
+                        {feature}
+                      </Typography>
+                    ))}
+                    {option.features.length > 4 && (
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          mb: 0.75,
+                          color: '#7C3AED',
+                          fontSize: { xs: '0.7rem', md: '0.75rem' },
+                          fontStyle: 'italic',
+                        }}
+                      >
+                        +{option.features.length - 4} más
+                      </Typography>
+                    )}
+
+                    <Typography
+                      variant="subtitle1"
+                      sx={{
+                        fontWeight: 700,
+                        color: '#7C3AED',
+                        textShadow: '0 2px 8px rgba(124, 58, 237, 0.3)',
+                        fontSize: { xs: '1.1rem', md: '1.25rem' },
+                        textAlign: 'right',
+                        mt: 1.5,
+                        pt: 1,
+                        borderTop: '1px solid rgba(124, 58, 237, 0.2)',
+                        letterSpacing: '0.2px',
+                      }}
+                    >
+                      desde €{option.price}
+                    </Typography>
+                  </Box>
+                </CardContent>
               </Card>
             </Grid>
           ))}
@@ -654,7 +834,7 @@ const PricingCalculator: React.FC = () => {
       </Box>
 
       {/* Customizations */}
-      <Box sx={{ mb: { xs: 3, md: 4 } }}>
+      <Box sx={{ mb: { xs: 4, md: 5 } }}>
         <Typography
           variant="h6"
           sx={{
@@ -708,7 +888,7 @@ const PricingCalculator: React.FC = () => {
                     fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
                   }}
                 >
-                  +${customization.price}
+                  +€{customization.price}
                 </Typography>
               </Box>
               <Typography
@@ -841,7 +1021,7 @@ const PricingCalculator: React.FC = () => {
             fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
           }}
         >
-          ${calculatePrice()}
+          desde €{calculatePrice()}
         </Typography>
         <Typography
           sx={{
@@ -853,312 +1033,86 @@ const PricingCalculator: React.FC = () => {
           detallado.
         </Typography>
       </Box>
+
+      {/* CTA Button */}
+      <Box
+        sx={{
+          textAlign: 'center',
+          mt: { xs: 4, md: 5 },
+        }}
+      >
+        <AnimatedButton
+          variant="contained"
+          size="large"
+          href="/contacto"
+          animationVariant="glow"
+          endIcon={<ArrowForwardIcon />}
+          sx={{
+            px: { xs: 4, md: 6 },
+            py: { xs: 1.5, md: 2 },
+            borderRadius: '12px',
+            background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
+            fontSize: { xs: '0.875rem', md: '1rem' },
+            fontWeight: 600,
+            boxShadow: '0 4px 20px rgba(124, 58, 237, 0.3)',
+            '&:hover': {
+              transform: 'translateY(-2px)',
+              boxShadow: '0 8px 30px rgba(124, 58, 237, 0.4)',
+            },
+          }}
+        >
+          Iniciar Proyecto
+        </AnimatedButton>
+      </Box>
     </Paper>
   );
 };
 
-// Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const Home: React.FC = memo(() => {
+const Home: React.FC = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start'],
-  });
+  const [calculatorService, setCalculatorService] =
+    useState<ServiceCalculator | null>(null);
+  const [calculatorOption, setCalculatorOption] = useState<any | null>(null);
+  const calculatorRef = useRef<HTMLDivElement>(null);
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const handlePricingCardClick = (option: PricingOption) => {
+    // Find the matching service calculator
+    const service = serviceCalculators.find((s) =>
+      s.options.some((o) => o.name === option.name)
+    );
 
-  const services = [
-    {
-      icon: <VideoLibraryIcon sx={{ fontSize: 40 }} />,
-      title: 'Edición de videos',
-      description:
-        'Contenido visual impactante que refleja la esencia de tu marca.',
-      color: '#7C3AED', // Purple
-    },
-    {
-      icon: <DesignServicesIcon sx={{ fontSize: 40 }} />,
-      title: 'Branding e identidad visual',
-      description:
-        'Identidad visual integral que refleja la esencia y valores de tu marca.',
-      color: '#EC4899', // Pink
-    },
-    {
-      icon: <DevicesIcon sx={{ fontSize: 40 }} />,
-      title: 'Gestión de redes sociales',
-      description:
-        'Comunicación coherente y constante para aumentar tu alcance.',
-      color: '#10B981', // Emerald
-    },
-    {
-      icon: <TrendingUpIcon sx={{ fontSize: 40 }} />,
-      title: 'Marketing para empresas',
-      description:
-        'Estrategias personalizadas para maximizar tu impacto en el mercado.',
-      color: '#F59E0B', // Amber
-    },
-  ];
+    if (service) {
+      // Store the selected service and option for the calculator
+      setCalculatorService(service);
 
-  const [headerRef, headerInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+      const matchingOption = service.options.find(
+        (o) => o.name === option.name
+      );
+      if (matchingOption) {
+        setCalculatorOption(matchingOption);
+      }
+
+      // Scroll to calculator
+      calculatorRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
 
   return (
-    <Box ref={containerRef}>
+    <Box>
       {/* Hero Section */}
       <Box
         sx={{
+          height: { xs: '90vh', md: '100vh' },
+          minHeight: { xs: '600px', md: '700px' },
+          width: '100%',
           position: 'relative',
-          height: { xs: 'auto', md: '100vh' },
-          minHeight: { xs: '100vh', md: 600 },
           display: 'flex',
           alignItems: 'center',
           overflow: 'hidden',
-          bgcolor: 'black',
-          py: { xs: 8, md: 0 },
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background:
-              'radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(0, 0, 0, 0.8) 100%)',
-            zIndex: 1,
-          },
-        }}
-      >
-        <VideoBackground
-          src={heroVideos.creative}
-          overlayColor="rgba(0, 0, 0, 0.7)"
-          opacity={0.4}
-        />
-
-        <Container
-          maxWidth="lg"
-          sx={{
-            position: 'relative',
-            zIndex: 2,
-            px: { xs: 2, md: 0 },
-            py: { xs: 4, md: 0 },
-          }}
-        >
-          <motion.div style={{ y, opacity }}>
-            <Grid container spacing={{ xs: 4, md: 4 }} alignItems="center">
-              <Grid item xs={12} md={7}>
-                <Stack spacing={{ xs: 3, md: 4 }}>
-                  <AnimatedText
-                    text="Destaca en el mundo digital"
-                    type="words"
-                    staggerDelay={0.05}
-                    as={Typography}
-                    variant="h1"
-                    sx={{
-                      fontSize: { xs: '2.5rem', sm: '3rem', md: '4rem' },
-                      fontWeight: 800,
-                      background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
-                      backgroundClip: 'text',
-                      textFillColor: 'transparent',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      textShadow: '0 2px 10px rgba(124, 58, 237, 0.3)',
-                      lineHeight: { xs: 1.2, md: 1.1 },
-                    }}
-                  />
-
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: 'rgba(255,255,255,0.9)',
-                      maxWidth: { xs: '100%', md: 600 },
-                      lineHeight: 1.8,
-                      fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' },
-                    }}
-                  >
-                    Somos una agencia creativa especializada en impulsar la
-                    presencia digital de empresas y marcas personales mediante
-                    soluciones estratégicas y creativas adaptadas a tus
-                    necesidades.
-                  </Typography>
-
-                  <Stack
-                    direction={{ xs: 'column', sm: 'row' }}
-                    spacing={2}
-                    sx={{
-                      width: '100%',
-                      '& .MuiButton-root': {
-                        width: { xs: '100%', sm: 'auto' },
-                        minWidth: { xs: '100%', sm: '200px' },
-                      },
-                    }}
-                  >
-                    <AnimatedButton
-                      variant="contained"
-                      size="large"
-                      href="#servicios"
-                      animationVariant="glow"
-                      sx={{
-                        px: { xs: 3, md: 4 },
-                        py: { xs: 1.5, md: 2 },
-                        borderRadius: '12px',
-                        background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
-                        fontSize: { xs: '0.875rem', md: '1rem' },
-                        fontWeight: 600,
-                        boxShadow: '0 4px 20px rgba(124, 58, 237, 0.3)',
-                        '&:hover': {
-                          transform: 'translateY(-2px)',
-                          boxShadow: '0 8px 30px rgba(124, 58, 237, 0.4)',
-                        },
-                      }}
-                    >
-                      Explorar Servicios
-                    </AnimatedButton>
-
-                    <AnimatedButton
-                      variant="outlined"
-                      size="large"
-                      href="/contacto"
-                      animationVariant="slide"
-                      sx={{
-                        px: { xs: 3, md: 4 },
-                        py: { xs: 1.5, md: 2 },
-                        borderRadius: '12px',
-                        borderColor: 'rgba(255,255,255,0.3)',
-                        color: 'white',
-                        fontSize: { xs: '0.875rem', md: '1rem' },
-                        fontWeight: 600,
-                        backdropFilter: 'blur(10px)',
-                        '&:hover': {
-                          borderColor: '#7C3AED',
-                          color: '#7C3AED',
-                          transform: 'translateY(-2px)',
-                          background: 'rgba(124, 58, 237, 0.1)',
-                        },
-                      }}
-                    >
-                      Contactar
-                    </AnimatedButton>
-                  </Stack>
-                </Stack>
-              </Grid>
-
-              <Grid
-                item
-                xs={12}
-                md={5}
-                sx={{
-                  display: { xs: 'none', md: 'block' },
-                  mt: { xs: 4, md: 0 },
-                }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                >
-                  <Box
-                    sx={{
-                      position: 'relative',
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: -20,
-                        left: -20,
-                        right: 20,
-                        bottom: 20,
-                        border: '2px solid rgba(124, 58, 237, 0.3)',
-                        borderRadius: '20px',
-                        animation: 'pulse 2s infinite',
-                      },
-                    }}
-                  >
-                    <Box
-                      component="img"
-                      src={businessImages.creative}
-                      alt="Creative Process"
-                      sx={{
-                        width: '100%',
-                        borderRadius: '20px',
-                        boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
-                        transition:
-                          'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                        '&:hover': {
-                          transform: 'scale(1.02)',
-                        },
-                      }}
-                    />
-                  </Box>
-                </motion.div>
-              </Grid>
-            </Grid>
-          </motion.div>
-        </Container>
-
-        {/* Scroll Indicator */}
-        <Box
-          component={motion.div}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          sx={{
-            position: 'absolute',
-            bottom: { xs: 20, md: 40 },
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 2,
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Box
-            sx={{
-              width: 30,
-              height: 50,
-              border: '2px solid rgba(255,255,255,0.3)',
-              borderRadius: 15,
-              display: 'flex',
-              justifyContent: 'center',
-              padding: '8px 0',
-            }}
-          >
-            <Box
-              component={motion.div}
-              animate={{ y: [0, 12, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-              sx={{
-                width: 6,
-                height: 6,
-                backgroundColor: 'white',
-                borderRadius: '50%',
-              }}
-            />
-          </Box>
-        </Box>
-      </Box>
-
-      {/* Services Section */}
-      <Box
-        sx={{
-          py: { xs: 6, md: 15 },
-          background: 'linear-gradient(180deg, #000000 0%, #1a1a1a 100%)',
-          position: 'relative',
+          background: 'linear-gradient(180deg, #000 0%, #090909 100%)',
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -1167,223 +1121,431 @@ const Home: React.FC = memo(() => {
             right: 0,
             height: '100%',
             background:
-              'radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 70%)',
+              'radial-gradient(circle at 50% 30%, rgba(124, 58, 237, 0.15) 0%, transparent 70%)',
             pointerEvents: 'none',
           },
         }}
       >
-        <Container maxWidth="lg">
-          <Grid container spacing={{ xs: 2, md: 4 }}>
-            <Grid
-              item
-              xs={12}
-              sx={{ textAlign: 'center', mb: { xs: 4, md: 8 } }}
-            >
-              <Typography
-                variant="overline"
-                sx={{
-                  color: '#7C3AED',
-                  fontSize: { xs: '0.875rem', md: '1rem' },
-                  fontWeight: 600,
-                  letterSpacing: 4,
-                  textTransform: 'uppercase',
-                }}
+        <VideoBackground src={heroVideos.creative} opacity={0.4} />
+        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
+          <Grid container spacing={3} alignItems="center">
+            <Grid item xs={12} md={6}>
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
               >
-                NUESTROS SERVICIOS
-              </Typography>
-              <Typography
-                variant="h2"
-                sx={{
-                  color: 'white',
-                  fontWeight: 700,
-                  mt: 2,
-                  mb: 4,
-                  fontSize: { xs: '1.75rem', md: '3rem' },
-                  background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
-                Soluciones Digitales Integrales
-              </Typography>
-            </Grid>
-
-            {services.map((service, index) => (
-              <Grid item xs={12} sm={6} md={3} key={service.title}>
-                <Animated variant="fadeInUp" delay={index * 0.2}>
-                  <Card
+                <Typography
+                  variant="h1"
+                  component="h1"
+                  sx={{
+                    fontWeight: 900,
+                    fontSize: {
+                      xs: '2.5rem',
+                      sm: '3.5rem',
+                      md: '4rem',
+                      lg: '5rem',
+                    },
+                    lineHeight: { xs: 1.2, md: 1.1 },
+                    mb: { xs: 2, md: 3 },
+                    background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    textShadow: '0 2px 10px rgba(124, 58, 237, 0.3)',
+                  }}
+                >
+                  Destaca en el mundo digital
+                </Typography>
+                <Typography
+                  variant="h4"
+                  component="h2"
+                  sx={{
+                    fontWeight: 400,
+                    mb: { xs: 4, md: 5 },
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.5rem' },
+                    lineHeight: 1.5,
+                    maxWidth: '600px',
+                  }}
+                >
+                  Somos una agencia creativa especializada en impulsar la
+                  presencia digital de empresas y marcas personales mediante
+                  soluciones estratégicas y creativas adaptadas a tus
+                  necesidades.
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                  <AnimatedButton
+                    variant="contained"
+                    size="large"
+                    href="/servicios"
+                    animationVariant="glow"
                     sx={{
-                      height: '100%',
-                      background: 'rgba(255,255,255,0.03)',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      borderRadius: '16px',
-                      transition: 'all 0.3s ease',
-                      p: { xs: 2, md: 4 },
+                      px: { xs: 3, md: 4 },
+                      py: { xs: 1.5, md: 2 },
+                      borderRadius: '12px',
+                      background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
+                      fontSize: { xs: '0.875rem', md: '1rem' },
+                      fontWeight: 600,
+                      boxShadow: '0 4px 20px rgba(124, 58, 237, 0.3)',
                       '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: `0 20px 40px ${service.color}15`,
-                        '& .service-icon': {
-                          background: service.color,
-                          color: 'white',
-                          boxShadow: `0 8px 20px ${service.color}40`,
-                        },
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 8px 30px rgba(124, 58, 237, 0.4)',
                       },
                     }}
                   >
-                    <IconButton
-                      className="service-icon"
-                      sx={{
-                        width: { xs: 48, md: 60 },
-                        height: { xs: 48, md: 60 },
-                        backgroundColor: 'rgba(255,255,255,0.05)',
-                        color: service.color,
-                        mb: { xs: 2, md: 3 },
-                        transition: 'all 0.3s ease',
-                      }}
-                    >
-                      {service.icon}
-                    </IconButton>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        color: 'white',
-                        fontWeight: 600,
-                        mb: 2,
-                        fontSize: { xs: '1.1rem', md: '1.5rem' },
-                      }}
-                    >
-                      {service.title}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: 'rgba(255,255,255,0.7)',
-                        lineHeight: 1.6,
-                        fontSize: { xs: '0.875rem', md: '1rem' },
-                      }}
-                    >
-                      {service.description}
-                    </Typography>
-                  </Card>
-                </Animated>
-              </Grid>
-            ))}
+                    Explorar Servicios
+                  </AnimatedButton>
+                  <AnimatedButton
+                    variant="outlined"
+                    size="large"
+                    href="/contacto"
+                    animationVariant="glow"
+                    sx={{
+                      px: { xs: 3, md: 4 },
+                      py: { xs: 1.5, md: 2 },
+                      borderRadius: '12px',
+                      borderColor: 'rgba(124, 58, 237, 0.5)',
+                      color: 'white',
+                      fontSize: { xs: '0.875rem', md: '1rem' },
+                      fontWeight: 600,
+                      '&:hover': {
+                        borderColor: '#7C3AED',
+                        background: 'rgba(124, 58, 237, 0.1)',
+                      },
+                    }}
+                  >
+                    Contactar
+                  </AnimatedButton>
+                </Box>
+              </motion.div>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                justifyContent: 'center',
+              }}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                style={{ width: '100%', maxWidth: '500px' }}
+              >
+                <Box
+                  component="img"
+                  src={mockImages.digitalMarketing}
+                  alt="Digital Marketing"
+                  sx={{
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '20px',
+                    boxShadow: '0 20px 80px rgba(124, 58, 237, 0.3)',
+                  }}
+                />
+              </motion.div>
+            </Grid>
           </Grid>
         </Container>
       </Box>
 
-      {/* Products Section */}
-      {/* <Box maxWidth="lg" sx={{ py: { xs: 8, md: 12 } }}>
-        <motion.div
-          initial="hidden"
-          animate={headerInView ? 'visible' : 'hidden'}
-          variants={staggerContainer}
-        >
-                    <Typography
-            variant="h3"
+      {/* Nuestros Servicios Section */}
+      <Box
+        sx={{
+          py: { xs: 8, md: 12 },
+          background: 'linear-gradient(180deg, #000000 0%, #090909 100%)',
+          position: 'relative',
+        }}
+      >
+        <Container maxWidth="lg">
+          <Typography
+            variant="h4"
+            component="h2"
             align="center"
-                      sx={{
-              fontWeight: 700,
-              mb: 3,
-              background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+            sx={{
+              color: '#7C3AED',
+              fontWeight: 600,
+              mb: { xs: 6, md: 8 },
+              textTransform: 'uppercase',
+              letterSpacing: 1,
+              fontSize: { xs: '1.2rem', md: '1.5rem' },
+            }}
+          >
+            NUESTROS SERVICIOS
+          </Typography>
+
+          <Typography
+            variant="h2"
+            component="h3"
+            align="center"
+            sx={{
+              fontWeight: 900,
+              mb: { xs: 8, md: 10 },
+              fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
+              background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              position: 'relative',
-              fontSize: { xs: '1.75rem', md: '2.5rem' },
-              '&:after': {
-                content: '""',
-                position: 'absolute',
-                width: '60px',
-                height: '4px',
-                background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                bottom: -16,
-                left: '50%',
-                transform: 'translateX(-50%)',
-              },
+              textShadow: '0 2px 10px rgba(124, 58, 237, 0.3)',
             }}
           >
-            Nuestros Productos
-                    </Typography>
+            Soluciones Digitales Integrales
+          </Typography>
 
           <Grid container spacing={4}>
-            {products.map((product, index) => (
-              <Grid item xs={12} sm={6} md={4} key={product.title}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
+            <Grid item xs={12} sm={6} md={3}>
+              <Box
+                sx={{
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                  background: 'rgba(15, 15, 15, 0.6)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(30, 30, 30, 0.7)',
+                  p: 4,
+                  height: '100%',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 12px 30px rgba(124, 58, 237, 0.2)',
+                    borderColor: 'rgba(124, 58, 237, 0.3)',
+                  },
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(124, 58, 237, 0.15)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mb: 3,
+                  }}
                 >
-                  <Card
-          sx={{
-            height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      p: 3,
-                      borderRadius: 2,
-                      boxShadow: '0 4px 24px rgba(0,0,0,0.1)',
-                      transition: 'transform 0.3s ease-in-out',
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
-                      },
+                  <VideoLibraryIcon
+                    sx={{
+                      fontSize: 28,
+                      color: '#7C3AED',
                     }}
-                  >
-                    <Box
-                      sx={{
-            display: 'flex',
-            alignItems: 'center',
-                        mb: 2,
-                        color: 'primary.main',
-          }}
-        >
-                      {product.icon}
-              <Typography
-                        variant="h5"
+                  />
+                </Box>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 2,
+                    color: 'white',
+                    fontSize: { xs: '1.25rem', md: '1.5rem' },
+                  }}
+                >
+                  Edición de videos
+                </Typography>
+                <Typography
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.7)',
+                    mb: 2,
+                    fontSize: { xs: '0.875rem', md: '1rem' },
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Contenido visual impactante que refleja la esencia de tu
+                  marca.
+                </Typography>
+              </Box>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <Box
                 sx={{
-                          ml: 2,
-                          fontWeight: 'bold',
-                          fontSize: { xs: '1.25rem', md: '1.5rem' },
-                        }}
-                      >
-                        {product.title}
-              </Typography>
-                    </Box>
-              <Typography
-                      color="text.secondary"
-                      paragraph
-                      sx={{ fontSize: { xs: '0.875rem', md: '1rem' } }}
-                    >
-                      {product.description}
-              </Typography>
-                    <Box sx={{ mt: 2 }}>
-                      {product.benefits.map((benefit) => (
-                        <Typography
-                          key={benefit}
-                          variant="body2"
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                  background: 'rgba(15, 15, 15, 0.6)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(30, 30, 30, 0.7)',
+                  p: 4,
+                  height: '100%',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 12px 30px rgba(124, 58, 237, 0.2)',
+                    borderColor: 'rgba(124, 58, 237, 0.3)',
+                  },
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(236, 72, 153, 0.15)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mb: 3,
+                  }}
+                >
+                  <DesignServicesIcon
+                    sx={{
+                      fontSize: 28,
+                      color: '#EC4899',
+                    }}
+                  />
+                </Box>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 2,
+                    color: 'white',
+                    fontSize: { xs: '1.25rem', md: '1.5rem' },
+                  }}
+                >
+                  Branding e identidad visual
+                </Typography>
+                <Typography
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.7)',
+                    mb: 2,
+                    fontSize: { xs: '0.875rem', md: '1rem' },
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Identidad visual integral que refleja la esencia y valores de
+                  tu marca.
+                </Typography>
+              </Box>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <Box
                 sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            mb: 1,
-                            color: 'text.secondary',
-                            fontSize: { xs: '0.75rem', md: '0.875rem' },
-                          }}
-                        >
-                          <ArrowForwardIcon
-                            sx={{ mr: 1, fontSize: 16, color: 'primary.main' }}
-                          />
-                          {benefit}
-                        </Typography>
-                      ))}
-            </Box>
-                  </Card>
-                </motion.div>
-              </Grid>
-            ))}
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                  background: 'rgba(15, 15, 15, 0.6)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(30, 30, 30, 0.7)',
+                  p: 4,
+                  height: '100%',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 12px 30px rgba(124, 58, 237, 0.2)',
+                    borderColor: 'rgba(124, 58, 237, 0.3)',
+                  },
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(52, 211, 153, 0.15)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mb: 3,
+                  }}
+                >
+                  <CodeIcon
+                    sx={{
+                      fontSize: 28,
+                      color: '#34D399',
+                    }}
+                  />
+                </Box>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 2,
+                    color: 'white',
+                    fontSize: { xs: '1.25rem', md: '1.5rem' },
+                  }}
+                >
+                  Desarrollo Web y Apps
+                </Typography>
+                <Typography
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.7)',
+                    mb: 2,
+                    fontSize: { xs: '0.875rem', md: '1rem' },
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Soluciones digitales a medida con tecnologías modernas para tu
+                  negocio.
+                </Typography>
+              </Box>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <Box
+                sx={{
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                  background: 'rgba(15, 15, 15, 0.6)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(30, 30, 30, 0.7)',
+                  p: 4,
+                  height: '100%',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 12px 30px rgba(124, 58, 237, 0.2)',
+                    borderColor: 'rgba(124, 58, 237, 0.3)',
+                  },
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(251, 191, 36, 0.15)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mb: 3,
+                  }}
+                >
+                  <TrendingUpIcon
+                    sx={{
+                      fontSize: 28,
+                      color: '#FBBF24',
+                    }}
+                  />
+                </Box>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 2,
+                    color: 'white',
+                    fontSize: { xs: '1.25rem', md: '1.5rem' },
+                  }}
+                >
+                  Marketing para empresas
+                </Typography>
+                <Typography
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.7)',
+                    mb: 2,
+                    fontSize: { xs: '0.875rem', md: '1rem' },
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Estrategias personalizadas para maximizar tu impacto en el
+                  mercado.
+                </Typography>
+              </Box>
+            </Grid>
           </Grid>
-        </motion.div>
-      </Box> */}
+        </Container>
+      </Box>
 
       {/* Pricing Calculator Section */}
       <Box
@@ -1441,7 +1603,12 @@ const Home: React.FC = memo(() => {
           </Box>
 
           <Box sx={{ px: { xs: 1, md: 0 } }}>
-            <PricingCalculator />
+            <Box ref={calculatorRef}>
+              <PricingCalculator
+                initialService={calculatorService}
+                initialOption={calculatorOption}
+              />
+            </Box>
           </Box>
         </Container>
       </Box>
@@ -1491,88 +1658,126 @@ const Home: React.FC = memo(() => {
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    p: { xs: 2, md: 3 },
-                    borderRadius: '16px',
-                    background: 'rgba(255,255,255,0.03)',
+                    p: { xs: 2, md: 2.5 },
+                    borderRadius: '12px',
+                    background:
+                      'linear-gradient(to bottom, rgba(30,30,30,0.5), rgba(20,20,20,0.7))',
                     backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    boxShadow: '0 4px 24px rgba(0,0,0,0.1)',
+                    border: '1px solid rgba(124, 58, 237, 0.2)',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
                     transition: 'all 0.3s ease-in-out',
+                    cursor: 'pointer',
                     '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 20px 40px rgba(124, 58, 237, 0.2)',
-                      borderColor: 'rgba(124, 58, 237, 0.3)',
+                      transform: 'translateY(-5px)',
+                      boxShadow: '0 10px 25px rgba(124, 58, 237, 0.25)',
+                      borderColor: 'rgba(124, 58, 237, 0.5)',
                     },
                   }}
+                  onClick={() => handlePricingCardClick(option)}
                 >
-                  <CardContent sx={{ p: { xs: 1, md: 2 } }}>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        mb: 2,
-                        color: '#7C3AED',
-                      }}
-                    >
-                      {option.icon}
-                      <Typography
-                        variant="h5"
+                  <CardContent
+                    sx={{
+                      p: { xs: 1, md: 1.5 },
+                      '&:last-child': { pb: { xs: 1, md: 1.5 } },
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: '100%',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <Box>
+                      <Box
                         sx={{
-                          ml: 2,
-                          fontWeight: 'bold',
-                          fontSize: { xs: '1.1rem', md: '1.5rem' },
-                          color: 'white',
+                          display: 'flex',
+                          alignItems: 'center',
+                          mb: 1.5,
+                          color: '#7C3AED',
                         }}
                       >
-                        {option.name}
+                        <CodeIcon sx={{ fontSize: 20 }} />
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            ml: 1.5,
+                            fontWeight: 'bold',
+                            fontSize: { xs: '1rem', md: '1.2rem' },
+                            color: 'white',
+                            letterSpacing: '0.2px',
+                          }}
+                        >
+                          {option.name}
+                        </Typography>
+                      </Box>
+                      <Typography
+                        color="rgba(255,255,255,0.7)"
+                        paragraph
+                        sx={{
+                          fontSize: { xs: '0.8rem', md: '0.875rem' },
+                          mb: { xs: 1, md: 1.5 },
+                          lineHeight: 1.4,
+                          letterSpacing: '0.1px',
+                        }}
+                      >
+                        {option.description}
                       </Typography>
                     </Box>
-                    <Typography
-                      color="rgba(255,255,255,0.7)"
-                      paragraph
-                      sx={{
-                        fontSize: { xs: '0.875rem', md: '1rem' },
-                        mb: { xs: 2, md: 3 },
-                      }}
-                    >
-                      {option.description}
-                    </Typography>
-                    <Box sx={{ mt: 2 }}>
-                      {option.features.map((feature) => (
+
+                    <Box>
+                      {option.features.slice(0, 4).map((feature) => (
                         <Typography
                           key={feature}
                           variant="body2"
                           sx={{
                             display: 'flex',
-                            alignItems: 'center',
-                            mb: 1,
+                            alignItems: 'flex-start',
+                            mb: 0.75,
                             color: 'rgba(255,255,255,0.7)',
-                            fontSize: { xs: '0.75rem', md: '0.875rem' },
+                            fontSize: { xs: '0.7rem', md: '0.75rem' },
+                            lineHeight: 1.3,
                           }}
                         >
                           <ArrowForwardIcon
                             sx={{
-                              mr: 1,
-                              fontSize: { xs: 14, md: 16 },
+                              mr: 0.75,
+                              fontSize: { xs: 12, md: 14 },
                               color: '#7C3AED',
+                              mt: '1px',
                             }}
                           />
                           {feature}
                         </Typography>
                       ))}
+                      {option.features.length > 4 && (
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            mb: 0.75,
+                            color: '#7C3AED',
+                            fontSize: { xs: '0.7rem', md: '0.75rem' },
+                            fontStyle: 'italic',
+                          }}
+                        >
+                          +{option.features.length - 4} más
+                        </Typography>
+                      )}
+
+                      <Typography
+                        variant="subtitle1"
+                        sx={{
+                          fontWeight: 700,
+                          color: '#7C3AED',
+                          textShadow: '0 2px 8px rgba(124, 58, 237, 0.3)',
+                          fontSize: { xs: '1.1rem', md: '1.25rem' },
+                          textAlign: 'right',
+                          mt: 1.5,
+                          pt: 1,
+                          borderTop: '1px solid rgba(124, 58, 237, 0.2)',
+                          letterSpacing: '0.2px',
+                        }}
+                      >
+                        desde €{option.price}
+                      </Typography>
                     </Box>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        mt: { xs: 2, md: 3 },
-                        fontWeight: 'bold',
-                        color: '#7C3AED',
-                        textShadow: '0 2px 10px rgba(124, 58, 237, 0.3)',
-                        fontSize: { xs: '1.1rem', md: '1.25rem' },
-                      }}
-                    >
-                      Desde ${option.basePrice}
-                    </Typography>
                   </CardContent>
                 </Card>
               </Grid>
@@ -1580,97 +1785,8 @@ const Home: React.FC = memo(() => {
           </Grid>
         </Container>
       </Box>
-
-      {/* Call to Action */}
-      <Box
-        sx={{
-          py: { xs: 8, md: 15 },
-          background: 'linear-gradient(135deg, #000000, #1a1a1a)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <Container maxWidth="md">
-          <Box
-            sx={{
-              textAlign: 'center',
-              position: 'relative',
-              zIndex: 2,
-              px: { xs: 2, md: 0 },
-            }}
-          >
-            <Typography
-              variant="h2"
-              sx={{
-                color: 'white',
-                fontWeight: 700,
-                mb: { xs: 2, md: 3 },
-                background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                fontSize: { xs: '2rem', md: '3rem' },
-                textShadow: '0 2px 10px rgba(124, 58, 237, 0.3)',
-              }}
-            >
-              ¿Listo para Innovar?
-            </Typography>
-            <Typography
-              variant="h5"
-              sx={{
-                color: 'rgba(255,255,255,0.9)',
-                mb: { xs: 4, md: 6 },
-                maxWidth: 600,
-                mx: 'auto',
-                fontSize: { xs: '1rem', md: '1.25rem' },
-                lineHeight: 1.6,
-              }}
-            >
-              Transformemos juntos tu visión en una realidad digital
-              extraordinaria.
-            </Typography>
-            <AnimatedButton
-              variant="contained"
-              size="large"
-              href="/contacto"
-              animationVariant="glow"
-              endIcon={<ArrowForwardIcon />}
-              sx={{
-                px: { xs: 4, md: 6 },
-                py: { xs: 1.5, md: 2 },
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
-                fontSize: { xs: '0.875rem', md: '1rem' },
-                fontWeight: 600,
-                boxShadow: '0 4px 20px rgba(124, 58, 237, 0.3)',
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 8px 30px rgba(124, 58, 237, 0.4)',
-                },
-              }}
-            >
-              Iniciar Proyecto
-            </AnimatedButton>
-          </Box>
-
-          {/* Background Elements */}
-          <Box
-            sx={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: '200%',
-              height: '200%',
-              background:
-                'radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, rgba(0,0,0,0) 50%)',
-              pointerEvents: 'none',
-            }}
-          />
-        </Container>
-      </Box>
     </Box>
   );
-});
+};
 
 export default Home;
