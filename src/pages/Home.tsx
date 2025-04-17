@@ -625,7 +625,8 @@ const PricingCalculator: React.FC<PricingCalculatorProps> = ({
               textTransform: 'none',
               fontWeight: 600,
               letterSpacing: '0.5px',
-              transition: 'all 0.3s ease',
+              transition:
+                'transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out',
               '&:active': {
                 transform: 'scale(0.98)',
               },
@@ -651,7 +652,7 @@ const PricingCalculator: React.FC<PricingCalculatorProps> = ({
               sx={{
                 background:
                   selectedService.name === service.name
-                    ? 'linear-gradient(135deg, #7C3AED, #EC4899)'
+                    ? 'rgba(124, 58, 237, 1)'
                     : 'transparent',
                 borderColor:
                   selectedService.name === service.name
@@ -661,7 +662,7 @@ const PricingCalculator: React.FC<PricingCalculatorProps> = ({
                   selectedService.name === service.name
                     ? 'white'
                     : 'rgba(255,255,255,0.7)',
-                '&:hover:md': {
+                '&:hover': {
                   borderColor: '#7C3AED',
                   color: '#7C3AED',
                   background: 'rgba(124, 58, 237, 0.1)',
@@ -677,6 +678,8 @@ const PricingCalculator: React.FC<PricingCalculatorProps> = ({
                 marginBottom: { xs: 5, md: 0 },
                 textAlign: 'center',
                 justifyContent: { xs: 'center', sm: 'center' },
+                transition:
+                  'transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out, background-color 0.15s ease-out, color 0.15s ease-out',
               }}
             >
               {service.name}
@@ -708,17 +711,19 @@ const PricingCalculator: React.FC<PricingCalculatorProps> = ({
                   flexDirection: 'column',
                   p: { xs: 2, md: 2.5 },
                   borderRadius: '12px',
-                  background:
-                    'linear-gradient(to bottom, rgba(30,30,30,0.5), rgba(20,20,20,0.7))',
+                  background: 'rgba(30, 30, 30, 0.95)',
                   backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
                   border: '1px solid rgba(124, 58, 237, 0.2)',
                   boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
-                  transition: 'all 0.3s ease-in-out',
+                  transition:
+                    'transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out',
                   cursor: 'pointer',
                   '&:hover': {
                     transform: 'translateY(-5px)',
                     boxShadow: '0 10px 25px rgba(124, 58, 237, 0.25)',
                     borderColor: 'rgba(124, 58, 237, 0.5)',
+                    background: 'rgba(30, 30, 30, 1)',
                   },
                 }}
                 onClick={() => setSelectedOption(option)}
@@ -1232,7 +1237,7 @@ const Home: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
                 style={{ width: '100%', maxWidth: '500px' }}
               >
                 <Box
@@ -1660,17 +1665,19 @@ const Home: React.FC = () => {
                     flexDirection: 'column',
                     p: { xs: 2, md: 2.5 },
                     borderRadius: '12px',
-                    background:
-                      'linear-gradient(to bottom, rgba(30,30,30,0.5), rgba(20,20,20,0.7))',
+                    background: 'rgba(30, 30, 30, 0.95)',
                     backdropFilter: 'blur(10px)',
+                    WebkitBackdropFilter: 'blur(10px)',
                     border: '1px solid rgba(124, 58, 237, 0.2)',
                     boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
-                    transition: 'all 0.3s ease-in-out',
+                    transition:
+                      'transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out',
                     cursor: 'pointer',
                     '&:hover': {
                       transform: 'translateY(-5px)',
                       boxShadow: '0 10px 25px rgba(124, 58, 237, 0.25)',
                       borderColor: 'rgba(124, 58, 237, 0.5)',
+                      background: 'rgba(30, 30, 30, 1)',
                     },
                   }}
                   onClick={() => handlePricingCardClick(option)}

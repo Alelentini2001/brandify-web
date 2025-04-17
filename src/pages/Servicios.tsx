@@ -25,8 +25,8 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
 // Animation variants
 const fadeInUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
 };
 
 const staggerContainer = {
@@ -34,7 +34,7 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.1,
     },
   },
 };
@@ -493,12 +493,12 @@ const Servicios: React.FC = () => {
                       delay: 0.8 + index * 0.2,
                     }}
                     whileHover={{
-                      y: -15,
-                      scale: 1.02,
+                      y: -10,
+                      scale: 1.01,
                       transition: {
                         type: 'spring',
-                        stiffness: 400,
-                        damping: 10,
+                        stiffness: 300,
+                        damping: 15,
                       },
                     }}
                   >
@@ -517,7 +517,7 @@ const Servicios: React.FC = () => {
                         position: 'relative',
                         overflow: 'hidden',
                         transition:
-                          'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                          'transform 0.15s, box-shadow 0.15s, border-color 0.15s',
                         '&:hover': {
                           boxShadow: `0 30px 60px rgba(124, 58, 237, 0.3)`,
                           borderColor: `rgba(${
@@ -529,28 +529,16 @@ const Servicios: React.FC = () => {
                             opacity: 0.6,
                           },
                           '& .icon-bg': {
-                            transform: 'scale(1.3) rotate(10deg)',
+                            transform: 'scale(1.2) rotate(5deg)',
                             opacity: 0.2,
                           },
                           '& .icon-main': {
-                            transform: 'scale(1.1)',
+                            transform: 'scale(1.05)',
                             filter: 'brightness(1.1)',
                           },
                           '& .underline': {
                             width: '100px',
                           },
-                        },
-                        '&::before': {
-                          content: '""',
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          bottom: 0,
-                          background: item.gradient,
-                          opacity: 0,
-                          transition: 'opacity 0.5s ease',
-                          zIndex: 0,
                         },
                       }}
                     >
@@ -559,12 +547,14 @@ const Servicios: React.FC = () => {
                         className="icon-bg"
                         component={motion.div}
                         animate={{
-                          rotate: [0, 5, 0, -5, 0],
+                          y: [0, -5, 0],
+                          rotate: [0, 2, 0, -2, 0],
                         }}
                         transition={{
-                          duration: 6,
+                          duration: 4,
                           repeat: Infinity,
-                          repeatType: 'loop',
+                          repeatType: 'reverse',
+                          ease: 'linear',
                         }}
                         sx={{
                           position: 'absolute',
@@ -572,8 +562,7 @@ const Servicios: React.FC = () => {
                           right: '-20px',
                           fontSize: '9rem',
                           opacity: 0.05,
-                          transition:
-                            'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                          transition: 'all 0.3s',
                           color: item.color,
                           zIndex: 0,
                         }}
@@ -583,8 +572,15 @@ const Servicios: React.FC = () => {
 
                       <Box sx={{ position: 'relative', zIndex: 1 }}>
                         <motion.div
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ type: 'spring', stiffness: 300 }}
+                          animate={{
+                            y: [0, -3, 0],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            repeatType: 'reverse',
+                            ease: 'linear',
+                          }}
                         >
                           <Typography
                             className="icon-main"
@@ -594,7 +590,7 @@ const Servicios: React.FC = () => {
                               mb: 2,
                               color: item.color,
                               display: 'inline-block',
-                              transition: 'all 0.3s ease',
+                              transition: 'all 0.3s',
                             }}
                           >
                             {item.icon}
@@ -686,9 +682,10 @@ const Servicios: React.FC = () => {
                         backdropFilter: 'blur(10px)',
                         border: '1px solid rgba(255,255,255,0.1)',
                         borderRadius: '16px',
-                        transition: 'all 0.3s ease',
+                        transition:
+                          'transform 0.15s, box-shadow 0.15s, border-color 0.15s',
                         '&:hover': {
-                          transform: 'translateY(-8px)',
+                          transform: 'translateY(-5px)',
                           boxShadow: '0 20px 40px rgba(124, 58, 237, 0.2)',
                           borderColor: 'rgba(124, 58, 237, 0.3)',
                         },
