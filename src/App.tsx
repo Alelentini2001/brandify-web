@@ -15,6 +15,8 @@ import SobreNosotros from './pages/SobreNosotros';
 import Contacto from './pages/Contacto';
 import Proyectos from './pages/Proyectos';
 import Blog from './pages/Blog';
+import Portfolio from './pages/Portfolio';
+import Testimonios from './pages/Testimonios';
 
 // ScrollToTop component
 const ScrollToTop = () => {
@@ -47,7 +49,8 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/servicios" element={<Servicios />} />
-            {/* <Route path="/proyectos" element={<Proyectos />} /> */}
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/testimonios" element={<Testimonios />} />
             <Route path="/sobre-nosotros" element={<SobreNosotros />} />
             <Route path="/contacto" element={<Contacto />} />
           </Routes>

@@ -52,7 +52,7 @@ const Footer: React.FC = memo(() => {
     },
     {
       icon: <LocationOnIcon sx={{ mr: 1 }} />,
-      text: 'Argentina',
+      text: 'Italia',
       href: 'https://maps.google.com',
     },
   ];

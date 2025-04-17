@@ -22,7 +22,8 @@ import Logo from './Logo';
 const pages = [
   { title: 'Home', path: '/' },
   { title: 'Servicios', path: '/servicios' },
-  // { title: 'Proyectos', path: '/proyectos' },
+  { title: 'Portfolio', path: '/portfolio' },
+  { title: 'Testimonios', path: '/testimonios' },
   { title: 'Sobre Nosotros', path: '/sobre-nosotros' },
   { title: 'Contacto', path: '/contacto' },
 ];
