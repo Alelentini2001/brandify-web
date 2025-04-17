@@ -1643,6 +1643,9 @@ const SobreNosotros: React.FC = () => {
                             position: 'relative',
                             overflow: 'hidden',
                             height: { xs: '280px', md: '320px' },
+                            '&:hover .hover-content': {
+                              opacity: 1,
+                            },
                           }}
                         >
                           <Box
@@ -1654,160 +1657,156 @@ const SobreNosotros: React.FC = () => {
                               height: '100%',
                               width: '100%',
                               objectFit: 'cover',
+                              objectPosition: 'center 10%',
                               transition:
                                 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                               filter: 'brightness(0.9)',
                             }}
                           />
 
-                          {/* Subtle gradient overlay for better text readability */}
+                          {/* Hover content with role and bio */}
                           <Box
+                            className="hover-content"
                             sx={{
                               position: 'absolute',
                               top: 0,
                               left: 0,
                               right: 0,
                               bottom: 0,
-                              background:
-                                'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.7) 100%)',
-                              zIndex: 1,
-                            }}
-                          />
-
-                          {/* Member details - name, role, bio */}
-                          <Box
-                            className="member-details"
-                            sx={{
-                              position: 'absolute',
-                              bottom: 0,
-                              left: 0,
-                              right: 0,
+                              background: 'rgba(0,0,0,0.75)',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              justifyContent: 'center',
+                              alignItems: 'center',
                               padding: 3,
-                              zIndex: 2,
-                              transition: 'all 0.3s ease',
-                              transform: 'translateY(40px)',
+                              opacity: 0,
+                              transition: 'opacity 0.3s ease',
                             }}
                           >
                             <Typography
-                              variant="h6"
+                              variant="subtitle1"
                               sx={{
-                                fontWeight: 700,
-                                color: 'white',
+                                fontWeight: 600,
+                                color: '#7C3AED',
                                 fontSize: '1.1rem',
-                                mb: 0.5,
                                 textAlign: 'center',
-                                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                              }}
-                            >
-                              {member.name}
-                            </Typography>
-
-                            <Typography
-                              className="member-role"
-                              variant="subtitle2"
-                              sx={{
-                                fontWeight: 500,
-                                fontSize: '0.85rem',
-                                background:
-                                  'linear-gradient(45deg, #4ECDC4, #7C3AED)',
-                                backgroundClip: 'text',
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent',
-                                textAlign: 'center',
-                                mb: 2,
-                                opacity: 0,
-                                transform: 'translateY(10px)',
-                                transition: 'all 0.3s ease 0.1s',
+                                mb: 1,
                               }}
                             >
                               {member.role}
                             </Typography>
 
                             <Typography
-                              variant="body2"
+                              variant="body1"
                               sx={{
-                                fontSize: '0.85rem',
-                                lineHeight: 1.5,
-                                color: 'rgba(255,255,255,0.8)',
+                                fontSize: '0.95rem',
+                                lineHeight: 1.6,
+                                color: 'rgba(255,255,255,0.9)',
                                 textAlign: 'center',
-                                display: { xs: 'none', sm: 'block' },
-                                opacity: 0,
-                                transform: 'translateY(10px)',
-                                transition: 'all 0.3s ease 0.2s',
-                                '.member-details:hover &': {
-                                  opacity: 1,
-                                  transform: 'translateY(0)',
-                                },
+                                maxWidth: '280px',
+                                mx: 'auto',
                               }}
                             >
                               {member.bio}
                             </Typography>
+                          </Box>
 
-                            {/* Social icons */}
-                            <Stack
-                              direction="row"
-                              spacing={1}
-                              justifyContent="center"
+                          {/* Name overlay - always visible */}
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              bottom: 0,
+                              left: 0,
+                              right: 0,
+                              background:
+                                'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)',
+                              padding: '40px 16px 16px',
+                              pointerEvents: 'none',
+                              zIndex: 1,
+                            }}
+                          >
+                            <Typography
+                              variant="h6"
                               sx={{
-                                mt: 2,
-                                opacity: 0,
-                                transform: 'translateY(10px)',
-                                transition: 'all 0.3s ease 0.3s',
-                                '.member-details:hover &': {
-                                  opacity: 1,
-                                  transform: 'translateY(0)',
-                                },
+                                fontWeight: 600,
+                                color: 'white',
+                                fontSize: '1.1rem',
+                                textAlign: 'center',
+                                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
                               }}
                             >
-                              {Object.entries(member.social).map(
-                                ([platform, url]) => {
-                                  let Icon;
-                                  switch (platform) {
-                                    case 'linkedin':
-                                      Icon = LinkedInIcon;
-                                      break;
-                                    case 'twitter':
-                                      Icon = TwitterIcon;
-                                      break;
-                                    case 'instagram':
-                                      Icon = InstagramIcon;
-                                      break;
-                                    default:
-                                      Icon = LinkedInIcon;
-                                  }
-
-                                  return (
-                                    <IconButton
-                                      key={platform}
-                                      href={url}
-                                      size="small"
-                                      component={motion.a}
-                                      whileHover={{
-                                        y: -3,
-                                        backgroundColor:
-                                          platform === 'linkedin'
-                                            ? '#0077B5'
-                                            : platform === 'twitter'
-                                            ? '#1DA1F2'
-                                            : '#E1306C',
-                                        color: 'white',
-                                      }}
-                                      sx={{
-                                        bgcolor: 'rgba(255,255,255,0.15)',
-                                        backdropFilter: 'blur(5px)',
-                                        color: 'white',
-                                        width: 30,
-                                        height: 30,
-                                        transition: 'all 0.3s ease',
-                                      }}
-                                    >
-                                      <Icon fontSize="small" />
-                                    </IconButton>
-                                  );
-                                }
-                              )}
-                            </Stack>
+                              {member.name}
+                            </Typography>
                           </Box>
+
+                          {/* Social icons */}
+                          <Stack
+                            direction="row"
+                            spacing={1}
+                            justifyContent="center"
+                            sx={{
+                              position: 'absolute',
+                              bottom: 16,
+                              left: 0,
+                              right: 0,
+                              zIndex: 2,
+                              opacity: 0,
+                              transform: 'translateY(10px)',
+                              transition: 'all 0.3s ease',
+                              '.MuiCard-root:hover &': {
+                                opacity: 1,
+                                transform: 'translateY(0)',
+                              },
+                            }}
+                          >
+                            {Object.entries(member.social).map(
+                              ([platform, url]) => {
+                                let Icon;
+                                switch (platform) {
+                                  case 'linkedin':
+                                    Icon = LinkedInIcon;
+                                    break;
+                                  case 'twitter':
+                                    Icon = TwitterIcon;
+                                    break;
+                                  case 'instagram':
+                                    Icon = InstagramIcon;
+                                    break;
+                                  default:
+                                    Icon = LinkedInIcon;
+                                }
+
+                                return (
+                                  <IconButton
+                                    key={platform}
+                                    href={url}
+                                    size="small"
+                                    component={motion.a}
+                                    whileHover={{
+                                      y: -3,
+                                      backgroundColor:
+                                        platform === 'linkedin'
+                                          ? '#0077B5'
+                                          : platform === 'twitter'
+                                          ? '#1DA1F2'
+                                          : '#E1306C',
+                                      color: 'white',
+                                    }}
+                                    sx={{
+                                      bgcolor: 'rgba(255,255,255,0.15)',
+                                      backdropFilter: 'blur(5px)',
+                                      color: 'white',
+                                      width: 30,
+                                      height: 30,
+                                      transition: 'all 0.3s ease',
+                                    }}
+                                  >
+                                    <Icon fontSize="small" />
+                                  </IconButton>
+                                );
+                              }
+                            )}
+                          </Stack>
                         </Box>
                       </Box>
                     </motion.div>
