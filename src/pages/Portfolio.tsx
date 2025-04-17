@@ -13,6 +13,10 @@ import {
   alpha,
   Tabs,
   Tab,
+  Dialog,
+  DialogContent,
+  IconButton,
+  DialogTitle,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -20,6 +24,8 @@ import CodeIcon from '@mui/icons-material/Code';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import SmartphoneIcon from '@mui/icons-material/Smartphone';
 import BusinessIcon from '@mui/icons-material/Business';
+import CloseIcon from '@mui/icons-material/Close';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -43,72 +49,80 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  image: string | any;
+  tags: string[];
+  year: string;
+  category: string;
+  projectUrl?: string;
+  pdfUrl?: string;
+  videoUrl?: string;
+}
+
+const projects: Project[] = [
   {
-    title: 'E-commerce Platform',
+    title: 'Integrity Design',
     description:
-      'Desarrollo de una plataforma de comercio electrónico con sistema de pago integrado y gestión de inventario.',
-    image:
-      'https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=1605&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    tags: ['React', 'Node.js', 'Supabase', 'Stripe'],
-    year: '2025',
-    category: 'web',
-  },
-  {
-    title: 'Brand Identity Redesign',
-    description:
-      'Rediseño completo de identidad visual para una marca de moda sostenible.',
-    image:
-      'https://images.unsplash.com/photo-1611670502424-232bf030c54b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    tags: ['Branding', 'UI/UX', 'Illustration'],
-    year: '2025',
+      'Creación de identidad de marca para Integrity Design, empresa de diseño de interiores. Desarrollo de logotipo minimalista, sistema visual y aplicaciones de marca.',
+    image: require('../assets/integrityDesing.png'),
+    pdfUrl: require('../assets/IDENTIDAD VISUAL - INTEGRITY DESING.pdf'),
+    tags: [
+      'Branding',
+      'Diseño de Logo',
+      'Identidad Visual',
+      'Diseño de Interiores',
+    ],
+    year: '2024',
     category: 'design',
   },
   {
-    title: 'Mobile App Development',
+    title: 'Contenido Audiovisual',
     description:
-      'Aplicación móvil para gestión de tareas con sincronización en tiempo real.',
-    image:
-      'https://images.unsplash.com/photo-1650636353551-1275516077b6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    tags: ['React Native', 'Supabase', 'Redux', 'Expo'],
-    year: '2025',
-    category: 'mobile',
+      'Creación de contenido audiovisual para redes sociales y plataformas digitales. Videos promocionales, animaciones y contenido interactivo para marcas.',
+    image: 'https://img.youtube.com/vi/video-content-id/maxresdefault.jpg',
+    videoUrl: require('../assets/freecompress-prueba 2.mp4'),
+    tags: ['Video Marketing', 'Motion Graphics', 'Edición', 'Social Media'],
+    year: '2024',
+    category: 'design',
   },
   {
-    title: 'Web Platform',
+    title: 'Musicom',
     description:
-      'Plataforma web para gestión de recursos humanos con dashboard interactivo.',
-    image:
-      'https://images.unsplash.com/photo-1688733720228-4f7a18681c4f?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    tags: ['React.js', 'Python/Java', 'PostgreSQL'],
-    year: '2025',
+      'Aplicación web para conectar músicos y crear comunidades musicales. Plataforma interactiva con funcionalidades de red social y gestión de eventos.',
+    image: require('../assets/musicom.png'),
+    projectUrl: 'https://musicomapp.com',
+    tags: ['React', 'Node.js', 'Firebase', 'WebSockets'],
+    year: '2024',
     category: 'web',
   },
   {
-    title: 'Landing Page Website',
+    title: 'Website Brandify',
     description:
-      'Diseño y desarrollo de landing page moderna con alto índice de conversión.',
-    image:
-      'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1510&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'A/B Testing'],
-    year: '2025',
+      'Sitio web corporativo de Brandify, desarrollado con las últimas tecnologías web y enfocado en mostrar servicios y portfolio de manera interactiva.',
+    image: require('../assets/brandifyWebsite.png'),
+    videoUrl: '',
+    tags: ['React', 'TypeScript', 'Material-UI', 'Framer Motion'],
+    year: '2024',
     category: 'web',
   },
   {
-    title: 'Software Development',
+    title: 'Brand Identity',
     description:
-      'Desarrollo de software empresarial con arquitectura escalable y microservicios.',
-    image:
-      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    tags: ['.NET', 'C#', 'Docker', 'Kubernetes'],
-    year: '2025',
-    category: 'web',
+      'Desarrollo de identidad visual para Brandify, incluyendo diseño de logotipo, paleta de colores, tipografía y guía de estilo completa.',
+    image: require('../assets/brandIdentity1.png'),
+    pdfUrl: require('../assets/Identidad visual - Brandify.pdf'),
+    tags: ['Branding', 'Diseño de Logo', 'Identidad Visual', 'Guía de Estilo'],
+    year: '2024',
+    category: 'design',
   },
 ];
 
 const Portfolio: React.FC = () => {
   const theme = useTheme();
   const [value, setValue] = useState(0);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -116,6 +130,14 @@ const Portfolio: React.FC = () => {
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+  };
+
+  const handleOpenProject = (project: Project) => {
+    setSelectedProject(project);
+  };
+
+  const handleCloseProject = () => {
+    setSelectedProject(null);
   };
 
   const categories = [
@@ -283,16 +305,79 @@ const Portfolio: React.FC = () => {
                       },
                     }}
                   >
-                    <CardMedia
-                      component="img"
-                      height="240"
-                      image={project.image}
-                      alt={project.title}
+                    <Box
                       sx={{
-                        objectFit: 'cover',
+                        position: 'relative',
+                        paddingTop: '56.25%', // 16:9 aspect ratio
                         borderBottom: '1px solid rgba(124, 58, 237, 0.1)',
+                        overflow: 'hidden',
                       }}
-                    />
+                    >
+                      {project.videoUrl ? (
+                        <video
+                          src={project.videoUrl}
+                          muted
+                          playsInline
+                          preload="metadata"
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'contain',
+                          }}
+                        />
+                      ) : (
+                        <CardMedia
+                          component="img"
+                          image={project.image}
+                          alt={project.title}
+                          sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'fill',
+                          }}
+                        />
+                      )}
+
+                      {/* Hover overlay */}
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          background: 'rgba(0,0,0,0.4)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          opacity: 0,
+                          transition: 'opacity 0.3s ease',
+                          '&:hover': {
+                            opacity: 1,
+                          },
+                        }}
+                      >
+                        <Button
+                          variant="contained"
+                          onClick={() => handleOpenProject(project)}
+                          sx={{
+                            bgcolor: 'rgba(124, 58, 237, 0.9)',
+                            '&:hover': {
+                              bgcolor: 'rgba(124, 58, 237, 1)',
+                            },
+                          }}
+                        >
+                          Ver Proyecto
+                        </Button>
+                      </Box>
+                    </Box>
+
                     <CardContent sx={{ p: 3 }}>
                       <Typography
                         variant="h5"
@@ -358,6 +443,155 @@ const Portfolio: React.FC = () => {
           </Grid>
         </Container>
       </Box>
+
+      {/* Project Details Modal */}
+      <Dialog
+        open={Boolean(selectedProject)}
+        onClose={handleCloseProject}
+        maxWidth="lg"
+        fullWidth
+        sx={{
+          '& .MuiDialog-paper': {
+            bgcolor: 'rgba(15, 15, 15, 0.95)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(124, 58, 237, 0.1)',
+          },
+        }}
+      >
+        {selectedProject && (
+          <>
+            <DialogTitle
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                bgcolor: 'rgba(0,0,0,0.3)',
+                borderBottom: '1px solid rgba(124, 58, 237, 0.1)',
+              }}
+            >
+              <Typography variant="h5" sx={{ color: 'white', fontWeight: 600 }}>
+                {selectedProject.title}
+              </Typography>
+              <IconButton
+                onClick={handleCloseProject}
+                sx={{ color: 'rgba(255,255,255,0.7)' }}
+              >
+                <CloseIcon />
+              </IconButton>
+            </DialogTitle>
+            <DialogContent sx={{ p: 0 }}>
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '80vh',
+                }}
+              >
+                {selectedProject.pdfUrl ? (
+                  <iframe
+                    src={selectedProject.pdfUrl}
+                    title={selectedProject.title}
+                    width="100%"
+                    height="100%"
+                    style={{
+                      border: 'none',
+                    }}
+                  />
+                ) : selectedProject.videoUrl ? (
+                  <video
+                    src={selectedProject.videoUrl}
+                    controls
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
+                    }}
+                  />
+                ) : (
+                  <Box
+                    component="img"
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
+                      bgcolor: 'black',
+                    }}
+                  />
+                )}
+              </Box>
+              <Box sx={{ p: 3 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: 'rgba(255,255,255,0.9)',
+                    mb: 2,
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {selectedProject.description}
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 3 }}>
+                  {selectedProject.tags.map((tag) => (
+                    <Chip
+                      key={tag}
+                      label={tag}
+                      sx={{
+                        bgcolor: 'rgba(124, 58, 237, 0.1)',
+                        color: '#7C3AED',
+                        fontWeight: 500,
+                      }}
+                    />
+                  ))}
+                </Box>
+                <Box sx={{ display: 'flex', gap: 2 }}>
+                  {selectedProject.projectUrl && (
+                    <Button
+                      variant="contained"
+                      endIcon={<OpenInNewIcon />}
+                      href={selectedProject.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      sx={{
+                        bgcolor: '#7C3AED',
+                        '&:hover': {
+                          bgcolor: '#6D28D9',
+                        },
+                      }}
+                    >
+                      Visitar Proyecto
+                    </Button>
+                  )}
+                  {selectedProject.pdfUrl && (
+                    <Button
+                      variant="contained"
+                      endIcon={<OpenInNewIcon />}
+                      href={selectedProject.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      sx={{
+                        bgcolor: '#7C3AED',
+                        '&:hover': {
+                          bgcolor: '#6D28D9',
+                        },
+                      }}
+                    >
+                      Descargar PDF
+                    </Button>
+                  )}
+                </Box>
+              </Box>
+            </DialogContent>
+          </>
+        )}
+      </Dialog>
     </Box>
   );
 };

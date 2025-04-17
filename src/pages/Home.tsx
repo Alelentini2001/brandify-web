@@ -341,7 +341,7 @@ const serviceCalculators: ServiceCalculator[] = [
         name: 'Sitio Web Corporativo',
         description:
           'Sitio web completo con múltiples páginas y panel de administración',
-        price: 2200,
+        price: 1300,
         features: [
           'Hasta 5 páginas',
           'Panel de administración',
