@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/brandify-web/static/css/main.e6c13ad2.css",
-    "main.js": "/brandify-web/static/js/main.aee69da4.js",
+    "main.js": "/brandify-web/static/js/main.3ae7808f.js",
     "static/js/453.891dfdcb.chunk.js": "/brandify-web/static/js/453.891dfdcb.chunk.js",
     "static/media/Christian Smith Camperos Pérez diseñador.png": "/brandify-web/static/media/Christian Smith Camperos Pérez diseñador.15f87a0b61c305e235cc.png",
     "static/media/image.png": "/brandify-web/static/media/image.8d4d48b94ee6200ccb48.png",
@@ -12,11 +12,11 @@
     "static/media/Erick Antonio López Córdova.jpeg": "/brandify-web/static/media/Erick Antonio López Córdova.916cb194c8e1f258062d.jpeg",
     "index.html": "/brandify-web/index.html",
     "main.e6c13ad2.css.map": "/brandify-web/static/css/main.e6c13ad2.css.map",
-    "main.aee69da4.js.map": "/brandify-web/static/js/main.aee69da4.js.map",
+    "main.3ae7808f.js.map": "/brandify-web/static/js/main.3ae7808f.js.map",
     "453.891dfdcb.chunk.js.map": "/brandify-web/static/js/453.891dfdcb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.aee69da4.js"
+    "static/js/main.3ae7808f.js"
   ]
 }
