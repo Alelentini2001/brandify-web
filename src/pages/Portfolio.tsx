@@ -318,6 +318,8 @@ const Portfolio: React.FC = () => {
                           src={project.videoUrl}
                           muted
                           playsInline
+                          autoPlay
+                          loop
                           preload="metadata"
                           style={{
                             position: 'absolute',
@@ -325,7 +327,7 @@ const Portfolio: React.FC = () => {
                             left: 0,
                             width: '100%',
                             height: '100%',
-                            objectFit: 'contain',
+                            objectFit: 'cover',
                           }}
                         />
                       ) : (
@@ -339,7 +341,7 @@ const Portfolio: React.FC = () => {
                             left: 0,
                             width: '100%',
                             height: '100%',
-                            objectFit: 'fill',
+                            objectFit: 'cover',
                           }}
                         />
                       )}
@@ -484,29 +486,78 @@ const Portfolio: React.FC = () => {
                 sx={{
                   position: 'relative',
                   width: '100%',
-                  height: '80vh',
+                  height: { xs: 'auto', sm: '80vh' },
+                  display: 'flex',
+                  flexDirection: 'column',
+                  overflow: 'hidden',
                 }}
               >
                 {selectedProject.pdfUrl ? (
-                  <iframe
-                    src={selectedProject.pdfUrl}
-                    title={selectedProject.title}
-                    width="100%"
-                    height="100%"
-                    style={{
-                      border: 'none',
-                    }}
-                  />
+                  <>
+                    <Box
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        display: { xs: 'none', sm: 'block' },
+                      }}
+                    >
+                      <iframe
+                        src={selectedProject.pdfUrl}
+                        title={selectedProject.title}
+                        style={{
+                          border: 'none',
+                          width: '100%',
+                          height: '100%',
+                        }}
+                      />
+                    </Box>
+                    <Box
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        display: { xs: 'flex', sm: 'none' },
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: 2,
+                      }}
+                    >
+                      <Box
+                        component="img"
+                        src={selectedProject.image}
+                        alt={selectedProject.title}
+                        sx={{
+                          width: '100%',
+                          height: 'auto',
+                          maxHeight: { xs: '60vh', sm: '70vh' },
+                          objectFit: 'contain',
+                        }}
+                      />
+                      <Button
+                        variant="contained"
+                        endIcon={<OpenInNewIcon />}
+                        href={selectedProject.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        sx={{
+                          bgcolor: '#7C3AED',
+                          '&:hover': {
+                            bgcolor: '#6D28D9',
+                          },
+                          mt: 2,
+                        }}
+                      >
+                        Ver PDF Completo
+                      </Button>
+                    </Box>
+                  </>
                 ) : selectedProject.videoUrl ? (
                   <video
                     src={selectedProject.videoUrl}
                     controls
                     style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
                       width: '100%',
                       height: '100%',
+                      maxHeight: '80vh',
                       objectFit: 'contain',
                     }}
                   />
@@ -516,18 +567,15 @@ const Portfolio: React.FC = () => {
                     src={selectedProject.image}
                     alt={selectedProject.title}
                     sx={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
                       width: '100%',
                       height: '100%',
                       objectFit: 'contain',
-                      bgcolor: 'black',
+                      maxHeight: '70vh',
                     }}
                   />
                 )}
               </Box>
-              <Box sx={{ p: 3 }}>
+              <Box sx={{ p: { xs: 3, sm: 2 } }}>
                 <Typography
                   variant="body1"
                   sx={{
@@ -567,23 +615,6 @@ const Portfolio: React.FC = () => {
                       }}
                     >
                       Visitar Proyecto
-                    </Button>
-                  )}
-                  {selectedProject.pdfUrl && (
-                    <Button
-                      variant="contained"
-                      endIcon={<OpenInNewIcon />}
-                      href={selectedProject.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      sx={{
-                        bgcolor: '#7C3AED',
-                        '&:hover': {
-                          bgcolor: '#6D28D9',
-                        },
-                      }}
-                    >
-                      Descargar PDF
                     </Button>
                   )}
                 </Box>
