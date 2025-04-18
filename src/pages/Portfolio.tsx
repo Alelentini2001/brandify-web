@@ -63,7 +63,7 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: 'Integrity Design',
+    title: 'Identidad visual | integrity design',
     description:
       'Creación de identidad de marca para Integrity Design, empresa de diseño de interiores. Desarrollo de logotipo minimalista, sistema visual y aplicaciones de marca.',
     image: require('../assets/integrityDesing.png'),
