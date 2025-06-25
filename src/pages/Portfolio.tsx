@@ -88,13 +88,13 @@ const projects: Project[] = [
     category: 'design',
   },
   {
-    title: 'Musicom',
+    title: 'Licitar Y Ganar | Plataforma',
     description:
-      'Aplicación web para conectar músicos y crear comunidades musicales. Plataforma interactiva con funcionalidades de red social y gestión de eventos.',
-    image: require('../assets/musicom.png'),
-    projectUrl: 'https://musicomapp.com',
-    tags: ['React', 'Node.js', 'Firebase', 'WebSockets'],
-    year: '2024',
+      'Plataforma video streaming para licitar y ganar, desarrollada con React, Node.js, Supabase, Firebase y WebSockets.',
+    image: require('../assets/licitarYGanar.jpeg'),
+    projectUrl: 'http://videocourse-1a054.web.app/',
+    tags: ['React', 'Node.js', 'Supabase', 'Firebase', 'WebSockets'],
+    year: '2025',
     category: 'web',
   },
   {
