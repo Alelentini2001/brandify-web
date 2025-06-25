@@ -3,7 +3,7 @@ import { Box, useTheme } from '@mui/material';
 
 interface VideoBackgroundProps {
   /**
-   * URL to the video file
+   * URL to the video file or YouTube URL
    */
   src: string;
 
@@ -72,6 +72,23 @@ interface VideoBackgroundProps {
 }
 
 /**
+ * Utility function to detect if a URL is a YouTube URL
+ */
+const isYouTubeUrl = (url: string): boolean => {
+  return url.includes('youtube.com') || url.includes('youtu.be');
+};
+
+/**
+ * Utility function to extract YouTube video ID from URL
+ */
+const getYouTubeVideoId = (url: string): string => {
+  const regExp =
+    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  return match && match[2].length === 11 ? match[2] : '';
+};
+
+/**
  * VideoBackground component for adding video backgrounds to sections
  */
 const VideoBackground: React.FC<VideoBackgroundProps> = ({
@@ -90,10 +107,12 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const theme = useTheme();
+  const isYouTube = isYouTubeUrl(src);
+  const youtubeVideoId = isYouTube ? getYouTubeVideoId(src) : '';
 
   // Handle autoplay issues by trying to play once the component mounts
   useEffect(() => {
-    if (videoRef.current && autoPlay) {
+    if (videoRef.current && autoPlay && !isYouTube) {
       // Try to autoplay
       const playPromise = videoRef.current.play();
 
@@ -105,7 +124,7 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
         });
       }
     }
-  }, [autoPlay]);
+  }, [autoPlay, isYouTube]);
 
   return (
     <Box
@@ -120,26 +139,50 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
         ...sx,
       }}
     >
-      {/* Video element */}
-      <Box
-        component="video"
-        ref={videoRef}
-        autoPlay={autoPlay}
-        muted={muted}
-        loop={loop}
-        playsInline
-        poster={poster}
-        controls={controls}
-        sx={{
-          width: '100%',
-          height: '100%',
-          objectFit,
-          opacity,
-        }}
-      >
-        <source src={src} type={`video/${src.split('.').pop()}`} />
-        Your browser does not support the video tag.
-      </Box>
+      {/* YouTube iframe or Video element */}
+      {isYouTube ? (
+        <Box
+          component="iframe"
+          src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=${
+            autoPlay ? 1 : 0
+          }&mute=${muted ? 1 : 0}&loop=${
+            loop ? 1 : 0
+          }&playlist=${youtubeVideoId}&controls=${
+            controls ? 1 : 0
+          }&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1`}
+          allow="autoplay; encrypted-media"
+          allowFullScreen={false}
+          sx={{
+            width: '100%',
+            height: '100%',
+            border: 'none',
+            opacity,
+            transform: 'scale(1.2)', // Scale up to hide YouTube UI elements
+            transformOrigin: 'center center',
+            pointerEvents: 'none', // Disable user interaction
+          }}
+        />
+      ) : (
+        <Box
+          component="video"
+          ref={videoRef}
+          autoPlay={autoPlay}
+          muted={muted}
+          loop={loop}
+          playsInline
+          poster={poster}
+          controls={controls}
+          sx={{
+            width: '100%',
+            height: '100%',
+            objectFit,
+            opacity,
+          }}
+        >
+          <source src={src} type={`video/${src.split('.').pop()}`} />
+          Your browser does not support the video tag.
+        </Box>
+      )}
 
       {/* Overlay */}
       {overlayColor && (

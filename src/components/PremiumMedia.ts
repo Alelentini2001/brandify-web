@@ -5,7 +5,7 @@
 
 // Hero Section Videos
 export const heroVideos = {
-  creative: 'https://assets.mixkit.co/videos/14667/14667-720.mp4',
+  creative: 'https://youtu.be/7me86P7qmLk',
   marketing: 'https://assets.mixkit.co/videos/preview/mixkit-hands-typing-on-a-keyboard-with-a-screen-displaying-code-12432-large.mp4',
   technology: 'https://assets.mixkit.co/videos/preview/mixkit-blue-and-red-light-streaming-in-a-data-center-5493-large.mp4',
   teamwork: 'https://assets.mixkit.co/videos/preview/mixkit-group-of-people-brainstorming-in-an-office-4780-large.mp4',

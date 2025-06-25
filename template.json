@@ -1,0 +1,29 @@
+{
+  "name": "brandify-template",
+  "version": "1.0.0",
+  "description": "A modern React TypeScript template with Material-UI, Firebase, and Framer Motion",
+  "author": "Brandify",
+  "keywords": [
+    "react",
+    "typescript",
+    "material-ui",
+    "firebase",
+    "framer-motion",
+    "template"
+  ],
+  "files": [
+    "src",
+    "public",
+    "package.json",
+    "tsconfig.json",
+    "README.md",
+    "template.json"
+  ],
+  "ignore": [
+    "node_modules",
+    "build",
+    ".firebase",
+    ".env",
+    "firebase-info.ts"
+  ]
+} 

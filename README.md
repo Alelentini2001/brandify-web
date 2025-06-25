@@ -1,71 +1,112 @@
-# Brandify Website
+# Brandify Template
 
-Sitio web oficial de Brandify, una agencia especializada en branding, marketing digital y desarrollo web.
+A modern React TypeScript template with Material-UI, Firebase, and Framer Motion integration.
 
-## Características
+## Features
 
-- Diseño moderno y responsive
-- Animaciones suaves y profesionales
-- Optimizado para SEO
-- Interfaz intuitiva y fácil de navegar
+- ⚛️ React 19 with TypeScript
+- 🎨 Material-UI (MUI) for beautiful UI components
+- 🔥 Firebase integration for authentication and hosting
+- 🎬 Framer Motion for smooth animations
+- 📱 Responsive design
+- 🎯 SEO optimized
+- 🚀 Performance optimized
 
-## Tecnologías Utilizadas
+## Getting Started
 
-- React.js
-- TypeScript
-- Material-UI
-- Framer Motion
-- React Router
+### Prerequisites
 
-## Requisitos
+- Node.js (v16 or higher)
+- npm or yarn
+- Firebase account
 
-- Node.js (versión 18 o superior)
-- npm (incluido con Node.js)
+### Installation
 
-## Instalación
-
-1. Clonar el repositorio:
+1. Clone the template:
 
 ```bash
-git clone https://github.com/tu-usuario/brandify.git
+npx create-react-app my-app --template brandify
 ```
 
-2. Instalar dependencias:
+2. Install dependencies:
 
 ```bash
-cd brandify
+cd my-app
 npm install
 ```
 
-3. Iniciar el servidor de desarrollo:
+3. Set up Firebase:
+
+   - Create a new Firebase project
+   - Copy your Firebase configuration to `src/firebase-info.ts`
+   - Enable Authentication and other Firebase services as needed
+
+4. Start the development server:
 
 ```bash
 npm start
 ```
 
-4. Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
-
-## Estructura del Proyecto
+## Project Structure
 
 ```
-brandify/
-├── public/
-│   └── images/         # Imágenes estáticas
-├── src/
-│   ├── components/     # Componentes reutilizables
-│   ├── pages/         # Páginas principales
-│   ├── styles/        # Estilos y tema
-│   └── assets/        # Recursos estáticos
-└── package.json
+src/
+├── components/     # Reusable UI components
+├── pages/         # Page components
+├── styles/        # Global styles and themes
+├── utils/         # Utility functions
+├── hooks/         # Custom React hooks
+└── types/         # TypeScript type definitions
 ```
 
-## Scripts Disponibles
+## Available Scripts
 
-- `npm start`: Inicia el servidor de desarrollo
-- `npm test`: Ejecuta los tests
-- `npm run build`: Construye la aplicación para producción
-- `npm run eject`: Expone la configuración de Create React App
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm test` - Run tests
+- `npm run deploy` - Deploy to Firebase
 
-## Licencia
+## Customization
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+### Theme
+
+Edit `src/styles/theme.ts` to customize the Material-UI theme.
+
+### Firebase Configuration
+
+Update `src/firebase-info.ts` with your Firebase project settings.
+
+## Deployment
+
+1. Install Firebase CLI:
+
+```bash
+npm install -g firebase-tools
+```
+
+2. Login to Firebase:
+
+```bash
+firebase login
+```
+
+3. Initialize Firebase:
+
+```bash
+firebase init
+```
+
+4. Deploy:
+
+```bash
+npm run build
+firebase deploy
+```
+
+## Contributing
+
+Feel free to submit issues and enhancement requests.
+
+## License
+
+This project is licensed under the MIT License.
