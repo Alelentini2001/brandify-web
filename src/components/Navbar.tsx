@@ -65,33 +65,30 @@ const Navbar: React.FC = memo(() => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isHome = location.pathname === '/';
+  const isLight = !isHome || scrolled; // Light nav on scroll or non-home routes
+
   return (
     <Slide appear={false} direction="down" in={true}>
       <AppBar
         position="fixed"
+        elevation={0}
         sx={{
-          bgcolor: scrolled
-            ? alpha(theme.palette.background.default, 0.1)
-            : 'transparent',
-          backdropFilter: scrolled ? 'blur(10px)' : 'none',
-          transition: theme.transitions.create(
-            ['background-color', 'box-shadow', 'backdrop-filter'],
-            {
-              duration: theme.transitions.duration.standard,
-            }
-          ),
-          boxShadow: scrolled ? '0 2px 28px 0 rgba(0,0,0,0.06)' : 'none',
-          borderBottom: 'none',
+          bgcolor: isLight ? 'rgba(255, 255, 255, 0.85)' : 'transparent',
+          backdropFilter: isLight ? 'blur(18px)' : 'none',
+          WebkitBackdropFilter: isLight ? 'blur(18px)' : 'none',
+          transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          boxShadow: isLight ? '0px 1px 0px rgba(0,0,0,0.06)' : 'none',
+          borderBottom: isLight ? '1px solid rgba(0,0,0,0.06)' : 'none',
         }}
       >
         <Container maxWidth="lg">
           <Toolbar
             disableGutters
             sx={{
-              height: scrolled ? 70 : 80,
-              transition: theme.transitions.create('height', {
-                duration: theme.transitions.duration.standard,
-              }),
+              height: scrolled ? 64 : 72,
+              transition: 'height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+              px: { xs: 2, md: 0 },
             }}
           >
             {/* Mobile Menu Icon */}
@@ -102,7 +99,13 @@ const Navbar: React.FC = memo(() => {
               sx={{
                 mr: 2,
                 display: { xs: 'flex', md: 'none' },
-                color: scrolled ? 'white' : 'white',
+                color: isLight ? '#1D1D1F' : 'white',
+                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                '&:hover': {
+                  backgroundColor: isLight
+                    ? 'rgba(0,0,0,0.06)'
+                    : 'rgba(255, 255, 255, 0.1)',
+                },
               }}
             >
               {Boolean(anchorElNav) ? <CloseIcon /> : <MenuIcon />}
@@ -115,19 +118,25 @@ const Navbar: React.FC = memo(() => {
                 display: 'flex',
                 alignItems: 'center',
                 textDecoration: 'none',
-                '&::after': {
-                  display: 'none',
+                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                '&:hover': {
+                  transform: 'scale(1.02)',
                 },
               }}
               component={Link}
               to="/"
             >
-              <Logo color={scrolled ? 'primary' : 'white'} />
+              <Logo color={isLight ? 'primary' : 'white'} />
               <Typography
                 variant="h6"
-                color={scrolled ? 'primary' : 'white'}
+                sx={{ color: isLight ? '#1D1D1F' : 'white' }}
                 marginLeft={1}
-                fontFamily={'sans-serif'}
+                fontFamily={
+                  'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif'
+                }
+                fontWeight={800}
+                fontSize="1.25rem"
+                letterSpacing="-0.01em"
               >
                 Brandify.
               </Typography>
@@ -139,7 +148,8 @@ const Navbar: React.FC = memo(() => {
                 flexGrow: 1,
                 display: { xs: 'none', md: 'flex' },
                 justifyContent: 'flex-end',
-                gap: 1,
+                gap: 0.5,
+                alignItems: 'center',
               }}
             >
               {pages.map((page) => (
@@ -149,32 +159,32 @@ const Navbar: React.FC = memo(() => {
                   to={page.path}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    mx: 1,
-                    color: 'invert(1)',
+                    color: isLight ? 'rgba(0,0,0,0.85)' : 'white',
                     fontSize: '0.95rem',
                     fontWeight: 500,
-                    position: 'relative',
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      width: '0%',
-                      height: '2px',
-                      bottom: 0,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      backgroundColor: 'primary.main',
-                      transition: 'width 0.3s ease',
-                      display: 'none',
-                    },
+                    borderRadius: '12px',
+                    padding: '10px 16px',
+                    minWidth: 'auto',
+                    textTransform: 'none',
+                    letterSpacing: '-0.01em',
+                    transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                     '&:hover': {
-                      backgroundColor: 'transparent',
-                      '&::after': {
-                        width: '0%',
-                      },
+                      backgroundColor: isLight
+                        ? alpha(theme.palette.primary.main, 0.08)
+                        : 'rgba(255, 255, 255, 0.15)',
+                      transform: 'translateY(-1px)',
+                      color: isLight ? theme.palette.primary.main : '#5AC8FA',
                     },
                     ...(location.pathname === page.path && {
-                      '&::after': {
-                        width: '0%',
+                      backgroundColor: isLight
+                        ? alpha(theme.palette.primary.main, 0.12)
+                        : 'rgba(255, 255, 255, 0.2)',
+                      color: isLight ? theme.palette.primary.main : 'white',
+                      fontWeight: 700,
+                      '&:hover': {
+                        backgroundColor: isLight
+                          ? alpha(theme.palette.primary.main, 0.18)
+                          : 'rgba(255, 255, 255, 0.25)',
                       },
                     }),
                   }}
@@ -194,16 +204,15 @@ const Navbar: React.FC = memo(() => {
                 '& .MuiPaper-root': {
                   width: '100%',
                   maxWidth: '100%',
-                  top: '70px !important',
+                  top: '64px !important',
                   left: '0 !important',
                   right: '0 !important',
-                  backgroundColor: alpha(
-                    theme.palette.background.default,
-                    0.95
-                  ),
-                  backdropFilter: 'blur(10px)',
+                  backgroundColor: isLight ? '#FFFFFF' : 'rgba(15, 15, 35, 0.95)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
                   borderRadius: 0,
-                  boxShadow: '0 2px 28px 0 rgba(0,0,0,0.06)',
+                  boxShadow: isLight ? '0px 1px 0px rgba(0,0,0,0.06)' : '0px 1px 0px rgba(0, 122, 255, 0.2)',
+                  borderTop: isLight ? '1px solid rgba(0,0,0,0.06)' : '1px solid rgba(0, 122, 255, 0.1)',
                 },
               }}
               anchorOrigin={{
@@ -223,21 +232,40 @@ const Navbar: React.FC = memo(() => {
                   to={page.path}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    py: 2,
-                    borderBottom: `1px solid ${alpha(
-                      theme.palette.divider,
-                      0.08
-                    )}`,
+                    py: 2.5,
+                    px: 3,
+                    borderBottom: isLight
+                      ? '1px solid rgba(0,0,0,0.06)'
+                      : `1px solid rgba(255, 255, 255, 0.1)`,
+                    transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                     '&:last-child': {
                       borderBottom: 'none',
                     },
+                    '&:hover': {
+                      backgroundColor: isLight
+                        ? 'rgba(0,0,0,0.04)'
+                        : 'rgba(255, 255, 255, 0.1)',
+                    },
                     ...(location.pathname === page.path && {
-                      color: 'primary.main',
-                      backgroundColor: alpha(theme.palette.primary.main, 0.08),
+                      color: isLight ? theme.palette.primary.main : '#5AC8FA',
+                      backgroundColor: isLight
+                        ? alpha(theme.palette.primary.main, 0.1)
+                        : 'rgba(255, 255, 255, 0.15)',
+                      fontWeight: 700,
                     }),
                   }}
                 >
-                  <Typography textAlign="center">{page.title}</Typography>
+                  <Typography
+                    textAlign="center"
+                    sx={{
+                      fontSize: '1rem',
+                      fontWeight: 'inherit',
+                      letterSpacing: '-0.01em',
+                      color: isLight ? '#1D1D1F' : 'white',
+                    }}
+                  >
+                    {page.title}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>

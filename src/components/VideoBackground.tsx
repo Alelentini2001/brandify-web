@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, useTheme } from '@mui/material';
+import { Box, useTheme, useMediaQuery } from '@mui/material';
 
 interface VideoBackgroundProps {
   /**
@@ -90,6 +90,7 @@ const getYouTubeVideoId = (url: string): string => {
 
 /**
  * VideoBackground component for adding video backgrounds to sections
+ * Fixed for mobile video orientation issues
  */
 const VideoBackground: React.FC<VideoBackgroundProps> = ({
   src,
@@ -107,6 +108,7 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const isYouTube = isYouTubeUrl(src);
   const youtubeVideoId = isYouTube ? getYouTubeVideoId(src) : '';
 
@@ -125,6 +127,23 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
       }
     }
   }, [autoPlay, isYouTube]);
+
+  // Mobile-specific video handling
+  useEffect(() => {
+    if (videoRef.current && isMobile) {
+      // Force mobile video attributes
+      videoRef.current.setAttribute('playsinline', 'true');
+      videoRef.current.setAttribute('webkit-playsinline', 'true');
+      videoRef.current.setAttribute('x5-playsinline', 'true');
+      videoRef.current.setAttribute('x5-video-player', 'true');
+      videoRef.current.setAttribute('x5-video-player-type', 'h5');
+
+      // Set mobile-specific video properties
+      videoRef.current.style.objectFit = 'cover';
+      videoRef.current.style.width = '100%';
+      videoRef.current.style.height = '100%';
+    }
+  }, [isMobile]);
 
   return (
     <Box
@@ -175,8 +194,18 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
           sx={{
             width: '100%',
             height: '100%',
-            objectFit,
+            objectFit: isMobile ? 'cover' : objectFit, // Force cover on mobile
             opacity,
+            // Mobile-specific styles to fix orientation issues
+            ...(isMobile && {
+              objectPosition: 'center center',
+              minHeight: '100%',
+              minWidth: '100%',
+              transform: 'scale(1.2)', // Scale up more to ensure full coverage
+              transformOrigin: 'center center',
+              width: '100vw', // Ensure full viewport width
+              height: '100vh', // Ensure full viewport height
+            }),
           }}
         >
           <source src={src} type={`video/${src.split('.').pop()}`} />

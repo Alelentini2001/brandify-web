@@ -1,13 +1,103 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FFFFFF;
+  color: #1D1D1F;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Global styles for Apple-inspired minimalist design */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #FFFFFF;
+}
+
+#root {
+  background-color: #FFFFFF;
+  min-height: 100vh;
+}
+
+/* Ensure all sections have white background */
+section, main, div[role="main"] {
+  background-color: #FFFFFF;
+}
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better focus states for accessibility */
+*:focus {
+  outline: 2px solid #007AFF;
+  outline-offset: 2px;
+}
+
+/* Improved button hover states */
+button:hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Card hover effects */
+.card:hover {
+  transform: translateY(-2px);
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Mobile video fixes - prevent horizontal orientation issues */
+video {
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+
+/* Force mobile video attributes */
+@media (max-width: 768px) {
+  video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    transform: scale(1.1) !important;
+    transform-origin: center center !important;
+  }
+  
+  /* Ensure video containers maintain aspect ratio */
+  .video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  /* Force mobile video to stay in portrait mode */
+  video[playsinline] {
+    -webkit-playsinline: true;
+    -moz-playsinline: true;
+    playsinline: true;
+  }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 768px) {
+  /* Ensure buttons have proper touch targets */
+  button, .MuiButton-root {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve mobile scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
 }

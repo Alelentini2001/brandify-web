@@ -14,6 +14,7 @@ import {
   alpha,
   useTheme,
   CircularProgress,
+  Divider,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -298,29 +299,15 @@ const Contacto: React.FC = () => {
         ref={headerRef}
         sx={{
           position: 'relative',
-          height: '100vh',
-          minHeight: 600,
+          height: '85vh',
+          minHeight: 500,
+          maxHeight: 700,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          bgcolor: '#0A0A0A',
-          width: '100vw',
-          left: '50%',
-          right: '50%',
-          marginLeft: '-50vw',
-          marginRight: '-50vw',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background:
-              'radial-gradient(circle at center, rgba(124, 58, 237, 0.15) 0%, rgba(0, 0, 0, 0) 70%)',
-            zIndex: 1,
-          },
+          bgcolor: '#FFFFFF',
+          pt: { xs: 8, md: 0 }, // Add top padding on mobile to avoid navbar overlap
         }}
       >
         <Container
@@ -345,31 +332,40 @@ const Contacto: React.FC = () => {
               variant="h1"
               align="center"
               sx={{
-                color: 'white',
+                color: '#1D1D1F',
                 fontWeight: 800,
                 mb: 3,
-                fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
-                background: 'linear-gradient(135deg, #7C3AED 0%, #EC4899 100%)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                textShadow: '0 2px 10px rgba(124, 58, 237, 0.3)',
+                fontSize: { xs: '3rem', md: '4.5rem', lg: '5.5rem' },
                 letterSpacing: '-0.02em',
+                lineHeight: 1.1,
               }}
             >
               Contáctanos
             </Typography>
+
+            <Divider
+              sx={{
+                width: '60px',
+                height: '3px',
+                background: '#007AFF',
+                borderRadius: '2px',
+                mb: 4,
+                mt: 1,
+                mx: 'auto',
+              }}
+            />
+
             <Typography
               variant="h5"
               align="center"
               sx={{
-                color: 'rgba(255,255,255,0.95)',
-                maxWidth: '600px',
+                color: 'rgba(0,0,0,0.6)',
+                maxWidth: '650px',
                 mx: 'auto',
-                mb: 8,
-                fontSize: { xs: '1.1rem', md: '1.25rem' },
-                lineHeight: 1.8,
-                fontWeight: 400,
+                mb: 6,
+                fontSize: { xs: '1.2rem', md: '1.5rem' },
+                lineHeight: 1.5,
+                fontWeight: 300,
                 letterSpacing: '0.01em',
               }}
             >
@@ -434,23 +430,7 @@ const Contacto: React.FC = () => {
           zIndex: 2,
           px: { xs: 2, md: 4 },
           pb: { xs: 8, md: 12 },
-          bgcolor: '#0A0A0A',
-          width: '100vw',
-          left: '50%',
-          right: '50%',
-          marginLeft: '-50vw',
-          marginRight: '-50vw',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background:
-              'radial-gradient(circle at center, rgba(124, 58, 237, 0.15) 0%, rgba(0, 0, 0, 0) 70%)',
-            zIndex: 1,
-          },
+          bgcolor: '#FFFFFF',
         }}
       >
         <Grid
@@ -464,19 +444,17 @@ const Contacto: React.FC = () => {
             <Box
               ref={formRef}
               component={Paper}
-              elevation={24}
+              elevation={0}
               sx={{
                 p: { xs: 3, md: 5 },
                 borderRadius: { xs: 2, md: 3 },
-                background: 'rgba(255,255,255,0.02)',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255,255,255,0.05)',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
+                background: '#FFFFFF',
+                border: '1px solid rgba(0,0,0,0.08)',
+                boxShadow: '0px 4px 12px rgba(0,0,0,0.06)',
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 '&:hover': {
-                  boxShadow: '0 25px 50px rgba(124, 58, 237, 0.15)',
-                  borderColor: 'rgba(124, 58, 237, 0.2)',
-                  background: 'rgba(255,255,255,0.03)',
+                  boxShadow: '0px 10px 24px rgba(0,0,0,0.10)',
+                  borderColor: 'rgba(0,0,0,0.12)',
                 },
                 maxWidth: '800px',
                 mx: 'auto',
@@ -494,11 +472,7 @@ const Contacto: React.FC = () => {
                   sx={{
                     fontWeight: 700,
                     mb: { xs: 3, md: 5 },
-                    background:
-                      'linear-gradient(135deg, #7C3AED 0%, #EC4899 100%)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
+                    color: '#1D1D1F',
                     textAlign: 'center',
                     fontSize: { xs: '1.5rem', md: '2rem' },
                     letterSpacing: '-0.02em',
@@ -804,11 +778,7 @@ const Contacto: React.FC = () => {
                     fontWeight: 700,
                     mb: { xs: 3, md: 4 },
                     fontSize: { xs: '1.5rem', md: '2rem' },
-                    background:
-                      'linear-gradient(135deg, #7C3AED 0%, #EC4899 100%)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
+                    color: '#1D1D1F',
                     textAlign: { xs: 'center', md: 'left' },
                     letterSpacing: '-0.02em',
                   }}
@@ -825,7 +795,7 @@ const Contacto: React.FC = () => {
                         />
                       ),
                       title: 'Email',
-                      content: 'brandifyok@gmail.com',
+                      content: 'info@brandifygrowth.com',
                     },
                     {
                       icon: (
@@ -849,22 +819,20 @@ const Contacto: React.FC = () => {
                     <Grid item xs={12} key={index}>
                       <motion.div variants={fadeInUp}>
                         <Card
-                          elevation={4}
+                          elevation={0}
                           sx={{
                             borderRadius: 1.5,
-                            background: 'rgba(255,255,255,0.02)',
-                            backdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(255,255,255,0.05)',
+                            background: '#FFFFFF',
+                            border: '1px solid rgba(0,0,0,0.08)',
+                            boxShadow: '0px 4px 12px rgba(0,0,0,0.06)',
                             transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
                             overflow: 'hidden',
                             '&:hover': {
                               transform: 'translateY(-4px)',
-                              boxShadow: '0 20px 40px rgba(124, 58, 237, 0.15)',
-                              borderColor: 'rgba(124, 58, 237, 0.2)',
-                              background: 'rgba(255,255,255,0.03)',
+                              boxShadow: '0px 10px 24px rgba(0,0,0,0.10)',
+                              borderColor: 'rgba(0,0,0,0.12)',
                               '& .icon-box': {
-                                background:
-                                  'linear-gradient(135deg, #7C3AED 0%, #EC4899 100%)',
+                                background: '#007AFF',
                               },
                             },
                           }}
@@ -882,8 +850,7 @@ const Contacto: React.FC = () => {
                                 mr: 2.5,
                                 p: { xs: 1.5, md: 2 },
                                 borderRadius: 1.5,
-                                background:
-                                  'linear-gradient(135deg, rgba(124, 58, 237, 0.8) 0%, rgba(236, 72, 153, 0.8) 100%)',
+                                background: 'rgba(0, 122, 255, 0.8)',
                                 transition: 'all 0.2s ease',
                               }}
                             >
@@ -895,7 +862,7 @@ const Contacto: React.FC = () => {
                                 gutterBottom
                                 sx={{
                                   fontWeight: 600,
-                                  color: 'white',
+                                  color: '#1D1D1F',
                                   fontSize: { xs: '0.9rem', md: '1.25rem' },
                                   mb: 0.5,
                                 }}
@@ -905,7 +872,7 @@ const Contacto: React.FC = () => {
                               <Typography
                                 variant="body2"
                                 sx={{
-                                  color: 'rgba(255,255,255,0.7)',
+                                  color: 'rgba(0,0,0,0.6)',
                                   fontSize: { xs: '0.8rem', md: '1rem' },
                                   lineHeight: 1.6,
                                 }}

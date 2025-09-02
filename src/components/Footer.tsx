@@ -15,8 +15,6 @@ import {
   alpha,
 } from '@mui/material';
 import { motion, HTMLMotionProps } from 'framer-motion';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
@@ -33,17 +31,19 @@ const Footer: React.FC = memo(() => {
   const theme = useTheme();
 
   const socialLinks = [
-    { icon: <FacebookIcon />, url: '#', label: 'Facebook' },
-    { icon: <TwitterIcon />, url: '#', label: 'Twitter' },
-    { icon: <InstagramIcon />, url: '#', label: 'Instagram' },
+    {
+      icon: <InstagramIcon />,
+      url: 'https://www.instagram.com/brandifygrowth/',
+      label: 'Instagram',
+    },
     { icon: <LinkedInIcon />, url: '#', label: 'LinkedIn' },
   ];
 
   const contactInfo = [
     {
       icon: <EmailIcon sx={{ mr: 1 }} />,
-      text: 'brandifyok@gmail.com',
-      href: 'mailto:brandifyok@gmail.com',
+      text: 'info@brandifygrowth.com',
+      href: 'mailto:info@brandifygrowth.com',
     },
     {
       icon: <PhoneIcon sx={{ mr: 1 }} />,
@@ -70,90 +70,72 @@ const Footer: React.FC = memo(() => {
     <Box
       component="footer"
       sx={{
-        bgcolor: 'black',
-        color: 'white',
+        bgcolor: '#FFFFFF',
+        color: theme.palette.text.primary,
         pt: { xs: 8, md: 10 },
         pb: 4,
         position: 'relative',
         overflow: 'hidden',
+        borderTop: '1px solid rgba(0, 0, 0, 0.06)',
       }}
     >
-      {/* Gradient Background */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'linear-gradient(45deg, #000000 0%, #1a1a1a 100%)',
-          opacity: 0.95,
-          zIndex: 0,
-        }}
-      />
-
-      {/* Decorative Elements */}
-      <MotionBox
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.1 }}
-        transition={{ duration: 1 }}
-        sx={{
-          position: 'absolute',
-          top: -100,
-          right: -100,
-          width: 300,
-          height: 300,
-          borderRadius: '50%',
-          background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-          filter: 'blur(80px)',
-        }}
-      />
+      {/* Clean white background for minimal look */}
 
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Grid container spacing={4}>
-          {/* Brand Section */}
+        <Grid container spacing={6}>
+          {/* Logo and Description */}
           <Grid item xs={12} md={4}>
-            <Stack spacing={3}>
-              <Stack direction="row" spacing={1} alignItems="center">
-                <Logo />
-                <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                  Brandify.
-                </Typography>
-              </Stack>
+            <Box sx={{ mb: 3 }}>
+              <Logo color="primary" />
               <Typography
-                variant="body1"
+                variant="h6"
                 sx={{
-                  color: alpha('#fff', 0.7),
-                  maxWidth: 300,
-                  lineHeight: 1.8,
+                  mt: 1,
+                  fontWeight: 600,
+                  color: theme.palette.text.primary,
                 }}
               >
-                Transformamos ideas en experiencias digitales extraordinarias.
-                Innovación y creatividad en cada proyecto.
+                Brandify.
               </Typography>
+            </Box>
+            <Typography
+              variant="body2"
+              sx={{
+                color: theme.palette.text.secondary,
+                lineHeight: 1.6,
+                mb: 3,
+              }}
+            >
+              Transformamos ideas en experiencias digitales excepcionales.
+              Creamos soluciones que conectan, inspiran y generan resultados.
+            </Typography>
 
-              {/* Social Links */}
-              <Stack direction="row" spacing={1}>
-                {socialLinks.map((social, index) => (
-                  <IconButton
-                    key={social.label}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                      color: 'white',
-                      bgcolor: 'rgba(255,255,255,0.05)',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        bgcolor: 'primary.main',
-                        transform: 'scale(1.1)',
-                      },
-                    }}
-                  >
-                    {social.icon}
-                  </IconButton>
-                ))}
-              </Stack>
+            {/* Social Links */}
+            <Stack direction="row" spacing={1}>
+              {socialLinks.map((social, index) => (
+                <IconButton
+                  key={social.label}
+                  component="a"
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  sx={{
+                    bgcolor: '#FFFFFF',
+                    color: theme.palette.primary.main,
+                    border: '1px solid rgba(0,0,0,0.08)',
+                    transition: 'all 0.2s ease',
+                    '&:hover': {
+                      background: 'linear-gradient(135deg, #007AFF, #5AC8FA)',
+                      color: '#FFFFFF',
+                      transform: 'translateY(-2px)',
+                      borderColor: 'transparent',
+                    },
+                  }}
+                >
+                  {social.icon}
+                </IconButton>
+              ))}
             </Stack>
           </Grid>
 
@@ -162,20 +144,24 @@ const Footer: React.FC = memo(() => {
             <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>
               Navegación
             </Typography>
-            <Grid container spacing={2}>
+            <Grid container spacing={1}>
               {navLinks.map((link, index) => (
                 <Grid item xs={6} key={link.text}>
                   <Box
                     component={RouterLink}
                     to={link.path}
                     sx={{
-                      color: alpha('#fff', 0.7),
+                      display: 'flex',
+                      alignItems: 'center',
+                      color: theme.palette.text.secondary,
                       textDecoration: 'none',
-                      display: 'block',
+                      transition: 'all 0.2s ease',
                       py: 0.5,
-                      transition: 'all 0.3s ease',
+                      px: 1,
+                      borderRadius: 1,
                       '&:hover': {
-                        color: 'primary.main',
+                        color: theme.palette.primary.main,
+                        backgroundColor: 'rgba(0,0,0,0.04)',
                         transform: 'translateX(5px)',
                       },
                     }}
@@ -193,7 +179,7 @@ const Footer: React.FC = memo(() => {
               Newsletter
             </Typography>
             <Stack spacing={3}>
-              <Typography sx={{ color: alpha('#fff', 0.7) }}>
+              <Typography sx={{ color: theme.palette.text.secondary }}>
                 Suscríbete para recibir las últimas noticias y actualizaciones.
               </Typography>
               <Stack direction="row" spacing={1}>
@@ -204,24 +190,27 @@ const Footer: React.FC = memo(() => {
                   fullWidth
                   sx={{
                     '& .MuiOutlinedInput-root': {
-                      bgcolor: 'rgba(255,255,255,0.05)',
+                      bgcolor: '#FFFFFF',
                       '& fieldset': {
-                        borderColor: 'rgba(255,255,255,0.1)',
+                        borderColor: 'rgba(0, 0, 0, 0.08)',
                       },
                       '&:hover fieldset': {
-                        borderColor: 'rgba(255,255,255,0.2)',
+                        borderColor: 'rgba(0, 122, 255, 0.3)',
+                      },
+                      '&.Mui-focused fieldset': {
+                        borderColor: theme.palette.primary.main,
                       },
                     },
-                    input: { color: 'white' },
+                    input: { color: theme.palette.text.primary },
                   }}
                 />
                 <Button
                   variant="contained"
                   sx={{
-                    bgcolor: 'primary.main',
-                    '&:hover': {
-                      bgcolor: 'primary.dark',
-                    },
+                    background: 'linear-gradient(135deg, #007AFF, #5AC8FA)',
+                    borderRadius: 2,
+                    px: 2.5,
+                    '&:hover': { filter: 'brightness(0.95)' },
                   }}
                 >
                   <ArrowForwardIcon />
@@ -238,11 +227,15 @@ const Footer: React.FC = memo(() => {
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
-                      color: alpha('#fff', 0.7),
+                      color: theme.palette.text.secondary,
                       textDecoration: 'none',
-                      transition: 'all 0.3s ease',
+                      transition: 'all 0.2s ease',
+                      py: 0.5,
+                      px: 1,
+                      borderRadius: 1,
                       '&:hover': {
                         color: 'primary.main',
+                        backgroundColor: 'rgba(0,0,0,0.04)',
                       },
                     }}
                   >
@@ -260,11 +253,14 @@ const Footer: React.FC = memo(() => {
           sx={{
             mt: 8,
             pt: 3,
-            borderTop: `1px solid ${alpha('#fff', 0.1)}`,
+            borderTop: `1px solid rgba(0, 0, 0, 0.06)`,
             textAlign: 'center',
           }}
         >
-          <Typography variant="body2" sx={{ color: alpha('#fff', 0.6) }}>
+          <Typography
+            variant="body2"
+            sx={{ color: theme.palette.text.secondary }}
+          >
             © {new Date().getFullYear()} Brandify. Todos los derechos
             reservados.
           </Typography>

@@ -17,7 +17,7 @@ import {
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
+
 import InstagramIcon from '@mui/icons-material/Instagram';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { mockImages } from '../components/MockImages';
@@ -50,7 +50,6 @@ const teamMembers = [
     image: require('../assets/image.png'),
     social: {
       linkedin: '#',
-      twitter: '#',
       instagram: '#',
     },
   },
@@ -61,7 +60,6 @@ const teamMembers = [
     image: require('../assets/Nayla_Lihuén_Petringa_CMO.jpeg.jpg'),
     social: {
       linkedin: '#',
-      twitter: '#',
       instagram: '#',
     },
   },
@@ -72,7 +70,6 @@ const teamMembers = [
     image: require('../assets/1646657139411-7.jpeg'),
     social: {
       linkedin: '#',
-      twitter: '#',
       instagram: '#',
     },
   },
@@ -83,7 +80,6 @@ const teamMembers = [
     image: require('../assets/Jesus Jesús Alejandro Guerrero Flores.jpeg'),
     social: {
       linkedin: '#',
-      twitter: '#',
       instagram: '#',
     },
   },
@@ -94,7 +90,6 @@ const teamMembers = [
     image: require('../assets/Christian Smith Camperos Pérez diseñador.png'),
     social: {
       linkedin: '#',
-      twitter: '#',
       instagram: '#',
     },
   },
@@ -105,7 +100,6 @@ const teamMembers = [
     image: require('../assets/Erick Antonio López Córdova.jpeg'),
     social: {
       linkedin: '#',
-      twitter: '#',
       instagram: '#',
     },
   },
@@ -191,19 +185,9 @@ const SobreNosotros: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           overflow: 'hidden',
-          bgcolor: 'black',
+          bgcolor: '#FFFFFF',
           width: '100%',
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            background:
-              'radial-gradient(circle at center, rgba(124, 58, 237, 0.1) 0%, rgba(0, 0, 0, 0.97) 70%)',
-            zIndex: 1,
-          },
+          pt: { xs: 8, md: 0 }, // Add top padding on mobile to avoid navbar overlap
         }}
       >
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
@@ -233,14 +217,10 @@ const SobreNosotros: React.FC = () => {
                   variant="h1"
                   align="center"
                   sx={{
-                    color: 'white',
+                    color: '#1D1D1F',
                     fontWeight: 800,
                     mb: 3,
                     fontSize: { xs: '3rem', md: '4.5rem', lg: '5.5rem' },
-                    background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
                     letterSpacing: '-0.02em',
                     lineHeight: 1.1,
                   }}
@@ -258,7 +238,7 @@ const SobreNosotros: React.FC = () => {
                   sx={{
                     width: '60px',
                     height: '3px',
-                    background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+                    background: '#007AFF',
                     borderRadius: '2px',
                     mb: 4,
                     mt: 1,
@@ -276,7 +256,7 @@ const SobreNosotros: React.FC = () => {
                   variant="h5"
                   align="center"
                   sx={{
-                    color: 'rgba(255,255,255,0.85)',
+                    color: 'rgba(0,0,0,0.6)',
                     maxWidth: '650px',
                     mx: 'auto',
                     mb: 6,
@@ -813,44 +793,10 @@ const SobreNosotros: React.FC = () => {
           sx={{
             py: { xs: 10, md: 12 },
             position: 'relative',
-            background:
-              'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(124,58,237,0.03) 100%)',
+            background: '#FFFFFF',
           }}
         >
           <Container maxWidth="xl">
-            {/* Background elements */}
-            <Box
-              sx={{
-                position: 'absolute',
-                top: '10%',
-                right: '5%',
-                width: '280px',
-                height: '280px',
-                background:
-                  'radial-gradient(circle, rgba(255,107,107,0.03) 0%, transparent 70%)',
-                borderRadius: '50%',
-                filter: 'blur(60px)',
-                zIndex: 0,
-                opacity: 0.8,
-              }}
-            />
-
-            <Box
-              sx={{
-                position: 'absolute',
-                bottom: '15%',
-                left: '8%',
-                width: '220px',
-                height: '220px',
-                background:
-                  'radial-gradient(circle, rgba(78,205,196,0.03) 0%, transparent 70%)',
-                borderRadius: '50%',
-                filter: 'blur(50px)',
-                zIndex: 0,
-                opacity: 0.8,
-              }}
-            />
-
             {/* Section header */}
             <Box
               sx={{
@@ -871,7 +817,7 @@ const SobreNosotros: React.FC = () => {
                     fontWeight: 500,
                     fontSize: '0.85rem',
                     letterSpacing: '0.2em',
-                    color: '#7C3AED',
+                    color: theme.palette.secondary.main,
                     mb: 1.5,
                     display: 'block',
                   }}
@@ -885,7 +831,7 @@ const SobreNosotros: React.FC = () => {
                     fontWeight: 800,
                     mb: 2,
                     fontSize: { xs: '1.8rem', md: '2.2rem' },
-                    color: 'white',
+                    color: '#1D1D1F',
                     maxWidth: '700px',
                     mx: 'auto',
                     lineHeight: 1.2,
@@ -898,7 +844,7 @@ const SobreNosotros: React.FC = () => {
                   sx={{
                     width: '40px',
                     height: '3px',
-                    background: 'linear-gradient(45deg, #7C3AED, #EC4899)',
+                    background: '#007AFF',
                     borderRadius: '2px',
                     mb: 3,
                     mx: 'auto',
@@ -920,17 +866,16 @@ const SobreNosotros: React.FC = () => {
                       sx={{
                         p: { xs: 3.5, md: 5 },
                         borderRadius: 3,
-                        background: 'rgba(255,255,255,0.02)',
-                        backdropFilter: 'blur(10px)',
-                        border: '1px solid rgba(255,255,255,0.03)',
-                        boxShadow: '0 10px 40px -10px rgba(0,0,0,0.1)',
+                        background: '#FFFFFF',
+                        border: '1px solid rgba(0,0,0,0.08)',
+                        boxShadow: '0px 4px 12px rgba(0,0,0,0.06)',
                         height: '100%',
                         position: 'relative',
                         overflow: 'hidden',
                         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                         '&:hover': {
-                          transform: 'translateY(-5px)',
-                          boxShadow: '0 15px 50px -12px rgba(124,58,237,0.15)',
+                          transform: 'translateY(-6px)',
+                          boxShadow: '0px 10px 24px rgba(0,0,0,0.10)',
                         },
                       }}
                     >
@@ -941,8 +886,7 @@ const SobreNosotros: React.FC = () => {
                           left: 0,
                           width: '100%',
                           height: '4px',
-                          background:
-                            'linear-gradient(to right, #7C3AED, transparent)',
+                          background: '#007AFF',
                         }}
                       />
 
@@ -951,7 +895,7 @@ const SobreNosotros: React.FC = () => {
                           mb: 4,
                           display: 'flex',
                           alignItems: 'center',
-                          background: 'rgba(124,58,237,0.05)',
+                          background: 'rgba(0, 122, 255, 0.05)',
                           p: 2,
                           borderRadius: 2,
                         }}
@@ -961,13 +905,12 @@ const SobreNosotros: React.FC = () => {
                             width: 48,
                             height: 48,
                             borderRadius: '14px',
-                            background:
-                              'linear-gradient(135deg, #7C3AED, #5B21B6)',
+                            background: '#007AFF',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             mr: 2.5,
-                            boxShadow: '0 4px 10px rgba(124,58,237,0.25)',
+                            boxShadow: '0 4px 10px rgba(0, 122, 255, 0.25)',
                           }}
                         >
                           <Typography sx={{ fontSize: '1.4rem' }}>
@@ -980,7 +923,7 @@ const SobreNosotros: React.FC = () => {
                             sx={{
                               fontSize: '0.7rem',
                               fontWeight: 500,
-                              color: '#7C3AED',
+                              color: '#007AFF',
                               letterSpacing: '0.1em',
                               display: 'block',
                               mb: 0.2,
@@ -993,7 +936,7 @@ const SobreNosotros: React.FC = () => {
                             sx={{
                               fontSize: { xs: '1.3rem', md: '1.5rem' },
                               fontWeight: 700,
-                              color: 'white',
+                              color: '#1D1D1F',
                               letterSpacing: '-0.01em',
                             }}
                           >
@@ -1004,8 +947,8 @@ const SobreNosotros: React.FC = () => {
 
                       <Typography
                         variant="body1"
-                        color="rgba(255,255,255,0.9)"
                         sx={{
+                          color: 'rgba(0,0,0,0.6)',
                           fontSize: '1rem',
                           lineHeight: 1.7,
                           fontWeight: 300,
@@ -1048,17 +991,16 @@ const SobreNosotros: React.FC = () => {
                       sx={{
                         p: { xs: 3.5, md: 5 },
                         borderRadius: 3,
-                        background: 'rgba(255,255,255,0.02)',
-                        backdropFilter: 'blur(10px)',
-                        border: '1px solid rgba(255,255,255,0.03)',
-                        boxShadow: '0 10px 40px -10px rgba(0,0,0,0.1)',
+                        background: '#FFFFFF',
+                        border: '1px solid rgba(0,0,0,0.08)',
+                        boxShadow: '0px 4px 12px rgba(0,0,0,0.06)',
                         height: '100%',
                         position: 'relative',
                         overflow: 'hidden',
                         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                         '&:hover': {
-                          transform: 'translateY(-5px)',
-                          boxShadow: '0 15px 50px -12px rgba(236,72,153,0.15)',
+                          transform: 'translateY(-6px)',
+                          boxShadow: '0px 10px 24px rgba(0,0,0,0.10)',
                         },
                       }}
                     >
@@ -1069,8 +1011,7 @@ const SobreNosotros: React.FC = () => {
                           left: 0,
                           width: '100%',
                           height: '4px',
-                          background:
-                            'linear-gradient(to right, #EC4899, transparent)',
+                          background: '#007AFF',
                         }}
                       />
 
@@ -1079,7 +1020,7 @@ const SobreNosotros: React.FC = () => {
                           mb: 4,
                           display: 'flex',
                           alignItems: 'center',
-                          background: 'rgba(236,72,153,0.05)',
+                          background: 'rgba(0, 122, 255, 0.05)',
                           p: 2,
                           borderRadius: 2,
                         }}
@@ -1089,13 +1030,12 @@ const SobreNosotros: React.FC = () => {
                             width: 48,
                             height: 48,
                             borderRadius: '14px',
-                            background:
-                              'linear-gradient(135deg, #EC4899, #BE185D)',
+                            background: '#007AFF',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             mr: 2.5,
-                            boxShadow: '0 4px 10px rgba(236,72,153,0.25)',
+                            boxShadow: '0 4px 10px rgba(0, 122, 255, 0.25)',
                           }}
                         >
                           <Typography sx={{ fontSize: '1.4rem' }}>
@@ -1108,7 +1048,7 @@ const SobreNosotros: React.FC = () => {
                             sx={{
                               fontSize: '0.7rem',
                               fontWeight: 500,
-                              color: '#EC4899',
+                              color: '#007AFF',
                               letterSpacing: '0.1em',
                               display: 'block',
                               mb: 0.2,
@@ -1121,7 +1061,7 @@ const SobreNosotros: React.FC = () => {
                             sx={{
                               fontSize: { xs: '1.3rem', md: '1.5rem' },
                               fontWeight: 700,
-                              color: 'white',
+                              color: '#1D1D1F',
                               letterSpacing: '-0.01em',
                             }}
                           >
@@ -1132,8 +1072,8 @@ const SobreNosotros: React.FC = () => {
 
                       <Typography
                         variant="body1"
-                        color="rgba(255,255,255,0.9)"
                         sx={{
+                          color: 'rgba(0,0,0,0.6)',
                           fontSize: '1rem',
                           lineHeight: 1.7,
                           fontWeight: 300,
@@ -1462,43 +1402,9 @@ const SobreNosotros: React.FC = () => {
             py: { xs: 10, md: 14 },
             position: 'relative',
             zIndex: 1,
-            background:
-              'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%)',
+            background: '#FFFFFF',
           }}
         >
-          {/* Background elements */}
-          <Box
-            sx={{
-              position: 'absolute',
-              top: '20%',
-              left: '10%',
-              width: '300px',
-              height: '300px',
-              background:
-                'radial-gradient(circle, rgba(255,107,107,0.04) 0%, transparent 70%)',
-              borderRadius: '50%',
-              filter: 'blur(60px)',
-              zIndex: 0,
-              opacity: 0.7,
-            }}
-          />
-
-          <Box
-            sx={{
-              position: 'absolute',
-              bottom: '15%',
-              right: '5%',
-              width: '280px',
-              height: '280px',
-              background:
-                'radial-gradient(circle, rgba(78,205,196,0.04) 0%, transparent 70%)',
-              borderRadius: '50%',
-              filter: 'blur(60px)',
-              zIndex: 0,
-              opacity: 0.7,
-            }}
-          />
-
           <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
             <motion.div
               initial="hidden"
@@ -1521,7 +1427,7 @@ const SobreNosotros: React.FC = () => {
                     fontWeight: 500,
                     fontSize: '0.85rem',
                     letterSpacing: '0.2em',
-                    color: '#4ECDC4',
+                    color: theme.palette.secondary.main,
                     mb: 1.5,
                     display: 'block',
                   }}
@@ -1535,10 +1441,7 @@ const SobreNosotros: React.FC = () => {
                     fontWeight: 800,
                     mb: 2,
                     fontSize: { xs: '2rem', md: '2.5rem' },
-                    background: 'linear-gradient(45deg, #4ECDC4, #7C3AED)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
+                    color: '#1D1D1F',
                     letterSpacing: '-0.02em',
                     position: 'relative',
                     transform: 'translateZ(0)', // Fix for webkit rendering
@@ -1551,7 +1454,7 @@ const SobreNosotros: React.FC = () => {
                   sx={{
                     width: '40px',
                     height: '3px',
-                    background: 'linear-gradient(45deg, #4ECDC4, #7C3AED)',
+                    background: '#007AFF',
                     borderRadius: '2px',
                     mb: 3,
                     mx: 'auto',
@@ -1564,7 +1467,7 @@ const SobreNosotros: React.FC = () => {
                     fontSize: '1.05rem',
                     lineHeight: 1.6,
                     fontWeight: 300,
-                    color: 'rgba(255,255,255,0.8)',
+                    color: 'rgba(0,0,0,0.6)',
                     maxWidth: '700px',
                     mx: 'auto',
                   }}
@@ -1613,27 +1516,19 @@ const SobreNosotros: React.FC = () => {
                           height: '100%',
                           borderRadius: 4,
                           overflow: 'hidden',
-                          background: 'rgba(255,255,255,0.02)',
-                          backdropFilter: 'blur(10px)',
-                          border: '1px solid rgba(255,255,255,0.04)',
+                          background: '#FFFFFF',
+                          border: '1px solid rgba(0,0,0,0.08)',
                           position: 'relative',
-                          boxShadow: '0 15px 35px rgba(0,0,0,0.1)',
+                          boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
                           transition: 'all 0.3s ease',
                           '&:hover': {
-                            boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
+                            boxShadow: '0 10px 24px rgba(0,0,0,0.10)',
+                            transform: 'translateY(-6px)',
                             '& .member-image': {
                               transform: 'scale(1.05)',
                             },
-                            '& .social-overlay': {
+                            '& .hover-content': {
                               opacity: 1,
-                            },
-                            '& .member-details': {
-                              background: 'rgba(0,0,0,0.7)',
-                              transform: 'translateY(0)',
-                            },
-                            '& .member-role': {
-                              opacity: 1,
-                              transform: 'translateY(0)',
                             },
                           },
                         }}
@@ -1660,7 +1555,7 @@ const SobreNosotros: React.FC = () => {
                               objectPosition: 'center 10%',
                               transition:
                                 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                              filter: 'brightness(0.9)',
+                              filter: 'brightness(1)',
                             }}
                           />
 
@@ -1673,7 +1568,7 @@ const SobreNosotros: React.FC = () => {
                               left: 0,
                               right: 0,
                               bottom: 0,
-                              background: 'rgba(0,0,0,0.75)',
+                              background: 'rgba(0, 122, 255, 0.9)',
                               display: 'flex',
                               flexDirection: 'column',
                               justifyContent: 'center',
@@ -1687,7 +1582,7 @@ const SobreNosotros: React.FC = () => {
                               variant="subtitle1"
                               sx={{
                                 fontWeight: 600,
-                                color: '#7C3AED',
+                                color: 'white',
                                 fontSize: '1.1rem',
                                 textAlign: 'center',
                                 mb: 1,
@@ -1719,7 +1614,7 @@ const SobreNosotros: React.FC = () => {
                               left: 0,
                               right: 0,
                               background:
-                                'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)',
+                                'linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%)',
                               padding: '40px 16px 16px',
                               pointerEvents: 'none',
                               zIndex: 1,
@@ -1729,10 +1624,9 @@ const SobreNosotros: React.FC = () => {
                               variant="h6"
                               sx={{
                                 fontWeight: 600,
-                                color: 'white',
+                                color: '#1D1D1F',
                                 fontSize: '1.1rem',
                                 textAlign: 'center',
-                                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
                               }}
                             >
                               {member.name}
@@ -1766,9 +1660,7 @@ const SobreNosotros: React.FC = () => {
                                   case 'linkedin':
                                     Icon = LinkedInIcon;
                                     break;
-                                  case 'twitter':
-                                    Icon = TwitterIcon;
-                                    break;
+
                                   case 'instagram':
                                     Icon = InstagramIcon;
                                     break;
@@ -1784,21 +1676,19 @@ const SobreNosotros: React.FC = () => {
                                     component={motion.a}
                                     whileHover={{
                                       y: -3,
-                                      backgroundColor:
-                                        platform === 'linkedin'
-                                          ? '#0077B5'
-                                          : platform === 'twitter'
-                                          ? '#1DA1F2'
-                                          : '#E1306C',
-                                      color: 'white',
+                                      scale: 1.1,
                                     }}
                                     sx={{
-                                      bgcolor: 'rgba(255,255,255,0.15)',
-                                      backdropFilter: 'blur(5px)',
-                                      color: 'white',
-                                      width: 30,
-                                      height: 30,
+                                      bgcolor: 'rgba(255,255,255,0.9)',
+                                      color: '#007AFF',
+                                      width: 36,
+                                      height: 36,
                                       transition: 'all 0.3s ease',
+                                      '&:hover': {
+                                        bgcolor: '#007AFF',
+                                        color: 'white',
+                                        transform: 'scale(1.1)',
+                                      },
                                     }}
                                   >
                                     <Icon fontSize="small" />

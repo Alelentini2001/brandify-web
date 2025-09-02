@@ -10,6 +10,7 @@ import {
   Rating,
   useTheme,
   alpha,
+  Divider,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -63,29 +64,15 @@ const Testimonios: React.FC = () => {
       <Box
         sx={{
           position: 'relative',
-          height: '60vh',
-          minHeight: 400,
+          height: '85vh',
+          minHeight: 500,
+          maxHeight: 700,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          bgcolor: '#0A0A0A',
-          width: '100vw',
-          left: '50%',
-          right: '50%',
-          marginLeft: '-50vw',
-          marginRight: '-50vw',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background:
-              'radial-gradient(circle at center, rgba(124, 58, 237, 0.15) 0%, rgba(0, 0, 0, 0) 70%)',
-            zIndex: 1,
-          },
+          bgcolor: '#FFFFFF',
+          pt: { xs: 8, md: 0 }, // Add top padding on mobile to avoid navbar overlap
         }}
       >
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
@@ -98,28 +85,41 @@ const Testimonios: React.FC = () => {
               variant="h1"
               align="center"
               sx={{
-                color: 'white',
+                color: '#1D1D1F',
                 fontWeight: 800,
                 mb: 3,
-                fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
-                background: 'linear-gradient(135deg, #7C3AED 0%, #EC4899 100%)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                textShadow: '0 2px 10px rgba(124, 58, 237, 0.3)',
+                fontSize: { xs: '3rem', md: '4.5rem', lg: '5.5rem' },
+                letterSpacing: '-0.02em',
+                lineHeight: 1.1,
               }}
             >
               Testimonios
             </Typography>
+
+            <Divider
+              sx={{
+                width: '60px',
+                height: '3px',
+                background: '#007AFF',
+                borderRadius: '2px',
+                mb: 4,
+                mt: 1,
+                mx: 'auto',
+              }}
+            />
+
             <Typography
               variant="h5"
               align="center"
               sx={{
-                color: 'rgba(255,255,255,0.9)',
-                maxWidth: 800,
+                color: 'rgba(0,0,0,0.6)',
+                maxWidth: '650px',
                 mx: 'auto',
-                fontSize: { xs: '1.1rem', md: '1.25rem' },
-                lineHeight: 1.6,
+                mb: 6,
+                fontSize: { xs: '1.2rem', md: '1.5rem' },
+                lineHeight: 1.5,
+                fontWeight: 300,
+                letterSpacing: '0.01em',
               }}
             >
               Descubre lo que nuestros clientes dicen sobre su experiencia
@@ -133,19 +133,8 @@ const Testimonios: React.FC = () => {
       <Box
         sx={{
           py: { xs: 8, md: 12 },
-          background: 'linear-gradient(180deg, #000000 0%, #090909 100%)',
+          background: '#FFFFFF',
           position: 'relative',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '100%',
-            background:
-              'radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          },
         }}
       >
         <Container maxWidth="lg">
@@ -160,14 +149,14 @@ const Testimonios: React.FC = () => {
                   <Card
                     sx={{
                       height: '100%',
-                      bgcolor: 'rgba(15, 15, 15, 0.6)',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(124, 58, 237, 0.1)',
+                      bgcolor: '#FFFFFF',
+                      border: '1px solid rgba(0,0,0,0.08)',
+                      boxShadow: '0px 4px 12px rgba(0,0,0,0.06)',
                       transition: 'all 0.3s ease',
                       '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: '0 20px 40px rgba(124, 58, 237, 0.2)',
-                        borderColor: 'rgba(124, 58, 237, 0.3)',
+                        transform: 'translateY(-6px)',
+                        boxShadow: '0px 10px 24px rgba(0,0,0,0.10)',
+                        borderColor: 'rgba(0,0,0,0.12)',
                       },
                     }}
                   >
@@ -175,7 +164,7 @@ const Testimonios: React.FC = () => {
                       <FormatQuoteIcon
                         sx={{
                           fontSize: 40,
-                          color: 'rgba(124, 58, 237, 0.2)',
+                          color: 'rgba(0, 122, 255, 0.2)',
                           mb: 2,
                         }}
                       />
@@ -183,7 +172,7 @@ const Testimonios: React.FC = () => {
                         variant="body1"
                         sx={{
                           mb: 3,
-                          color: 'rgba(255,255,255,0.9)',
+                          color: 'rgba(0,0,0,0.7)',
                           fontSize: { xs: '0.875rem', md: '1rem' },
                           lineHeight: 1.8,
                           fontStyle: 'italic',
@@ -200,14 +189,14 @@ const Testimonios: React.FC = () => {
                           sx={{
                             width: 56,
                             height: 56,
-                            border: '2px solid rgba(124, 58, 237, 0.2)',
+                            border: '2px solid rgba(0, 122, 255, 0.2)',
                           }}
                         />
                         <Box>
                           <Typography
                             variant="h6"
                             sx={{
-                              color: 'white',
+                              color: '#1D1D1F',
                               fontWeight: 600,
                               fontSize: '1rem',
                             }}
@@ -217,7 +206,7 @@ const Testimonios: React.FC = () => {
                           <Typography
                             variant="body2"
                             sx={{
-                              color: 'rgba(255,255,255,0.6)',
+                              color: 'rgba(0,0,0,0.6)',
                               fontSize: '0.875rem',
                             }}
                           >

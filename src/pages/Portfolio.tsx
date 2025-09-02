@@ -17,6 +17,7 @@ import {
   DialogContent,
   IconButton,
   DialogTitle,
+  Divider,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -160,29 +161,15 @@ const Portfolio: React.FC = () => {
       <Box
         sx={{
           position: 'relative',
-          height: '60vh',
-          minHeight: 400,
+          height: '85vh',
+          minHeight: 500,
+          maxHeight: 700,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          bgcolor: '#0A0A0A',
-          width: '100vw',
-          left: '50%',
-          right: '50%',
-          marginLeft: '-50vw',
-          marginRight: '-50vw',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background:
-              'radial-gradient(circle at center, rgba(124, 58, 237, 0.15) 0%, rgba(0, 0, 0, 0) 70%)',
-            zIndex: 1,
-          },
+          bgcolor: '#FFFFFF',
+          pt: { xs: 8, md: 0 }, // Add top padding on mobile to avoid navbar overlap
         }}
       >
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
@@ -195,28 +182,41 @@ const Portfolio: React.FC = () => {
               variant="h1"
               align="center"
               sx={{
-                color: 'white',
+                color: '#1D1D1F',
                 fontWeight: 800,
                 mb: 3,
-                fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
-                background: 'linear-gradient(135deg, #7C3AED 0%, #EC4899 100%)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                textShadow: '0 2px 10px rgba(124, 58, 237, 0.3)',
+                fontSize: { xs: '3rem', md: '4.5rem', lg: '5.5rem' },
+                letterSpacing: '-0.02em',
+                lineHeight: 1.1,
               }}
             >
               Nuestro Portfolio
             </Typography>
+
+            <Divider
+              sx={{
+                width: '60px',
+                height: '3px',
+                background: '#007AFF',
+                borderRadius: '2px',
+                mb: 4,
+                mt: 1,
+                mx: 'auto',
+              }}
+            />
+
             <Typography
               variant="h5"
               align="center"
               sx={{
-                color: 'rgba(255,255,255,0.9)',
-                maxWidth: 800,
+                color: 'rgba(0,0,0,0.6)',
+                maxWidth: '650px',
                 mx: 'auto',
-                fontSize: { xs: '1.1rem', md: '1.25rem' },
-                lineHeight: 1.6,
+                mb: 6,
+                fontSize: { xs: '1.2rem', md: '1.5rem' },
+                lineHeight: 1.5,
+                fontWeight: 300,
+                letterSpacing: '0.01em',
               }}
             >
               Descubre nuestros proyectos más destacados y cómo hemos ayudado a
@@ -230,19 +230,8 @@ const Portfolio: React.FC = () => {
       <Box
         sx={{
           py: { xs: 8, md: 12 },
-          background: 'linear-gradient(180deg, #000000 0%, #090909 100%)',
+          background: '#FFFFFF',
           position: 'relative',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '100%',
-            background:
-              'radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          },
         }}
       >
         <Container maxWidth="lg">
@@ -251,20 +240,20 @@ const Portfolio: React.FC = () => {
               value={value}
               onChange={handleChange}
               variant="scrollable"
-              scrollButtons="auto"
+              scrollButtons={false}
               aria-label="portfolio categories"
               sx={{
                 '& .MuiTabs-indicator': {
-                  backgroundColor: '#7C3AED',
+                  backgroundColor: '#007AFF',
                   height: 3,
                 },
                 '& .MuiTab-root': {
-                  color: 'rgba(255,255,255,0.7)',
+                  color: 'rgba(0,0,0,0.6)',
                   fontSize: '1rem',
                   fontWeight: 500,
                   minHeight: 48,
                   '&.Mui-selected': {
-                    color: '#7C3AED',
+                    color: '#007AFF',
                   },
                 },
               }}
@@ -294,14 +283,14 @@ const Portfolio: React.FC = () => {
                   <Card
                     sx={{
                       height: '100%',
-                      bgcolor: 'rgba(15, 15, 15, 0.6)',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(124, 58, 237, 0.1)',
+                      bgcolor: '#FFFFFF',
+                      border: '1px solid rgba(0,0,0,0.08)',
+                      boxShadow: '0px 4px 12px rgba(0,0,0,0.06)',
                       transition: 'all 0.3s ease',
                       '&:hover': {
                         transform: 'translateY(-8px)',
-                        boxShadow: '0 20px 40px rgba(124, 58, 237, 0.2)',
-                        borderColor: 'rgba(124, 58, 237, 0.3)',
+                        boxShadow: '0px 10px 24px rgba(0,0,0,0.10)',
+                        borderColor: 'rgba(0,0,0,0.12)',
                       },
                     }}
                   >
@@ -309,7 +298,7 @@ const Portfolio: React.FC = () => {
                       sx={{
                         position: 'relative',
                         paddingTop: '56.25%', // 16:9 aspect ratio
-                        borderBottom: '1px solid rgba(124, 58, 237, 0.1)',
+                        borderBottom: '1px solid rgba(0,0,0,0.08)',
                         overflow: 'hidden',
                       }}
                     >
@@ -354,7 +343,7 @@ const Portfolio: React.FC = () => {
                           left: 0,
                           right: 0,
                           bottom: 0,
-                          background: 'rgba(0,0,0,0.4)',
+                          background: 'rgba(0,0,0,0.6)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -369,9 +358,17 @@ const Portfolio: React.FC = () => {
                           variant="contained"
                           onClick={() => handleOpenProject(project)}
                           sx={{
-                            bgcolor: 'rgba(124, 58, 237, 0.9)',
+                            bgcolor: '#007AFF',
+                            color: 'white',
+                            borderRadius: '8px',
+                            px: 3,
+                            py: 1.5,
+                            fontSize: '0.9rem',
+                            fontWeight: 600,
+                            textTransform: 'none',
                             '&:hover': {
-                              bgcolor: 'rgba(124, 58, 237, 1)',
+                              bgcolor: '#0056CC',
+                              transform: 'scale(1.05)',
                             },
                           }}
                         >
@@ -387,7 +384,7 @@ const Portfolio: React.FC = () => {
                         sx={{
                           mb: 1,
                           fontWeight: 700,
-                          color: 'white',
+                          color: '#1D1D1F',
                           fontSize: { xs: '1.25rem', md: '1.5rem' },
                         }}
                       >
@@ -397,7 +394,7 @@ const Portfolio: React.FC = () => {
                         variant="body2"
                         sx={{
                           mb: 2,
-                          color: 'rgba(255,255,255,0.7)',
+                          color: 'rgba(0,0,0,0.6)',
                           fontSize: { xs: '0.875rem', md: '1rem' },
                           lineHeight: 1.6,
                         }}
@@ -418,11 +415,12 @@ const Portfolio: React.FC = () => {
                             label={tag}
                             size="small"
                             sx={{
-                              bgcolor: 'rgba(124, 58, 237, 0.1)',
-                              color: '#7C3AED',
+                              bgcolor: 'rgba(0, 122, 255, 0.1)',
+                              color: '#007AFF',
                               fontWeight: 500,
+                              border: '1px solid rgba(0, 122, 255, 0.2)',
                               '&:hover': {
-                                bgcolor: 'rgba(124, 58, 237, 0.2)',
+                                bgcolor: 'rgba(0, 122, 255, 0.15)',
                               },
                             }}
                           />
@@ -431,8 +429,9 @@ const Portfolio: React.FC = () => {
                       <Typography
                         variant="caption"
                         sx={{
-                          color: 'rgba(255,255,255,0.5)',
+                          color: 'rgba(0,0,0,0.5)',
                           fontSize: '0.75rem',
+                          fontWeight: 500,
                         }}
                       >
                         {project.year}

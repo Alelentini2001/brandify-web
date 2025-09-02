@@ -22,6 +22,7 @@ import CampaignIcon from '@mui/icons-material/Campaign';
 import BrushIcon from '@mui/icons-material/Brush';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 
 // Animation variants
 const fadeInUp = {
@@ -80,6 +81,20 @@ const services = [
     ],
   },
   {
+    title: 'Desarrollo SAAS',
+    icon: <StorefrontIcon sx={{ fontSize: 40 }} />,
+    price: 'desde 5000 €',
+    description: 'Plataforma completa como servicio escalable',
+    features: [
+      'Arquitectura escalable en la nube',
+      'Base de datos y APIs robustas',
+      'Panel de administración avanzado',
+      'Sistema de usuarios y permisos',
+      'Métricas y analytics integrados',
+      'Soporte técnico prioritario',
+    ],
+  },
+  {
     title: 'Edición de Videos',
     icon: <VideocamIcon sx={{ fontSize: 40 }} />,
     price: '20 € (hasta 1:30 min)',
@@ -95,7 +110,7 @@ const services = [
   {
     title: 'Presentación Comercial',
     icon: <BrushIcon sx={{ fontSize: 40 }} />,
-    price: '10 € por página',
+    price: '10 € por hoja',
     description: 'Diseño visualmente atractivo para comunicar tu propuesta',
     features: [
       'Estructura clara y estratégica',
@@ -103,6 +118,7 @@ const services = [
       'Pensado para digital e impreso',
       'Perfecto para startups y empresas',
       'Ideal para presentaciones y pitch decks',
+      'Precio por página individual',
     ],
   },
   {
@@ -121,7 +137,7 @@ const services = [
   {
     title: 'Thumbnails',
     icon: <BrushIcon sx={{ fontSize: 40 }} />,
-    price: '8 €',
+    price: '10 €',
     description:
       'Miniaturas diseñadas estratégicamente para captar la atención y aumentar el CTR',
     features: [
@@ -149,19 +165,21 @@ const services = [
     title: 'Creativos Publicitarios',
     icon: <BrushIcon sx={{ fontSize: 40 }} />,
     price: '20 €',
-    description: 'Creatividades estratégicas para campañas de alto impacto',
+    description:
+      'Creatividades estratégicas para campañas de alto impacto (IMÁGENES SOLO, NO VIDEOS)',
     features: [
       'Adaptación visual por plataforma',
       'Diseño alineado con identidad de marca',
       'Textos publicitarios directos',
       'Visuales potentes para conversiones',
       'Flexibilidad total para diferentes objetivos',
+      'NOTA: Solo imágenes para campañas publicitarias, no incluye videos',
     ],
   },
   {
     title: 'Identidad de Marca',
     icon: <BrushIcon sx={{ fontSize: 40 }} />,
-    price: '450 €',
+    price: '500 €',
     description: 'Identidad de marca y branding completo',
     features: [
       'Diseño de logotipo y variantes',
@@ -176,7 +194,7 @@ const services = [
   {
     title: 'Diseño de Logotipo',
     icon: <BrushIcon sx={{ fontSize: 40 }} />,
-    price: '100 €',
+    price: '150 €',
     description: 'Diseño de Logotipo Profesional',
     features: [
       'Logotipo principal + variantes',
@@ -199,6 +217,7 @@ const services = [
       'Análisis en tiempo real',
       '2 reuniones mensuales de seguimiento',
       'Presupuesto mínimo de inversión de 500€ por plataforma',
+      'Reuniones adicionales de seguimiento: +10€ (45 minutos)',
     ],
   },
   {
@@ -218,7 +237,7 @@ const services = [
   {
     title: 'Historias Instagram',
     icon: <BrushIcon sx={{ fontSize: 40 }} />,
-    price: '8 €',
+    price: '10 €',
     description:
       'Historias visualmente impactantes, alineadas con la identidad de tu marca',
     features: [
@@ -250,24 +269,15 @@ const Servicios: React.FC = () => {
         ref={headerRef}
         sx={{
           position: 'relative',
-          height: '60vh',
-          minHeight: 400,
+          height: '85vh',
+          minHeight: 500,
+          maxHeight: 700,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          bgcolor: 'black',
+          bgcolor: '#FFFFFF',
           overflow: 'hidden',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background:
-              'radial-gradient(circle at center, rgba(124, 58, 237, 0.15) 0%, rgba(0, 0, 0, 0) 70%)',
-            zIndex: 1,
-          },
+          pt: { xs: 8, md: 0 }, // Add top padding on mobile to avoid navbar overlap
         }}
       >
         <Container maxWidth="xl">
@@ -281,28 +291,40 @@ const Servicios: React.FC = () => {
               component="h1"
               variant="h1"
               sx={{
-                color: 'white',
+                color: '#1D1D1F',
                 mb: 3,
                 fontWeight: 800,
-                fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
-                background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                textShadow: '0 2px 10px rgba(124, 58, 237, 0.3)',
+                fontSize: { xs: '3rem', md: '4.5rem', lg: '5.5rem' },
+                letterSpacing: '-0.02em',
+                lineHeight: 1.1,
               }}
             >
               Nuestros Servicios
             </Typography>
+
+            <Divider
+              sx={{
+                width: '60px',
+                height: '3px',
+                background: '#007AFF',
+                borderRadius: '2px',
+                mb: 4,
+                mt: 1,
+                mx: 'auto',
+              }}
+            />
+
             <Typography
               variant="h5"
               sx={{
-                color: 'rgba(255,255,255,0.9)',
-                maxWidth: '800px',
+                color: 'rgba(0,0,0,0.6)',
+                maxWidth: '650px',
                 mx: 'auto',
-                mb: 4,
-                fontSize: { xs: '1.1rem', md: '1.25rem' },
-                lineHeight: 1.8,
+                mb: 6,
+                fontSize: { xs: '1.2rem', md: '1.5rem' },
+                lineHeight: 1.5,
+                fontWeight: 300,
+                letterSpacing: '0.01em',
               }}
             >
               Soluciones digitales completas para impulsar tu presencia online
@@ -319,7 +341,7 @@ const Servicios: React.FC = () => {
           mb: 0,
           position: 'relative',
           zIndex: 1,
-          background: 'linear-gradient(180deg, #000000 0%, #090909 100%)',
+          background: 'linear-gradient(180deg, #FFFFFF 0%, #F2F2F7 100%)',
           overflow: 'hidden',
         }}
       >
@@ -507,11 +529,10 @@ const Servicios: React.FC = () => {
                       sx={{
                         height: '100%',
                         p: 4,
-                        borderRadius: 4,
-                        background: 'rgba(255,255,255,0.03)',
-                        backdropFilter: 'blur(10px)',
-                        border: '1px solid rgba(255,255,255,0.07)',
-                        boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                        borderRadius: 3,
+                        background: '#FFFFFF',
+                        border: '1px solid rgba(0,0,0,0.08)',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
                         display: 'flex',
                         flexDirection: 'column',
                         position: 'relative',
@@ -530,11 +551,11 @@ const Servicios: React.FC = () => {
                           },
                           '& .icon-bg': {
                             transform: 'scale(1.2) rotate(5deg)',
-                            opacity: 0.2,
+                            opacity: 0.12,
                           },
                           '& .icon-main': {
                             transform: 'scale(1.05)',
-                            filter: 'brightness(1.1)',
+                            filter: 'brightness(1.05)',
                           },
                           '& .underline': {
                             width: '100px',
@@ -561,9 +582,9 @@ const Servicios: React.FC = () => {
                           top: '-20px',
                           right: '-20px',
                           fontSize: '9rem',
-                          opacity: 0.05,
+                          opacity: 0.08,
                           transition: 'all 0.3s',
-                          color: item.color,
+                          color: '#007AFF',
                           zIndex: 0,
                         }}
                       >
@@ -604,7 +625,7 @@ const Servicios: React.FC = () => {
                             fontWeight: 700,
                             mb: 3,
                             fontSize: { xs: '1.25rem', md: '1.5rem' },
-                            color: 'white',
+                            color: '#1D1D1F',
                             position: 'relative',
                             pb: 2,
                           }}
@@ -627,8 +648,8 @@ const Servicios: React.FC = () => {
 
                         <Typography
                           variant="body2"
-                          color="rgba(255,255,255,0.8)"
                           sx={{
+                            color: 'rgba(0,0,0,0.7)',
                             lineHeight: 1.7,
                             fontSize: '1.05rem',
                           }}
@@ -645,23 +666,12 @@ const Servicios: React.FC = () => {
         </Container>
       </Box>
 
-      {/* Services Grid */}
+      {/* Services Grid (minimal white) */}
       <Box
         sx={{
           py: { xs: 8, md: 12 },
-          background: 'linear-gradient(180deg, #000000 0%, #1a1a1a 100%)',
+          background: '#FFFFFF',
           position: 'relative',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '100%',
-            background:
-              'radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          },
         }}
       >
         <Container maxWidth="xl">
@@ -678,16 +688,16 @@ const Servicios: React.FC = () => {
                     <Card
                       sx={{
                         height: '100%',
-                        background: 'rgba(255,255,255,0.03)',
-                        backdropFilter: 'blur(10px)',
-                        border: '1px solid rgba(255,255,255,0.1)',
+                        background: '#FFFFFF',
+                        border: '1px solid rgba(0,0,0,0.08)',
                         borderRadius: '16px',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
                         transition:
                           'transform 0.15s, box-shadow 0.15s, border-color 0.15s',
                         '&:hover': {
-                          transform: 'translateY(-5px)',
-                          boxShadow: '0 20px 40px rgba(124, 58, 237, 0.2)',
-                          borderColor: 'rgba(124, 58, 237, 0.3)',
+                          transform: 'translateY(-6px)',
+                          boxShadow: '0 10px 24px rgba(0,0,0,0.10)',
+                          borderColor: 'rgba(0,0,0,0.12)',
                         },
                       }}
                     >
@@ -695,23 +705,23 @@ const Servicios: React.FC = () => {
                         <Box
                           sx={{ display: 'flex', alignItems: 'center', mb: 2 }}
                         >
-                          <Box sx={{ color: '#7C3AED' }}>{service.icon}</Box>
+                          <Box sx={{ color: '#007AFF' }}>{service.icon}</Box>
                           <Box sx={{ ml: 2 }}>
                             <Typography
                               variant="h5"
                               sx={{
-                                color: 'white',
-                                fontWeight: 600,
-                                fontSize: { xs: '1.1rem', md: '1.5rem' },
+                                color: '#1D1D1F',
+                                fontWeight: 700,
+                                fontSize: { xs: '1.15rem', md: '1.35rem' },
                               }}
                             >
                               {service.title}
                             </Typography>
                             <Typography
                               sx={{
-                                color: '#7C3AED',
-                                fontWeight: 600,
-                                fontSize: { xs: '0.875rem', md: '1rem' },
+                                color: '#007AFF',
+                                fontWeight: 700,
+                                fontSize: { xs: '0.9rem', md: '1rem' },
                               }}
                             >
                               {service.price}
@@ -720,31 +730,31 @@ const Servicios: React.FC = () => {
                         </Box>
                         <Typography
                           sx={{
-                            color: 'rgba(255,255,255,0.7)',
+                            color: 'rgba(0,0,0,0.65)',
                             mb: 2,
-                            fontSize: { xs: '0.875rem', md: '1rem' },
+                            fontSize: { xs: '0.9rem', md: '1rem' },
                             lineHeight: 1.6,
                           }}
                         >
                           {service.description}
                         </Typography>
                         <Divider
-                          sx={{ my: 2, borderColor: 'rgba(255,255,255,0.1)' }}
+                          sx={{ my: 2, borderColor: 'rgba(0,0,0,0.08)' }}
                         />
                         <List disablePadding>
                           {service.features.map((feature, idx) => (
                             <ListItem key={idx} sx={{ px: 0, py: 0.5 }}>
                               <ListItemIcon sx={{ minWidth: 36 }}>
                                 <CheckCircleIcon
-                                  sx={{ color: '#7C3AED', fontSize: 20 }}
+                                  sx={{ color: '#007AFF', fontSize: 20 }}
                                 />
                               </ListItemIcon>
                               <ListItemText
                                 primary={feature}
                                 sx={{
                                   '& .MuiListItemText-primary': {
-                                    fontSize: { xs: '0.85rem', md: '0.9rem' },
-                                    color: 'rgba(255,255,255,0.7)',
+                                    fontSize: { xs: '0.9rem', md: '0.95rem' },
+                                    color: 'rgba(0,0,0,0.7)',
                                   },
                                 }}
                               />
